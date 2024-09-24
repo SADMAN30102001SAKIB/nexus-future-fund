@@ -67,7 +67,7 @@ export default function Home() {
             <div className="w-8 h-8 bg-pink-600 rounded-full flex items-center justify-center">
               <DollarSign className="text-white" size={20} />
             </div>
-            <span className="text-2xl font-bold">Nexus Future Fund</span>
+            <span className="text-2xl font-bold">NFF</span>
           </div>
           <nav className="hidden md:flex space-x-6">
             <ScrollLink to="home" smooth={true} duration={500} className="text-gray-300 hover:text-white cursor-pointer">Home</ScrollLink>
