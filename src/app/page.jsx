@@ -185,9 +185,9 @@ export default function Home() {
       <main>
         {/* Home Section */}
         <Element name="home">
-          <section className="py-16 md:py-24">
+          <section className="py-24">
             <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
-              <motion.div className="md:w-1/2 mb-8 md:mb-0" variants={staggerChildren} initial="initial" animate="animate">
+              <motion.div className="md:w-1/2 mb-8 md:mb-0 md:px-16" variants={staggerChildren} initial="initial" animate="animate">
                 <motion.div
                   className="bg-gray-800 bg-opacity-50 backdrop-blur-md inline-block px-3 py-1 rounded-full text-sm mb-4"
                   variants={fadeIn}
@@ -198,7 +198,7 @@ export default function Home() {
                 <motion.p className="text-gray-300 mb-6" variants={fadeIn}>Intelligent management software to simplify future investment. All of your funds are taken into account for future.</motion.p>
                 <motion.div className="flex space-x-4" variants={fadeIn}>
                   <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400" >Discover Now</Button>
-                  <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400" variant="outline" >Learn more →</Button>
+                  <Button className="px-4 py-2 bg-white text-pink-600 rounded-md hover:bg-pink-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-pink-400" variant="outline" >Learn more →</Button>
                 </motion.div>
                 <motion.div className="flex space-x-8 mt-8" variants={staggerChildren}>
                   <motion.div variants={fadeIn} className="bg-gray-800 bg-opacity-50 backdrop-blur-md p-4 rounded-lg">
@@ -228,10 +228,10 @@ export default function Home() {
         {/* Features Section */}
         <Element name="features">
           <section className="py-16 md:py-24 bg-gray-800">
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto md:px-36">
               <h2 className="text-3xl font-bold text-center mb-10">Why should you choose us</h2>
               <motion.div
-                className="grid grid-cols-1 md:grid-cols-3 gap-8"
+                className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16"
                 variants={staggerChildren}
                 initial="initial"
                 animate="animate"
@@ -258,9 +258,9 @@ export default function Home() {
 
         {/* Benefits Section */}
         <Element name="benefits">
-          <section className="py-16 md:py-24">
+          <section className="py-8 md:py-0">
             <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
-              <motion.div className="md:w-1/2 mb-8 md:mb-0" variants={staggerChildren} initial="initial" animate="animate">
+              <motion.div className="md:w-1/2 mb-8 md:mb-0 md:px-16" variants={staggerChildren} initial="initial" animate="animate">
                 <div className="bg-gray-800 bg-opacity-50 backdrop-blur-md p-8 rounded-lg shadow-xl">
                   <motion.h2 className="text-3xl font-bold mb-6" variants={fadeIn}>Increase your savings by investing in Nexus Future Fund with trusted security</motion.h2>
                   <motion.p className="text-gray-300 mb-6" variants={fadeIn}>It is very helpful for you to choose an investment strategy that reflects your goals, timeline, and risk tolerance with a trusted platform.</motion.p>
@@ -282,7 +282,7 @@ export default function Home() {
                 </div>
               </motion.div>
               <motion.div
-                className="md:w-1/2 md:pl-8"
+                className="md:w-1/2 md:pl-8 hidden md:block"
                 variants={fadeIn}
                 initial="initial"
                 animate="animate"
@@ -297,20 +297,20 @@ export default function Home() {
 
         {/* Investments Section */}
         <Element name="investments">
-          <section className="py-16 md:py-24 bg-gray-800">
+          <section className="py-8 md:py-0 bg-gray-800">
             <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
-              <motion.div className="md:w-1/2 mb-8 md:mb-0" variants={staggerChildren} initial="initial" animate="animate">
+              <motion.div className="md:w-1/2 mb-8 md:mb-0 md:px-16" variants={staggerChildren} initial="initial" animate="animate">
                 <div className="bg-gray-700 bg-opacity-50 backdrop-blur-md p-8 rounded-lg shadow-xl">
                   <motion.h2 className="text-3xl font-bold mb-6" variants={fadeIn}>Investments make your money growing fasted guaranteed best security</motion.h2>
                   <motion.p className="text-gray-300 mb-6" variants={fadeIn}>The benefit of investing is to provide additional income. Your income can come from more than one source and you may no longer depend on your living salary that you get every month. Finance increases in value slowly.</motion.p>
                   <motion.div className="flex space-x-4" variants={fadeIn}>
                     <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400" >Contact Now</Button>
-                    <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400" variant="outline">Learn more →</Button>
+                    <Button className="px-4 py-2 bg-white text-pink-600 rounded-md hover:bg-pink-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-pink-400" variant="outline">Learn more →</Button>
                   </motion.div>
                 </div>
               </motion.div>
               <motion.div
-                className="md:w-1/2 md:pl-8"
+                className="md:w-1/2 md:pl-8 hidden md:block"
                 variants={fadeIn}
                 initial="initial"
                 animate="animate"
@@ -357,7 +357,7 @@ export default function Home() {
 
         {/* Feedback Section */}
         <Element name="feedback">
-          <section className="py-16 md:py-24 bg-gray-800">
+          <section className="py-16 md:py-24 md:px-48 bg-gray-800">
             <div className="container mx-auto px-4">
               <h2 className="text-3xl font-bold text-center mb-10">What Our Clients Say</h2>
               <div className="relative overflow-hidden">
@@ -409,7 +409,7 @@ export default function Home() {
 
         {/* Subscribe Section */}
         <Element name="subscribe">
-          <section className="py-16 md:py-24">
+          <section className="py-16 px-8 md:px-16 md:py-24">
             <div className="container mx-auto px-4">
               <motion.div
                 className="bg-gray-800 bg-opacity-50 backdrop-blur-md rounded-lg p-8 flex flex-col md:flex-row items-center justify-between"
