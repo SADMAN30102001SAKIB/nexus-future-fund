@@ -50,8 +50,6 @@ export const metadata = {
 
 export const viewport = 'width=device-width, initial-scale=1, viewport-fit=cover';
 
-export const themeColor = '#6c63ff';
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -62,7 +60,7 @@ export default function RootLayout({ children }) {
         <meta name="description" content={metadata.description} />
         <meta name="keywords" content={metadata.keywords} />
         <meta name="robots" content={metadata.robots} />
-        <meta name="theme-color" content={themeColor} />
+        <meta name="theme-color" content="#6c63ff" />
 
         {/* Open Graph */}
         <meta property="og:title" content={metadata.openGraph.title} />
@@ -84,8 +82,7 @@ export default function RootLayout({ children }) {
 
         <title>{metadata.title}</title>
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
     </html>

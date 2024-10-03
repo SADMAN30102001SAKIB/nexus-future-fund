@@ -27,8 +27,11 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "components/Button.jsx",
+    "components/Input.jsx",
+    "components/Accordion.jsx",
     "src/app/page.jsx",
-    "src/app/layout.jsx"
+    "src/app/layout.jsx",
+    "tailwind.config.js"
   ],
   "exclude": ["node_modules"]
 }

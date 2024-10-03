@@ -9,11 +9,7 @@ import { cn } from "../lib/utils"
 const Accordion = AccordionPrimitive.Root
 
 const AccordionItem = React.forwardRef(({ className, ...props }, ref) => (
-    <AccordionPrimitive.Item
-        ref={ref}
-        className={cn("border-b", className)}
-        {...props}
-    />
+    <AccordionPrimitive.Item ref={ref} className={cn("border-b", className)} {...props} />
 ))
 AccordionItem.displayName = "AccordionItem"
 
@@ -48,9 +44,4 @@ const AccordionContent = React.forwardRef(({ className, children, ...props }, re
 ))
 AccordionContent.displayName = "AccordionContent"
 
-export {
-    Accordion,
-    AccordionItem,
-    AccordionTrigger,
-    AccordionContent,
-}
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }

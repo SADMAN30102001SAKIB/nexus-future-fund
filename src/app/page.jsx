@@ -13,7 +13,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "../../components/accordion"
+} from "../../components/Accordion"
 import { DollarSign, Shield, Headphones, ChevronUp, Menu, X, Star, CheckCircle, XCircle } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link as ScrollLink, Element } from 'react-scroll'
@@ -33,12 +33,12 @@ const staggerChildren = {
 }
 
 const feedbackData = [
-  { name: "John Doe", role: "Small Business Owner", comment: "Investink has revolutionized how I manage my business investments. The platform is intuitive and the insights are invaluable.", rating: 5 },
-  { name: "Jane Smith", role: "Freelance Designer", comment: "As someone new to investing, Investink has been a game-changer. It's made the world of finance much less intimidating.", rating: 4 },
-  { name: "Robert Johnson", role: "Retired Teacher", comment: "I've tried several investment platforms, but Investink stands out with its user-friendly interface and excellent customer support.", rating: 5 },
-  { name: "Emily Chen", role: "Tech Entrepreneur", comment: "Investink's AI-driven insights have helped me make smarter investment decisions. It's like having a financial advisor in my pocket.", rating: 5 },
-  { name: "Michael Brown", role: "Corporate Executive", comment: "The real-time portfolio tracking and risk assessment features of Investink are unparalleled. It's become an essential tool for my financial planning.", rating: 4 },
-  { name: "Sarah Davis", role: "Freelance Writer", comment: "I appreciate how Investink simplifies complex financial concepts. It's empowered me to take control of my financial future.", rating: 5 },
+  { name: "John Doe", role: "Small Business Owner", comment: "Nexus Future Fund has revolutionized how I manage my business investments. The platform is intuitive and the insights are invaluable.", rating: 5 },
+  { name: "Jane Smith", role: "Freelance Designer", comment: "As someone new to investing, Nexus Future Fund has been a game-changer. It's made the world of finance much less intimidating.", rating: 4 },
+  { name: "Robert Johnson", role: "Retired Teacher", comment: "I've tried several investment platforms, but Nexus Future Fund stands out with its user-friendly interface and excellent customer support.", rating: 5 },
+  { name: "Emily Chen", role: "Tech Entrepreneur", comment: "Nexus Future Fund's AI-driven insights have helped me make smarter investment decisions. It's like having a financial advisor in my pocket.", rating: 5 },
+  { name: "Michael Brown", role: "Corporate Executive", comment: "The real-time portfolio tracking and risk assessment features of Nexus Future Fund are unparalleled. It's become an essential tool for my financial planning.", rating: 4 },
+  { name: "Sarah Davis", role: "Freelance Writer", comment: "I appreciate how Nexus Future Fund simplifies complex financial concepts. It's empowered me to take control of my financial future.", rating: 5 },
 ]
 
 export default function Home() {
@@ -182,7 +182,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      <main className="pt-16">
+      <main>
         {/* Home Section */}
         <Element name="home">
           <section className="py-16 md:py-24">
@@ -219,7 +219,6 @@ export default function Home() {
               >
                 <div className="relative">
                   <Image src={homeImage} alt="Investment illustration" width={1280} height={1280} className="w-full" />
-                  {/* <div className="absolute inset-0 bg-gradient-to-tr from-pink-900 to-purple-800 opacity-20 rounded-lg"></div> */}
                 </div>
               </motion.div>
             </div>
@@ -290,7 +289,6 @@ export default function Home() {
               >
                 <div className="relative">
                   <Image src={benefitsImage} alt="Investment growth" width={1280} height={1280} className="w-full" />
-                  {/* <div className="absolute inset-0 bg-gradient-to-br from-pink-900 to-purple-800 opacity-20 rounded-lg"></div> */}
                 </div>
               </motion.div>
             </div>
@@ -319,7 +317,6 @@ export default function Home() {
               >
                 <div className="relative">
                   <Image src={investmentsImage} alt="Investment growth chart" width={1280} height={1280} className="w-full" />
-                  {/* <div className="absolute inset-0 bg-gradient-to-tr from-pink-900 to-purple-800 opacity-20 rounded-lg"></div> */}
                 </div>
               </motion.div>
             </div>
@@ -339,11 +336,11 @@ export default function Home() {
               >
                 <Accordion type="single" collapsible className="w-full space-y-4">
                   {[
-                    { question: "What is Investink?", answer: "Investink is an intelligent management software designed to simplify future investment accounting. It helps you manage your finances, track your investments, and plan for your financial future." },
-                    { question: "How does Investink ensure the safety of my investments?", answer: "Investink uses advanced security measures to protect your information and prevent unauthorized access. We employ encryption, secure servers, and regular security audits to ensure the safety of your data and investments." },
-                    { question: "What types of investments can I manage with Investink?", answer: "Investink supports a wide range of investment types, including stocks, bonds, mutual funds, ETFs, real estate, and cryptocurrencies. Our platform is designed to give you a comprehensive view of your entire investment portfolio." },
-                    { question: "Is there a mobile app available?", answer: "We're excited to announce that a mobile app for Investink is coming soon! This will allow you to manage your investments on-the-go, receive real-time updates, and access your account from anywhere." },
-                    { question: "How can I get started with Investink?", answer: "Getting started with Investink is easy. Simply click the 'Register' button at the top of the page to create your account. Once registered, you can set up your profile, link your investment accounts, and start exploring the features of our platform." }
+                    { question: "What is Nexus Future Fund?", answer: "Nexus Future Fund is an intelligent management software designed to simplify future investment accounting. It helps you manage your finances, track your investments, and plan for your financial future." },
+                    { question: "How does Nexus Future Fund ensure the safety of my investments?", answer: "Nexus Future Fund uses advanced security measures to protect your information and prevent unauthorized access. We employ encryption, secure servers, and regular security audits to ensure the safety of your data and investments." },
+                    { question: "What types of investments can I manage with Nexus Future Fund?", answer: "Nexus Future Fund supports a wide range of investment types, including stocks, bonds, mutual funds, ETFs, real estate, and cryptocurrencies. Our platform is designed to give you a comprehensive view of your entire investment portfolio." },
+                    { question: "Is there a mobile app available?", answer: "We're excited to announce that a mobile app for Nexus Future Fund is coming soon! This will allow you to manage your investments on-the-go, receive real-time updates, and access your account from anywhere." },
+                    { question: "How can I get started with Nexus Future Fund?", answer: "Getting started with Nexus Future Fund is easy. Simply click the 'Register' button at the top of the page to create your account. Once registered, you can set up your profile, link your investment accounts, and start exploring the features of our platform." }
                   ].map((item, index) => (
                     <AccordionItem key={index} value={`item-${index}`}>
                       <AccordionTrigger className="text-left">
