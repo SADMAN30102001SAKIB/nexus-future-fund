@@ -13,7 +13,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "../../components/Accordion"
+} from "../../components/accordion"
 import { DollarSign, Shield, Headphones, ChevronUp, Menu, X, Star, CheckCircle, XCircle } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link as ScrollLink, Element } from 'react-scroll'

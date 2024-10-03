@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "components/Button.jsx",
     "components/Input.jsx",
-    "components/Accordion.jsx",
+    "components/accordion.jsx",
     "src/app/page.jsx",
     "src/app/layout.jsx",
     "tailwind.config.js"
