@@ -1,7 +1,9 @@
+"use client";
+
+import { usePathname } from 'next/navigation';
 import localFont from 'next/font/local';
 import './globals.css';
 
-// Load fonts
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
   variable: '--font-geist-sans',
@@ -13,18 +15,17 @@ const geistMono = localFont({
   weight: '100 900',
 });
 
-// Metadata configuration
-export const metadata = {
-  title: 'Nexus Future Fund - Secure & Trusted Investment',
+const defaultMetadata = {
+  title: 'Nexus Future Fund - Guaranteed 2% Monthly Return | Safe Investments',
   description:
-    'Nexus Future Fund offers secure, reliable, and high-performing investment opportunities. Trusted by investors globally for guaranteed returns and top-notch support.',
+    'Invest with Nexus Future Fund for a guaranteed 2% monthly return on safe, risk-free investments. Trusted by clients, backed by world-class market researchers and traders. Experience secure growth with a proven, reliable team!',
   keywords:
     'investment, mutual fund, secure investment, Nexus Future Fund, high returns, financial planning, investment strategies, safe investments',
   authors: [{ name: 'Nexus Future Fund', url: 'https://nexus-future-fund-website.vercel.app' }],
   robots: 'index, follow',
   openGraph: {
-    title: 'Nexus Future Fund - Secure & Trusted Investment',
-    description: 'Join Nexus Future Fund for safe investments with guaranteed returns and top-level security.',
+    title: 'Nexus Future Fund - Guaranteed 2% Monthly Return | Safe Investments',
+    description: 'Invest with Nexus Future Fund for a guaranteed 2% monthly return on safe, risk-free investments. Trusted by clients, backed by world-class market researchers and traders. Experience secure growth with a proven, reliable team!',
     url: 'https://nexus-future-fund-website.vercel.app',
     siteName: 'Nexus Future Fund',
     images: [
@@ -32,7 +33,7 @@ export const metadata = {
         url: 'https://pbs.twimg.com/profile_images/1841518093069385730/d4OGBccC_400x400.jpg',
         width: 400,
         height: 400,
-        alt: 'Nexus Future Fund - Secure Investment',
+        alt: 'Nexus Future Fund - Guaranteed 2% Monthly Return | Safe Investments',
       },
     ],
     locale: 'en_US',
@@ -40,47 +41,82 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nexus Future Fund - Secure & Trusted Investment',
-    description: 'Invest securely with Nexus Future Fund for guaranteed returns.',
+    title: 'Nexus Future Fund - Guaranteed 2% Monthly Return | Safe Investments',
+    description: 'Invest with Nexus Future Fund for a guaranteed 2% monthly return on safe, risk-free investments. Trusted by clients, backed by world-class market researchers and traders. Experience secure growth with a proven, reliable team!',
     images: ['https://pbs.twimg.com/profile_images/1841518093069385730/d4OGBccC_400x400.jpg'],
-    site: '@nexusfuturefund', // Twitter handle
+    site: '@nexusfuturefund',
   },
   charset: 'UTF-8',
 };
 
-export const viewport = 'width=device-width, initial-scale=1, viewport-fit=cover';
+const subscriptionMetadata = {
+  title: 'Nexus Future Trade Signals | risk-free 10%+ Monthly Profits, 24/7 Support',
+  description:
+    'Maximize your Bitcoin profits with Nexus Future Trade Signals! Enjoy 10%+ monthly returns and 70% accuracy. Get real-time signals, full transparency, and 24/7 support. Limited-time offer: Join our trusted, risk-free subscription for just $100/month!',
+  keywords:
+    'investment, mutual fund, secure investment, Nexus Future Fund, high returns, financial planning, investment strategies, safe investments, trade signals, Bitcoin signals, crypto signals, Nexus Future Trade, 10% returns, trading support, financial freedom',
+  authors: [{ name: 'Nexus Future Fund', url: 'https://nexus-future-fund-website.vercel.app' }],
+  robots: 'index, follow',
+  openGraph: {
+    title: 'Maximize your Bitcoin profits with Nexus Future Trade Signals! Enjoy 10%+ monthly returns and 70% accuracy. Get real-time signals, full transparency, and 24/7 support. Limited-time offer: Join our trusted, risk-free subscription for just $100/month!',
+    url: 'https://nexus-future-fund-website.vercel.app',
+    siteName: 'Nexus Future Fund',
+    images: [
+      {
+        url: 'https://pbs.twimg.com/profile_images/1841518093069385730/d4OGBccC_400x400.jpg',
+        width: 400,
+        height: 400,
+        alt: 'Nexus Future Trade Signals | risk-free 10%+ Monthly Profits, 24/7 Support',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Nexus Future Trade Signals | risk-free 10%+ Monthly Profits, 24/7 Support',
+    description: 'Maximize your Bitcoin profits with Nexus Future Trade Signals! Enjoy 10%+ monthly returns and 70% accuracy. Get real-time signals, full transparency, and 24/7 support. Limited-time offer: Join our trusted, risk-free subscription for just $100/month!',
+    images: ['https://pbs.twimg.com/profile_images/1841518093069385730/d4OGBccC_400x400.jpg'],
+    site: '@nexusfuturefund',
+  },
+  charset: 'UTF-8',
+};
 
 export default function RootLayout({ children }) {
+  const pathname = usePathname();
+
+  const currentMetadata = pathname === '/subscription' ? subscriptionMetadata : defaultMetadata;
+
   return (
     <html lang="en">
       <head>
         {/* Standard Meta Tags */}
-        <meta charSet={metadata.charset} />
-        <meta name="viewport" content={viewport} />
-        <meta name="description" content={metadata.description} />
-        <meta name="keywords" content={metadata.keywords} />
-        <meta name="robots" content={metadata.robots} />
+        <meta charSet={currentMetadata.charset} />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta name="description" content={currentMetadata.description} />
+        <meta name="keywords" content={currentMetadata.keywords} />
+        <meta name="robots" content={currentMetadata.robots} />
         <meta name="theme-color" content="#6c63ff" />
 
         {/* Open Graph */}
-        <meta property="og:title" content={metadata.openGraph.title} />
-        <meta property="og:description" content={metadata.openGraph.description} />
-        <meta property="og:url" content={metadata.openGraph.url} />
-        <meta property="og:site_name" content={metadata.openGraph.siteName} />
-        <meta property="og:image" content={metadata.openGraph.images[0].url} />
-        <meta property="og:image:width" content={metadata.openGraph.images[0].width} />
-        <meta property="og:image:height" content={metadata.openGraph.images[0].height} />
-        <meta property="og:locale" content={metadata.openGraph.locale} />
-        <meta property="og:type" content={metadata.openGraph.type} />
+        <meta property="og:title" content={currentMetadata.openGraph?.title} />
+        <meta property="og:description" content={currentMetadata.openGraph?.description} />
+        <meta property="og:url" content={currentMetadata.openGraph?.url} />
+        <meta property="og:site_name" content={currentMetadata.openGraph?.siteName} />
+        <meta property="og:image" content={currentMetadata.openGraph?.images[0]?.url} />
+        <meta property="og:image:width" content={currentMetadata.openGraph?.images[0]?.width} />
+        <meta property="og:image:height" content={currentMetadata.openGraph?.images[0]?.height} />
+        <meta property="og:locale" content={currentMetadata.openGraph?.locale} />
+        <meta property="og:type" content={currentMetadata.openGraph?.type} />
 
         {/* Twitter */}
-        <meta name="twitter:card" content={metadata.twitter.card} />
-        <meta name="twitter:title" content={metadata.twitter.title} />
-        <meta name="twitter:description" content={metadata.twitter.description} />
-        <meta name="twitter:image" content={metadata.twitter.images[0]} />
-        <meta name="twitter:site" content={metadata.twitter.site} />
+        <meta name="twitter:card" content={currentMetadata.twitter?.card} />
+        <meta name="twitter:title" content={currentMetadata.twitter?.title} />
+        <meta name="twitter:description" content={currentMetadata.twitter?.description} />
+        <meta name="twitter:image" content={currentMetadata.twitter?.images[0]} />
+        <meta name="twitter:site" content={currentMetadata.twitter?.site} />
 
-        <title>{metadata.title}</title>
+        <title>{currentMetadata.title}</title>
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
