@@ -403,7 +403,7 @@ export default function Subscription() {
                                             <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400" >Join</Button>
                                         </Link>
                                         <Link href="/howtosubscribe" passHref>
-                                            <Button className="px-4 py-2 bg-white text-pink-600 rounded-md hover:bg-pink-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-pink-400" variant="outline">Learn To Subscribe →</Button>
+                                            <Button className="px-4 py-2 bg-white text-pink-600 rounded-md hover:bg-pink-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-pink-400" variant="outline">Learn More →</Button>
                                         </Link>
                                     </motion.div>
                                 </div>

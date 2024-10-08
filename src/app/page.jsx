@@ -401,7 +401,7 @@ export default function Home() {
                       <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400" >Download</Button>
                     </Link>
                     <Link href="/howtoinvest" passHref>
-                      <Button className="px-4 py-2 bg-white text-pink-600 rounded-md hover:bg-pink-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-pink-400" variant="outline">Learn To Invest →</Button>
+                      <Button className="px-4 py-2 bg-white text-pink-600 rounded-md hover:bg-pink-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-pink-400" variant="outline">Learn More →</Button>
                     </Link>
                   </motion.div>
                 </div>
