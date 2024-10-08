@@ -150,26 +150,25 @@ export default function Home() {
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           <Link href="/" passHref>
             <div className="flex items-center space-x-2">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center">
-                <Image src={logo} alt="logo" width={128} height={128} className="w-full" />
+              <div className="w-16 h-16 rounded-full flex items-center justify-center">
+                <Image src={logo} alt="logo" width={256} height={256} className="w-full" />
               </div>
-              <span className="text-2xl font-bold">NFF</span>
             </div>
           </Link>
           <nav className="hidden md:flex space-x-6">
-            <ScrollLink to="home" smooth={true} duration={500} className="text-gray-300 hover:text-white cursor-pointer">Home</ScrollLink>
-            <ScrollLink to="features" smooth={true} duration={500} className="text-gray-300 hover:text-white cursor-pointer">Features</ScrollLink>
-            <ScrollLink to="scams" smooth={true} duration={500} className="text-gray-300 hover:text-white cursor-pointer">Awareness</ScrollLink>
-            <ScrollLink to="investments" smooth={true} duration={500} className="text-gray-300 hover:text-white cursor-pointer">Investments</ScrollLink>
-            <ScrollLink to="benefits" smooth={true} duration={500} className="text-gray-300 hover:text-white cursor-pointer">Benefits</ScrollLink>
-            <ScrollLink to="feedback" smooth={true} duration={500} className="text-gray-300 hover:text-white cursor-pointer">Feedback</ScrollLink>
-            <ScrollLink to="faq" smooth={true} duration={500} className="text-gray-300 hover:text-white cursor-pointer">FAQ</ScrollLink>
-            <ScrollLink to="newsletter" smooth={true} duration={500} className="text-gray-300 hover:text-white cursor-pointer">Newsletter</ScrollLink>
+            <ScrollLink to="home" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Home</b></ScrollLink>
+            <ScrollLink to="features" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Features</b></ScrollLink>
+            <ScrollLink to="scams" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Awareness</b></ScrollLink>
+            <ScrollLink to="investments" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Investments</b></ScrollLink>
+            <ScrollLink to="benefits" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Benefits</b></ScrollLink>
+            <ScrollLink to="feedback" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Feedback</b></ScrollLink>
+            <ScrollLink to="faq" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>FAQ</b></ScrollLink>
+            <ScrollLink to="newsletter" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Newsletter</b></ScrollLink>
           </nav>
           <div className="hidden md:block">
             <Link href="#" passHref>
               <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
-                Download The App
+                Download App
               </Button>
             </Link>
           </div>
@@ -193,18 +192,18 @@ export default function Home() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <div className="flex flex-col items-center justify-center h-full space-y-8">
-              <ScrollLink to="home" smooth={true} duration={500} className="text-white text-2xl" onClick={closeMenu}>Home</ScrollLink>
-              <ScrollLink to="features" smooth={true} duration={500} className="text-white text-2xl" onClick={closeMenu}>Features</ScrollLink>
-              <ScrollLink to="scams" smooth={true} duration={500} className="text-white text-2xl" onClick={closeMenu}>Awareness</ScrollLink>
-              <ScrollLink to="investments" smooth={true} duration={500} className="text-white text-2xl" onClick={closeMenu}>Investments</ScrollLink>
-              <ScrollLink to="benefits" smooth={true} duration={500} className="text-white text-2xl" onClick={closeMenu}>Benefits</ScrollLink>
-              <ScrollLink to="feedback" smooth={true} duration={500} className="text-white text-2xl" onClick={closeMenu}>Feedback</ScrollLink>
-              <ScrollLink to="faq" smooth={true} duration={500} className="text-white text-2xl" onClick={closeMenu}>FAQ</ScrollLink>
-              <ScrollLink to="newsletter" smooth={true} duration={500} className="text-white text-2xl" onClick={closeMenu}>Newsletter</ScrollLink>
+            <div className="flex flex-col items-center justify-center h-full space-y-4">
+              <ScrollLink to="home" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Home</ScrollLink>
+              <ScrollLink to="features" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Features</ScrollLink>
+              <ScrollLink to="scams" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Awareness</ScrollLink>
+              <ScrollLink to="investments" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Investments</ScrollLink>
+              <ScrollLink to="benefits" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Benefits</ScrollLink>
+              <ScrollLink to="feedback" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Feedback</ScrollLink>
+              <ScrollLink to="faq" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>FAQ</ScrollLink>
+              <ScrollLink to="newsletter" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Newsletter</ScrollLink>
               <Link href="#" passHref>
                 <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
-                  Download The App
+                  Download App
                 </Button>
               </Link>
             </div>
@@ -224,8 +223,8 @@ export default function Home() {
                 >
                   Coming Soon: We will have a mobile app soon!
                 </motion.div>
-                <motion.h1 className="text-2xl md:text-3xl font-bold mb-4" variants={fadeIn}>Welcome to Nexus Future Fund - Where Your Wealth Grows Safely and Steadily!</motion.h1>
-                <motion.p className="text-gray-300 mb-6 text-justify" variants={fadeIn}>At Nexus Future Fund, we don&apos;t just promise growth - we guarantee it. Imagine earning a steady 2% return every month, without the usual risks that come with investing. It&apos;s safe. It&apos;s smart. It&apos;s the future of wealth-building.<br />Our top-tier team of market researchers and traders handpick the best cryptocurrency investments, ensuring your money works harder for you, while you relax. You&apos;re in the best hands, and your financial future has never looked brighter.</motion.p>
+                <motion.h1 className="text-2xl md:text-3xl mb-4 font-black" variants={fadeIn}>Welcome to Nexus Future Fund - <span className="text-pink-600">Where Your Wealth Grows Safely and Steadily</span>!</motion.h1>
+                <motion.p className="text-gray-300 mb-6 text-justify" variants={fadeIn}>At Nexus Future Fund, we don&apos;t just promise growth - we guarantee it. Imagine earning a steady <b className="text-pink-500">2% return every month</b>, without the usual risks that come with investing. It&apos;s safe. It&apos;s smart. It&apos;s the future of wealth-building.<br />Our top-tier team of market researchers and traders handpick the best cryptocurrency investments, ensuring your money works harder for you, while you relax. You&apos;re in the best hands, and your financial future has never looked brighter.</motion.p>
                 <motion.div className="flex space-x-4" variants={fadeIn}>
                   <Link href="/about" passHref>
                     <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400" >About Us</Button>
@@ -237,11 +236,11 @@ export default function Home() {
                 <motion.div className="flex space-x-8 mt-8" variants={staggerChildren}>
                   <motion.div variants={fadeIn} className="bg-gray-800 bg-opacity-50 backdrop-blur-md p-4 rounded-lg">
                     <div className="text-3xl font-bold text-pink-500">2+</div>
-                    <div className="text-gray-300">Years of Experience</div>
+                    <div>Years of Experience</div>
                   </motion.div>
                   <motion.div variants={fadeIn} className="bg-gray-800 bg-opacity-50 backdrop-blur-md p-4 rounded-lg">
-                    <div className="text-3xl font-bold text-pink-500">200+</div>
-                    <div className="text-gray-300">Satisfied Customers</div>
+                    <div className="text-3xl font-bold text-pink-500">150+</div>
+                    <div>Satisfied Customers</div>
                   </motion.div>
                 </motion.div>
               </motion.div>
@@ -252,7 +251,8 @@ export default function Home() {
                 animate="animate"
               >
                 <div className="relative">
-                  <Image src={homeImage} alt="Investment illustration" width={1280} height={1280} className="w-full" />
+                  <Image src={homeImage} alt="Nexus Future Fund secure investment strategies for high returns and financial growth"
+                    width={1280} height={1280} className="w-full" />
                 </div>
               </motion.div>
             </div>
@@ -271,9 +271,9 @@ export default function Home() {
                 animate="animate"
               >
                 {[
-                  { icon: CheckCircle, title: "Relaiability", description: "We understand it can be tought to find a safe and reliable platform in a world full of scams. That's why we prioritize transparency, security, and guaranteed returns to ensure that your money is always in trusted hands." },
-                  { icon: Shield, title: "Guaranteed safety", description: "We use secure process to protect your information and help prevent unauthorized use. We take pride by offering you a guaranteed 2% monthly return of investment, supported by our expert market researchers." },
-                  { icon: Headphones, title: "Friendly support", description: "Whether you're a new investor with questions or a current client looking for support, our team is available 24/7 to ensure you have the best possible experience. Don't hesitate to reach out - we're always happy to help!" }
+                  { icon: CheckCircle, title: "Relaiability", description: "We understand it can be tought to find a safe and reliable platform in a world full of scams. That's why we prioritize <b class='text-pink-500'>transparency</b>, <b class='text-pink-500'>security</b>, and <b class='text-pink-500'>guaranteed returns</b> to ensure that your money is always in trusted hands." },
+                  { icon: Shield, title: "Guaranteed safety", description: "We use secure process to protect your information and help prevent unauthorized use. We take pride by offering you a <b class='text-pink-500'>guaranteed 2% monthly</b> return of investment, supported by our expert market researchers." },
+                  { icon: Headphones, title: "Friendly support", description: "Whether you're a new investor with questions or a current client looking for support, our team is <b class='text-pink-500'>available 24/7</b> to ensure you have the best possible experience. Don't hesitate to reach out - we're always happy to help!" }
                 ].map((feature, index) => (
                   <motion.div key={index} className="text-center" variants={fadeIn}>
                     <div className="bg-gray-700 bg-opacity-50 backdrop-blur-md p-6 rounded-lg shadow-xl">
@@ -281,7 +281,7 @@ export default function Home() {
                         <feature.icon className="w-8 h-8 text-white" />
                       </div>
                       <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                      <p className="text-gray-300 text-justify">{feature.description}</p>
+                      <p className="text-gray-300 text-justify" dangerouslySetInnerHTML={{ __html: feature.description }} />
                     </div>
                   </motion.div>
                 ))}
@@ -301,7 +301,8 @@ export default function Home() {
                 animate="animate"
               >
                 <div className="relative">
-                  <Image src={benefitsImage} alt="Investment growth" width={1280} height={1280} className="w-full" />
+                  <Image src={benefitsImage} alt="Nexus Future Fund secure investment strategies for high returns and financial growth"
+                    width={1280} height={1280} className="w-full" />
                 </div>
               </motion.div>
               <motion.div className="md:w-1/2 mb-8 md:mb-0 md:px-16" variants={staggerChildren} initial="initial" animate="animate">
@@ -310,7 +311,7 @@ export default function Home() {
                   <motion.p className="text-gray-300 mb-6 text-justify" variants={fadeIn}>Scammers often set up professional-looking websites, use complex jargon, and claim to have expert knowledge in specific markets, like cryptocurrency or forex trading. Here&apos;s how to identify:</motion.p>
                   <motion.ul className="space-y-4" variants={staggerChildren}>
                     {[
-                      "'Get rich quick' schemes",
+                      "<i>Get rich quick</i>&nbsp; schemes",
                       "Unrealistic returns in a short period",
                       "No-risk, high-reward investments",
                       "Pressure to Invest Quickly",
@@ -320,11 +321,11 @@ export default function Home() {
                         <svg className="w-6 h-6 text-pink-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                         </svg>
-                        <span className="text-gray-300">{item}</span>
+                        <span dangerouslySetInnerHTML={{ __html: item }} />
                       </motion.li>
                     ))}
                   </motion.ul>
-                  <motion.p className="text-gray-300 mt-6 text-justify" variants={fadeIn}>Before investing, always check the company&apos;s background, reviews, and credentials. No legitimate investment can offer 100% guaranteed high returns without some level of risk.</motion.p>
+                  <motion.p className="text-gray-300 mt-6 text-justify" variants={fadeIn}>Before investing, always check the company&apos;s background, reviews, and credentials. No legitimate investment can offer <b className="text-pink-500">100% guaranteed</b> high returns without some level of <b className="text-pink-500">risk</b>.</motion.p>
                 </div>
               </motion.div>
             </div>
@@ -339,9 +340,9 @@ export default function Home() {
                 <div className="bg-gray-700 bg-opacity-50 backdrop-blur-md p-8 rounded-lg shadow-xl">
                   <motion.h2 className="text-2xl font-bold mb-6" variants={fadeIn}>Here&apos;s how we work our magic behind the scenes</motion.h2>
                   <motion.p className="text-gray-300 text-justify" variants={fadeIn}>
-                    <b className="text-green-200">Top-Tier Research:</b> Our expert team monitors the market 24/7, identifying the most promising crypto assets before they boom.<br />
-                    <b className="text-green-200">Strategic Investments:</b> We act quickly and strategically, placing your money where it will grow the fastest and safest.<br /><br />
-                    <b className="text-red-200">Why Cryptocurrency?</b><br />
+                    <b className="text-white">Top-Tier Research:</b> Our expert team monitors the market 24/7, identifying the most promising crypto assets before they boom.<br />
+                    <b className="text-white">Strategic Investments:</b> We act quickly and strategically, placing your money where it will grow the fastest and safest.<br /><br />
+                    <b className="text-pink-500">Why Cryptocurrency?</b><br />
                     Crypto is the future, and the future is now. With Nexus Future Fund, you&apos;re not just investing in a trend - you&apos;re securing your piece of a financial revolution. The crypto market is growing fast, and we&apos;re here to help you capitalize on it, without the fear of risks.
                   </motion.p>
                 </div>
@@ -353,7 +354,8 @@ export default function Home() {
                 animate="animate"
               >
                 <div className="relative">
-                  <Image src={investmentsImage} alt="Investment growth chart" width={1280} height={1280} className="w-full" />
+                  <Image src={investmentsImage} alt="Nexus Future Fund secure investment strategies for high returns and financial growth"
+                    width={1280} height={1280} className="w-full" />
                 </div>
               </motion.div>
             </div>
@@ -371,7 +373,8 @@ export default function Home() {
                 animate="animate"
               >
                 <div className="relative">
-                  <Image src={benefitsImage} alt="Investment growth" width={1280} height={1280} className="w-full" />
+                  <Image src={benefitsImage} alt="Nexus Future Fund secure investment strategies for high returns and financial growth"
+                    width={1280} height={1280} className="w-full" />
                 </div>
               </motion.div>
               <motion.div className="md:w-1/2 mb-8 md:mb-0 md:px-16" variants={staggerChildren} initial="initial" animate="animate">
@@ -389,7 +392,7 @@ export default function Home() {
                         <svg className="w-6 h-6 text-pink-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                         </svg>
-                        <span className="text-gray-300">{item}</span>
+                        <span>{item}</span>
                       </motion.li>
                     ))}
                   </motion.ul>
@@ -398,7 +401,7 @@ export default function Home() {
                       <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400" >Download</Button>
                     </Link>
                     <Link href="/howtoinvest" passHref>
-                      <Button className="px-4 py-2 bg-white text-pink-600 rounded-md hover:bg-pink-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-pink-400" variant="outline">Learn How To Invest →</Button>
+                      <Button className="px-4 py-2 bg-white text-pink-600 rounded-md hover:bg-pink-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-pink-400" variant="outline">Learn To Invest →</Button>
                     </Link>
                   </motion.div>
                 </div>
@@ -434,7 +437,7 @@ export default function Home() {
                             <p className="text-sm text-gray-400">{feedback.role}</p>
                           </div>
                         </div>
-                        <p className="text-gray-300 mb-4 text-justify">{feedback.comment}</p>
+                        <p className="mb-4 text-justify">{feedback.comment}</p>
                         <div className="flex">
                           {[...Array(feedback.rating)].map((_, i) => (
                             <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
@@ -504,7 +507,7 @@ export default function Home() {
                 animate="animate"
               >
                 <div className="mb-4 md:mb-0 md:mr-8">
-                  <h2 className="text-2xl font-bold mb-2">Get the latest information from Nexus Future Fund</h2>
+                  <h2 className="text-2xl font-bold mb-2">Get the latest information from Us</h2>
                 </div>
                 <div className="w-full md:w-auto">
                   <form onSubmit={handleSubmit} className="space-y-4">
@@ -553,7 +556,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-800 py-12">
+      <footer className="bg-gray-800 py-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-between">
             <div className="w-full md:w-1/4 mb-8 md:mb-0">
@@ -563,39 +566,40 @@ export default function Home() {
                 </div>
                 <span className="text-2xl font-bold">Nexus Future Fund</span>
               </div>
-              <p className="text-gray-400 mb-4"><b>Follow Us & Stay Connected.</b><br />Stay up-to-date with our market insights and live trading results by following us on:</p>
-              <div className="flex space-x-4">
-                <a href="https://www.facebook.com/nexusfundfuture" className="text-gray-400 hover:text-white transition-colors duration-300" aria-label="Facebook">
+              <b className="text-white">Follow Us & Stay Connected.</b>
+              <div className="flex space-x-4 mt-4">
+                <a href="https://www.facebook.com/nexusfundfuture" className="text-gray-300 hover:text-white transition-colors duration-300" aria-label="Facebook">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                   </svg>
                 </a>
-                <a href="https://www.instagram.com/nexusfuturefund" className="text-gray-400 hover:text-white transition-colors duration-300" aria-label="Instagram">
+                <a href="https://www.instagram.com/nexusfuturefund" className="text-gray-300 hover:text-white transition-colors duration-300" aria-label="Instagram">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 0C8.742 0 8.333.014 7.053.072 5.773.129 4.729.273 3.803.66 2.862 1.051 2.083 1.63 1.366 2.366c-.73.717-1.315 1.496-1.707 2.438-.387.925-.531 1.97-.588 3.25C.014 8.742 0 9.151 0 12s.014 3.258.072 4.538c.057 1.28.201 2.325.588 3.25.392.942.977 1.721 1.707 2.438.717.736 1.496 1.315 2.438 1.707.925.387 1.97.531 3.25.588 1.28.057 1.688.072 4.538.072s3.258-.014 4.538-.072c1.28-.057 2.325-.201 3.25-.588.942-.392 1.721-.977 2.438-1.707.736-.717 1.315-1.496 1.707-2.438.387-.925.531-1.97.588-3.25.057-1.28.072-1.688.072-4.538s-.014-3.258-.072-4.538c-.057-1.28-.201-2.325-.588-3.25-.392-.942-.977-1.721-1.707-2.438-.717-.736-1.496-1.315-2.438-1.707-.925-.387-1.97-.531-3.25-.588C15.258.014 14.849 0 12 0zm0 5.838c3.403 0 6.162 2.759 6.162 6.162S15.403 18.162 12 18.162 5.838 15.403 5.838 12 8.597 5.838 12 5.838zm0 1.838a4.324 4.324 0 100 8.648 4.324 4.324 0 000-8.648zm6.406-3.676a1.308 1.308 0 100 2.617 1.308 1.308 0 000-2.617z" />
                   </svg>
                 </a>
-                <a href="https://x.com/nexusfuturefund" className="text-gray-400 hover:text-white transition-colors duration-300" aria-label="Twitter">
+                <a href="https://x.com/nexusfuturefund" className="text-gray-300 hover:text-white transition-colors duration-300" aria-label="Twitter">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
                   </svg>
                 </a>
-                <a href="https://www.youtube.com/@NexusFutureFund" className="text-gray-400 hover:text-white transition-colors duration-300" aria-label="YouTube">
+                <a href="https://www.youtube.com/@NexusFutureFund" className="text-gray-300 hover:text-white transition-colors duration-300" aria-label="YouTube">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/company/nexus-future-fund" className="text-gray-400 hover:text-white transition-colors duration-300" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/company/nexus-future-fund" className="text-gray-300 hover:text-white transition-colors duration-300" aria-label="LinkedIn">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46C23.21 24 24 23.23 24 22.28V1.72C24 .77 23.21 0 22.23 0zM7.12 20.452H3.56V9.033h3.56v11.419zM5.34 7.536a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM20.452 20.452h-3.555v-5.763c0-1.374-.026-3.14-1.913-3.14-1.917 0-2.21 1.497-2.21 3.043v5.86h-3.553V9.033h3.413v1.559h.049c.475-.9 1.634-1.848 3.364-1.848 3.598 0 4.265 2.368 4.265 5.448v6.26z" />
                   </svg>
                 </a>
-                <a href="https://t.me/nexusfuturefund" className="text-gray-400 hover:text-white transition-colors duration-300" aria-label="Telegram">
+                <a href="https://t.me/nexusfuturefund" className="text-gray-300 hover:text-white transition-colors duration-300" aria-label="Telegram">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.247-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
                   </svg>
                 </a>
               </div>
+              <p className="text-gray-400 mt-2">Stay up-to-date with our market insights and live trading results by following us on:</p>
             </div>
             {[
               { title: "Information", links: ["Home", "About", "Terms & Conditions"], href: ["#", "/about", "/terms"] },
@@ -618,7 +622,7 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <div className="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+          <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
             <p>Copyright © 2024 Nexus Future Fund. All Right Reserved.</p>
           </div>
         </div>

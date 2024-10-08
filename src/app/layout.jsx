@@ -21,16 +21,16 @@ const defaultMetadata = {
     'Invest with Nexus Future Fund for a guaranteed 2% monthly return on safe, risk-free investments. Trusted by clients, backed by world-class market researchers and traders. Experience secure growth with a proven, reliable team!',
   keywords:
     'investment, mutual fund, secure investment, Nexus Future Fund, high returns, financial planning, investment strategies, safe investments',
-  authors: [{ name: 'Nexus Future Fund', url: 'https://nexus-future-fund-website.vercel.app' }],
+  authors: [{ name: 'Nexus Future Fund', url: 'https://nexusfuturefund.vercel.app' }],
   robots: 'index, follow',
   openGraph: {
     title: 'Nexus Future Fund - Guaranteed 2% Monthly Return | Safe Investments',
     description: 'Invest with Nexus Future Fund for a guaranteed 2% monthly return on safe, risk-free investments. Trusted by clients, backed by world-class market researchers and traders. Experience secure growth with a proven, reliable team!',
-    url: 'https://nexus-future-fund-website.vercel.app',
+    url: 'https://nexusfuturefund.vercel.app',
     siteName: 'Nexus Future Fund',
     images: [
       {
-        url: 'https://pbs.twimg.com/profile_images/1841518093069385730/d4OGBccC_400x400.jpg',
+        url: 'https://pbs.twimg.com/profile_images/1842614833533104128/5XdqT1mT_400x400.jpg',
         width: 400,
         height: 400,
         alt: 'Nexus Future Fund - Guaranteed 2% Monthly Return | Safe Investments',
@@ -43,7 +43,7 @@ const defaultMetadata = {
     card: 'summary_large_image',
     title: 'Nexus Future Fund - Guaranteed 2% Monthly Return | Safe Investments',
     description: 'Invest with Nexus Future Fund for a guaranteed 2% monthly return on safe, risk-free investments. Trusted by clients, backed by world-class market researchers and traders. Experience secure growth with a proven, reliable team!',
-    images: ['https://pbs.twimg.com/profile_images/1841518093069385730/d4OGBccC_400x400.jpg'],
+    images: ['https://pbs.twimg.com/profile_images/1842614833533104128/5XdqT1mT_400x400.jpg'],
     site: '@nexusfuturefund',
   },
   charset: 'UTF-8',
@@ -55,15 +55,15 @@ const subscriptionMetadata = {
     'Maximize your Bitcoin profits with Nexus Future Trade Signals! Enjoy 10%+ monthly returns and 70% accuracy. Get real-time signals, full transparency, and 24/7 support. Limited-time offer: Join our trusted, risk-free subscription for just $100/month!',
   keywords:
     'investment, mutual fund, secure investment, Nexus Future Fund, high returns, financial planning, investment strategies, safe investments, trade signals, Bitcoin signals, crypto signals, Nexus Future Trade, 10% returns, trading support, financial freedom',
-  authors: [{ name: 'Nexus Future Fund', url: 'https://nexus-future-fund-website.vercel.app' }],
+  authors: [{ name: 'Nexus Future Fund', url: 'https://nexusfuturefund.vercel.app' }],
   robots: 'index, follow',
   openGraph: {
     title: 'Maximize your Bitcoin profits with Nexus Future Trade Signals! Enjoy 10%+ monthly returns and 70% accuracy. Get real-time signals, full transparency, and 24/7 support. Limited-time offer: Join our trusted, risk-free subscription for just $100/month!',
-    url: 'https://nexus-future-fund-website.vercel.app',
+    url: 'https://nexusfuturefund.vercel.app',
     siteName: 'Nexus Future Fund',
     images: [
       {
-        url: 'https://pbs.twimg.com/profile_images/1841518093069385730/d4OGBccC_400x400.jpg',
+        url: 'https://pbs.twimg.com/profile_images/1842614833533104128/5XdqT1mT_400x400.jpg',
         width: 400,
         height: 400,
         alt: 'Nexus Future Trade Signals | risk-free 10%+ Monthly Profits, 24/7 Support',
@@ -76,7 +76,7 @@ const subscriptionMetadata = {
     card: 'summary_large_image',
     title: 'Nexus Future Trade Signals | risk-free 10%+ Monthly Profits, 24/7 Support',
     description: 'Maximize your Bitcoin profits with Nexus Future Trade Signals! Enjoy 10%+ monthly returns and 70% accuracy. Get real-time signals, full transparency, and 24/7 support. Limited-time offer: Join our trusted, risk-free subscription for just $100/month!',
-    images: ['https://pbs.twimg.com/profile_images/1841518093069385730/d4OGBccC_400x400.jpg'],
+    images: ['https://pbs.twimg.com/profile_images/1842614833533104128/5XdqT1mT_400x400.jpg'],
     site: '@nexusfuturefund',
   },
   charset: 'UTF-8',
@@ -85,7 +85,7 @@ const subscriptionMetadata = {
 export default function RootLayout({ children }) {
   const pathname = usePathname();
 
-  const currentMetadata = pathname === '/subscription' ? subscriptionMetadata : defaultMetadata;
+  const currentMetadata = pathname === '/subscription' || pathname === '/howtosubscribe' ? subscriptionMetadata : defaultMetadata;
 
   return (
     <html lang="en">
@@ -115,6 +115,10 @@ export default function RootLayout({ children }) {
         <meta name="twitter:description" content={currentMetadata.twitter?.description} />
         <meta name="twitter:image" content={currentMetadata.twitter?.images[0]} />
         <meta name="twitter:site" content={currentMetadata.twitter?.site} />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet" />
 
         <title>{currentMetadata.title}</title>
       </head>
