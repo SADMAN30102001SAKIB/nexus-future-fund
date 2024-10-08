@@ -1,18 +1,14 @@
 "use client";
 
 import { usePathname } from 'next/navigation';
-import localFont from 'next/font/local';
 import './globals.css';
+import { Ubuntu } from 'next/font/google';
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-});
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
+const ubuntu = Ubuntu({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '700'],
+  style: ['normal', 'italic'],
+  display: 'swap',
 });
 
 const defaultMetadata = {
@@ -116,13 +112,29 @@ export default function RootLayout({ children }) {
         <meta name="twitter:image" content={currentMetadata.twitter?.images[0]} />
         <meta name="twitter:site" content={currentMetadata.twitter?.site} />
 
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "InvestmentOrDeposit",
+              "name": "Nexus Future Fund",
+              "description": "Guaranteed 2% monthly return on safe investments.",
+              "url": "https://nexusfuturefund.vercel.app",
+              "sameAs": "https://twitter.com/nexusfuturefund",
+              "potentialAction": {
+                "@type": "InvestAction",
+                "target": "https://nexusfuturefund.vercel.app"
+              }
+            })
+          }}
+        />
+
+        <link rel="canonical" href={currentMetadata.openGraph?.url} />
 
         <title>{currentMetadata.title}</title>
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={ubuntu.className}>
         {children}
       </body>
     </html>

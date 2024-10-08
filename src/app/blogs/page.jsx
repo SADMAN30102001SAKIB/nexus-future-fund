@@ -4,10 +4,10 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import logo from "../../assets/logo.png"
-import benefitsImage from "../../assets/benefits.png"
-import { DollarSign, ChevronUp } from 'lucide-react'
+import { ChevronUp, DollarSign, Search, SortAsc, SortDesc } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Element } from 'react-scroll'
+import blogs from '../data/blogs.js'
 
 const fadeIn = {
     initial: { opacity: 0, y: 20 },
@@ -23,8 +23,11 @@ const staggerChildren = {
     }
 }
 
-export default function About() {
+export default function Blog() {
     const [showScrollUp, setShowScrollUp] = useState(false)
+    const [searchTerm, setSearchTerm] = useState('')
+    const [sortedBlogs, setSortedBlogs] = useState(blogs)
+    const [sortOrder, setSortOrder] = useState('desc')
 
     useEffect(() => {
         const toggleVisibility = () => {
@@ -38,11 +41,30 @@ export default function About() {
         return () => window.removeEventListener('scroll', toggleVisibility)
     }, [])
 
+    useEffect(() => {
+        const filteredBlogs = blogs.filter(blog =>
+            blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            blog.description.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+        const sortedFilteredBlogs = filteredBlogs.sort((a, b) => {
+            if (sortOrder === 'desc') {
+                return new Date(b.date) - new Date(a.date)
+            } else {
+                return new Date(a.date) - new Date(b.date)
+            }
+        })
+        setSortedBlogs(sortedFilteredBlogs)
+    }, [searchTerm, sortOrder])
+
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         })
+    }
+
+    const handleSortOrderToggle = () => {
+        setSortOrder(prevOrder => (prevOrder === 'desc' ? 'asc' : 'desc'))
     }
 
     return (
@@ -60,42 +82,77 @@ export default function About() {
                 </div>
             </header>
 
-            {/*About US*/}
+            {/* Blog List */}
             <main>
-                <Element name="about-us">
-                    <section className="pt-36 pb-12 bg-gray-900 text-gray-300">
-                        <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
+                <Element name="blog">
+                    <section className="py-24 bg-gray-900">
+                        <div className="container mx-auto px-6 lg:px-12 max-w-5xl">
                             <motion.div
-                                className="lg:w-1/2 mb-8 lg:mb-0 lg:px-16"
                                 variants={staggerChildren}
                                 initial="initial"
                                 animate="animate"
                             >
-                                <motion.h1 className="text-4xl lg:text-5xl font-bold mb-4 text-white" variants={fadeIn}>
-                                    About Us
-                                </motion.h1>
-                                <motion.p className="mb-6 text-lg text-justify" variants={fadeIn}>
-                                    At Nexus Future Fund, we are more than just a hedge fund - we are a team of dedicated professionals with years of experience in managing and growing clients&apos; investments. Our mission is to provide secure, reliable, and consistently profitable investment opportunities tailored to meet your financial goals.
+                                <motion.h2
+                                    className="text-5xl font-extrabold text-center mb-6"
+                                    variants={fadeIn}
+                                >
+                                    Blog
+                                </motion.h2>
+                                <motion.p
+                                    className="text-gray-400 text-center text-lg mb-12"
+                                    variants={fadeIn}
+                                >
+                                    Explore our latest blog posts and insights on cryptocurrency investments.
                                 </motion.p>
-                                <motion.p className="mb-6 text-lg text-justify" variants={fadeIn}>
-                                    With a strong foundation in market research and strategic asset management, our world-class team combines deep industry knowledge with cutting-edge financial strategies. We specialize in cryptocurrency investments, offering our clients a safe, risk-free way to grow their capital, backed by a guaranteed 2% monthly return.
-                                </motion.p>
-                                <motion.p className="mb-6 text-lg text-justify" variants={fadeIn}>
-                                    Trust, transparency, and expertise are at the core of everything we do. Our clients benefit from the hands-on management of seasoned professionals who are committed to delivering sustainable growth while maintaining unmatched customer support. With Nexus Future Fund, your investments are in the right hands.
-                                </motion.p>
-                                <motion.p className="mb-6 text-lg text-justify" variants={fadeIn}>
-                                    Join us and experience the power of expert fund management with a company dedicated to your success.
-                                </motion.p>
-                            </motion.div>
-                            <motion.div
-                                className="lg:w-1/2 lg:pl-8"
-                                variants={fadeIn}
-                                initial="initial"
-                                animate="animate"
-                            >
-                                <div className="relative">
-                                    <Image src={benefitsImage} alt="Nexus Future Fund secure investment strategies for high returns and financial growth"
-                                        width={1280} height={1280} className="w-full" />
+
+                                <motion.div
+                                    className="mb-8 flex justify-between items-center"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6 }}
+                                >
+                                    <motion.div
+                                        className="relative w-full lg:w-2/3"
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ duration: 0.6 }}
+                                    >
+                                        <Search className="absolute left-3 top-3 text-gray-400" size={20} />
+                                        <motion.input
+                                            type="text"
+                                            placeholder="Search blogs..."
+                                            className="pl-10 pr-4 py-2 w-full bg-gray-800 bg-opacity-50 text-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-600 transition-shadow shadow-md"
+                                            value={searchTerm}
+                                            onChange={e => setSearchTerm(e.target.value)}
+                                            initial={{ opacity: 0, scale: 0.95 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            transition={{ duration: 0.6 }}
+                                        />
+                                    </motion.div>
+                                    <motion.button
+                                        className="ml-4 p-3 bg-gradient-to-r from-pink-500 to-pink-700 text-white rounded-full shadow-xl flex items-center justify-center"
+                                        onClick={handleSortOrderToggle}
+                                        initial={{ opacity: 0, x: 20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ duration: 0.6 }}
+                                    >
+                                        {sortOrder === 'desc' ? <SortDesc size={24} /> : <SortAsc size={24} />}
+                                    </motion.button>
+                                </motion.div>
+
+                                <div className="space-y-8 text-gray-300 leading-relaxed">
+                                    {sortedBlogs.map((blog, index) => (
+                                        <motion.div key={index} className="p-6 bg-gray-800 bg-opacity-80 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 hover:scale-105 transform" variants={fadeIn}>
+                                            <h3 className="text-2xl font-semibold mb-2 text-pink-400 hover:text-pink-600 transition-colors duration-300">
+                                                {blog.title}
+                                            </h3>
+                                            <p className="mb-2 text-gray-300">{blog.description}</p>
+                                            <p className="text-gray-400 mb-4">{new Date(blog.date).toLocaleDateString()}</p>
+                                            <a href={blog.url} target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:underline">
+                                                Read more
+                                            </a>
+                                        </motion.div>
+                                    ))}
                                 </div>
                             </motion.div>
                         </div>

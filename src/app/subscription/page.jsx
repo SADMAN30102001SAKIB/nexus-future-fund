@@ -18,6 +18,7 @@ import {
 import { DollarSign, Eye, Headphones, ChevronUp, Menu, X, Star, CheckCircle, XCircle } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link as ScrollLink, Element } from 'react-scroll'
+import blogs from "../data/blogs.js";
 
 const fadeIn = {
     initial: { opacity: 0, y: 20 },
@@ -34,18 +35,83 @@ const staggerChildren = {
 }
 
 const feedbackData = [
-    { name: "John Doe", role: "Subscriber", comment: "I've tried a lot of trading platforms, but Nexus Future Trade Signals is by far the most reliable. The transparency is unmatched, and their signals are always spot-on. I've grown my capital by 12% in the first month!", rating: 5 },
-    { name: "Mark S.", role: "Bitcoin Trader", comment: "I was tired of getting scammed by platforms that promised unrealistic returns. Nexus Future Trade Signals is the real deal. They show every trade, and their support is incredible. It's been a game-changer for me.", rating: 4 },
-    { name: "Robert Johnson", role: "Retired Teacher", comment: "I've tried other investment platforms before, but none have been as reliable as Nexus Future Fund. The guaranteed return is real, and their transparency makes me feel confident about where my money is going. I love being able to access my funds anytime with no penalties!", rating: 5 },
-    { name: "Emily Chen", role: "Tech Entrepreneur", comment: "The 24/7 support is a game-changer. Whenever I have questions or need help, Nexus Future Fund's team is always available and super helpful. Plus, knowing my investment is in good hands with their top market experts gives me peace of mind!", rating: 5 },
-    { name: "Michael Brown", role: "Corporate Executive", comment: "I was always worried about the volatility in crypto, but Nexus Future Fund makes it simple and safe. I get a steady income every month without worrying about market crashes. It's the perfect way to secure my financial future.", rating: 4 },
-    { name: "Sarah Davis", role: "Freelance Writer", comment: "I appreciate how Nexus Future Fund simplifies complex financial concepts. It's empowered me to take control of my financial future.", rating: 5 },
-]
+    {
+        name: "Sophia W.",
+        role: "Full-Time Trader",
+        comment: "Nexus Future Trade Signals has completely changed how I trade. The real-time signals are incredibly accurate, and I've seen a consistent 10%+ growth in my capital every month. Their transparency is what sets them apart; I always know exactly what's happening with my trades.",
+        rating: 5
+    },
+    {
+        name: "James P.",
+        role: "Entrepreneur",
+        comment: "I was skeptical at first, but after joining the premium group, I'm impressed. The team walks you through every trade, and the second entry strategy has saved me multiple times. Definitely the most reliable service I've used for Bitcoin futures.",
+        rating: 4
+    },
+    {
+        name: "Liam T.",
+        role: "Software Engineer",
+        comment: "The 70% accuracy rate is no joke. I joined for the transparency, stayed for the results. The daily signals have become part of my routine, and I've already made back the subscription fee within the first week. Can't recommend it enough!",
+        rating: 5
+    },
+    {
+        name: "Aisha K.",
+        role: "Freelancer",
+        comment: "What I love most is how transparent Nexus Future Trade Signals is. I can see every trade in real time, and the Excel sheet showing all the trades really builds trust. My portfolio has grown steadily, and the 24/7 support is a huge plus!",
+        rating: 5
+    },
+    {
+        name: "Daniel R.",
+        role: "Small Business Owner",
+        comment: "I've been burned by a lot of platforms before, but this one is the real deal. The refund guarantee gives me peace of mind, and the trading strategies actually work. The fact that they document all their trades publicly really helps build trust.",
+        rating: 4
+    },
+    {
+        name: "Olivia M.",
+        role: "Part-Time Trader",
+        comment: "Joining Nexus was the best decision I've made for my financial future. The real-time signals are so accurate, and I've had incredible returns. The best part? They're always there to help whenever I have questions, no matter what time it is.",
+        rating: 5
+    }
+];
 
 const offerDetails = [
     "Once you subscribe you'll get immediate access to our real-time trade signals and our premium Discord group to follow trades live.",
     "Want proof of our success? See the results of our trades in action with <b class='text-pink-500'>live trading recordings</b> available on YouTube. Nothing is hidden.",
     "Our goal is simple. To help you achieve a <b class='text-pink-500'>10%+ return</b> on your capital each month."
+]
+
+const faq = [
+    {
+        question: "What is Nexus Future Trade Signals?",
+        answer: "Nexus Future Trade Signals is a subscription-based service that provides real-time Bitcoin trading signals with a 70% accuracy rate. Our expert traders help you grow your capital securely with transparent and professional strategies. Learn more on our 'About Us' page."
+    },
+    {
+        question: "How do I start earning with Nexus Future Trade Signals?",
+        answer: "To start, simply subscribe to our premium service. Once subscribed, you'll receive real-time trade signals, access to our live Discord channel, and step-by-step guidance from our professional traders. Head over to the 'How to Subscribe' section to get started."
+    },
+    {
+        question: "Can I see the results of previous trades?",
+        answer: "Absolutely! We pride ourselves on transparency. You can view all of our trades, including entry points, stop loss, and take profit levels, in a public Excel sheet shared across our social media platforms. We also post 30-day live trading recordings on our YouTube channel."
+    },
+    {
+        question: "Do I need experience to join Nexus Future Trade Signals?",
+        answer: "No experience is required. Our service is designed for both beginners and seasoned traders. Our expert traders provide all the necessary signals, updates, and support to help you trade confidently, regardless of your experience level."
+    },
+    {
+        question: "How much gain can I expect?",
+        answer: "Our monthly target is a 10%+ gain on your capital, with a historical success rate of over 70%. We use deep market research and strategic trade decisions to help you achieve steady and reliable growth."
+    },
+    {
+        question: "What is the refund policy?",
+        answer: "We stand behind our performance. If we ever close a month with a negative ROI, we'll refund your subscription fee. This has never happened, but our refund policy ensures your peace of mind."
+    },
+    {
+        question: "How can I contact support?",
+        answer: "You can reach our dedicated support team 24/7 through our premium Discord group or any of our social media channels. We're here to assist you with any questions or concerns you may have."
+    },
+    {
+        question: "Is there a discount available for new subscribers?",
+        answer: "Yes! For a limited time, we're offering a discounted subscription price of $100/month, down from the regular $500. This gives you full access to our real-time trade signals and premium group."
+    }
 ]
 
 export default function Subscription() {
@@ -161,7 +227,7 @@ export default function Subscription() {
                             </div>
                         </div>
                     </Link>
-                    <nav className="hidden md:flex space-x-6">
+                    <nav className="hidden lg:flex space-x-6">
                         <ScrollLink to="home" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Home</b></ScrollLink>
                         <ScrollLink to="features" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Features</b></ScrollLink>
                         <ScrollLink to="scams" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Awareness</b></ScrollLink>
@@ -169,15 +235,16 @@ export default function Subscription() {
                         <ScrollLink to="workflow" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Workflow</b></ScrollLink>
                         <ScrollLink to="feedback" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Feedback</b></ScrollLink>
                         <ScrollLink to="faq" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>FAQ</b></ScrollLink>
+                        <ScrollLink to="blogs" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Blogs</b></ScrollLink>
                         <ScrollLink to="newsletter" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Newsletter</b></ScrollLink>
                     </nav>
-                    <div className="hidden md:block">
+                    <div className="hidden lg:block">
                         <Link href="https://t.me/nexusfuturefund" passHref>
                             <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">Join Us</Button>
                         </Link>
                     </div>
                     <button
-                        className="md:hidden text-white focus:outline-none"
+                        className="lg:hidden text-white focus:outline-none"
                         onClick={toggleMenu}
                         aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                         aria-expanded={isMenuOpen}
@@ -191,12 +258,12 @@ export default function Subscription() {
             <AnimatePresence>
                 {isMenuOpen && (
                     <motion.div
-                        className="fixed inset-0 z-40 bg-gray-900 bg-opacity-95 backdrop-blur-md md:hidden"
+                        className="fixed inset-0 z-40 bg-gray-900 bg-opacity-95 backdrop-blur-md lg:hidden"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                     >
-                        <div className="flex flex-col items-center justify-center h-full space-y-4">
+                        <div className="flex flex-col items-center justify-center h-full space-y-3">
                             <ScrollLink to="home" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Home</ScrollLink>
                             <ScrollLink to="features" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Features</ScrollLink>
                             <ScrollLink to="scams" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Awareness</ScrollLink>
@@ -204,6 +271,7 @@ export default function Subscription() {
                             <ScrollLink to="workflow" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Workflow</ScrollLink>
                             <ScrollLink to="feedback" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Feedback</ScrollLink>
                             <ScrollLink to="faq" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>FAQ</ScrollLink>
+                            <ScrollLink to="blogs" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Blogs</ScrollLink>
                             <ScrollLink to="newsletter" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Newsletter</ScrollLink>
                             <Link href="https://t.me/nexusfuturefund" passHref>
                                 <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">Join Us</Button>
@@ -216,10 +284,10 @@ export default function Subscription() {
             <main>
                 {/* Home Section */}
                 <Element name="home">
-                    <section className="pt-24 pb-8">
-                        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
-                            <motion.div className="md:w-1/2 mb-8 md:mb-0 md:px-16" variants={staggerChildren} initial="initial" animate="animate">
-                                <motion.h1 className="text-2xl md:text-3xl font-bold mb-4" variants={fadeIn}>Welcome to Nexus Future Trade Signals - <span className="text-pink-600">Your Trusted Partner for Bitcoin Trading Success</span>.</motion.h1>
+                    <section className="pt-36 pb-8">
+                        <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
+                            <motion.div className="lg:w-1/2 mb-8 lg:mb-0 lg:px-16" variants={staggerChildren} initial="initial" animate="animate">
+                                <motion.h1 className="text-2xl lg:text-3xl font-bold mb-4" variants={fadeIn}>Welcome to Nexus Future Trade Signals - <span className="text-pink-600">Your Trusted Partner for Bitcoin Trading Success</span>.</motion.h1>
                                 <motion.p className="text-gray-300 mb-6 text-justify" variants={fadeIn}>Looking to maximize your Bitcoin profits while following expert trade signals from <b className="text-pink-500">trusted professionals</b>?<br />You&apos;re in the right place!<br /> At Nexus Future Trade Signals, we offer a powerful subscription service designed to help you grow your capital safely with our professional traders, who specialize in the Bitcoin market. Our <b className="text-pink-500">70% accuracy rate</b> means you get the best chance at profitable trades, while our transparency ensures that what you see is what you get.</motion.p>
                                 <motion.div className="flex space-x-4" variants={fadeIn}>
                                     <Link href="/about" passHref>
@@ -241,7 +309,7 @@ export default function Subscription() {
                                 </motion.div>
                             </motion.div>
                             <motion.div
-                                className="md:w-1/2 md:pl-8"
+                                className="lg:w-1/2 lg:pl-8"
                                 variants={fadeIn}
                                 initial="initial"
                                 animate="animate"
@@ -257,11 +325,11 @@ export default function Subscription() {
 
                 {/* Features Section */}
                 <Element name="features">
-                    <section className="py-8 md:py-16 bg-gray-800">
-                        <div className="container mx-auto md:px-36">
+                    <section className="py-8 lg:py-16 bg-gray-800">
+                        <div className="container mx-auto lg:px-36">
                             <h2 className="text-3xl font-bold text-center mb-10">Why Should You Choose Us</h2>
                             <motion.div
-                                className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16"
+                                className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16"
                                 variants={staggerChildren}
                                 initial="initial"
                                 animate="animate"
@@ -288,10 +356,10 @@ export default function Subscription() {
 
                 {/* Scams Section */}
                 <Element name="scams">
-                    <section className="py-8 md:py-0">
-                        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
+                    <section className="py-8 lg:py-0">
+                        <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
                             <motion.div
-                                className="md:w-1/2 md:pl-8 hidden md:block"
+                                className="lg:w-1/2 lg:pl-8 hidden lg:block"
                                 variants={fadeIn}
                                 initial="initial"
                                 animate="animate"
@@ -301,7 +369,7 @@ export default function Subscription() {
                                         width={1280} height={1280} className="w-full" />
                                 </div>
                             </motion.div>
-                            <motion.div className="md:w-1/2 mb-8 md:mb-0 md:px-16" variants={staggerChildren} initial="initial" animate="animate">
+                            <motion.div className="lg:w-1/2 mb-8 lg:mb-0 lg:px-16" variants={staggerChildren} initial="initial" animate="animate">
                                 <div className="bg-gray-800 bg-opacity-50 backdrop-blur-md p-8 rounded-lg shadow-xl">
                                     <motion.h2 className="text-2xl font-bold mb-6" variants={fadeIn}>Beware of Scamers: Stay Safe, Stay Smart</motion.h2>
                                     <motion.p className="text-gray-300 mb-6 text-justify" variants={fadeIn}>In today&apos;s world, there are countless scam platforms claiming to offer high returns with no risk. These scammers promise huge profits but end up stealing your money. Be cautious of any platform that:</motion.p>
@@ -329,9 +397,9 @@ export default function Subscription() {
 
                 {/* Benefits Section */}
                 <Element name="benefits">
-                    <section className="py-8 md:py-0 bg-gray-800">
-                        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
-                            <motion.div className="md:w-1/2 mb-8 md:mb-0 md:px-16" variants={staggerChildren} initial="initial" animate="animate">
+                    <section className="py-8 lg:py-0 bg-gray-800">
+                        <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
+                            <motion.div className="lg:w-1/2 mb-8 lg:mb-0 lg:px-16" variants={staggerChildren} initial="initial" animate="animate">
                                 <div className="bg-gray-700 bg-opacity-50 backdrop-blur-md p-8 rounded-lg shadow-xl">
                                     <motion.h2 className="text-2xl font-bold" variants={fadeIn}>What We Offer</motion.h2>
                                     <motion.ul className="space-y-4" variants={staggerChildren}>
@@ -354,7 +422,7 @@ export default function Subscription() {
                                 </div>
                             </motion.div>
                             <motion.div
-                                className="md:w-1/2 md:pl-8 hidden md:block"
+                                className="lg:w-1/2 lg:pl-8 hidden lg:block"
                                 variants={fadeIn}
                                 initial="initial"
                                 animate="animate"
@@ -370,10 +438,10 @@ export default function Subscription() {
 
                 {/* Workflow Section */}
                 <Element name="workflow">
-                    <section className="py-8 md:py-0">
-                        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
+                    <section className="py-8 lg:py-0">
+                        <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
                             <motion.div
-                                className="md:w-1/2 md:pl-8 hidden md:block"
+                                className="lg:w-1/2 lg:pl-8 hidden lg:block"
                                 variants={fadeIn}
                                 initial="initial"
                                 animate="animate"
@@ -383,7 +451,7 @@ export default function Subscription() {
                                         width={1280} height={1280} className="w-full" />
                                 </div>
                             </motion.div>
-                            <motion.div className="md:w-1/2 mb-8 md:mb-0 md:px-16" variants={staggerChildren} initial="initial" animate="animate">
+                            <motion.div className="lg:w-1/2 mb-8 lg:mb-0 lg:px-16" variants={staggerChildren} initial="initial" animate="animate">
                                 <div className="bg-gray-700 bg-opacity-50 backdrop-blur-md p-8 rounded-lg shadow-xl">
                                     <motion.h2 className="text-2xl font-bold mb-6" variants={fadeIn}>How It Works</motion.h2>
                                     <motion.p className="text-gray-300 text-justify" variants={fadeIn}>
@@ -414,9 +482,9 @@ export default function Subscription() {
 
                 {/* Feedback Section */}
                 <Element name="feedback">
-                    <section className="py-8 md:py-16 md:px-48 bg-gray-800">
+                    <section className="py-8 lg:py-16 lg:px-48 bg-gray-800">
                         <div className="container mx-auto px-4">
-                            <h2 className="text-3xl font-bold text-center mb-10">What Our Clients Say</h2>
+                            <h2 className="text-3xl font-bold text-center mb-10">What Our Subscribers Say</h2>
                             <div className="relative overflow-hidden">
                                 <motion.div
                                     className="flex"
@@ -466,7 +534,7 @@ export default function Subscription() {
 
                 {/* FAQ Section */}
                 <Element name="faq">
-                    <section className="py-8 md:py-16">
+                    <section className="py-8 lg:py-16">
                         <div className="container mx-auto px-4">
                             <h2 className="text-3xl font-bold text-center mb-10">Frequently Asked Questions</h2>
                             <motion.div
@@ -476,15 +544,7 @@ export default function Subscription() {
                                 animate="animate"
                             >
                                 <Accordion type="single" collapsible className="w-full space-y-4">
-                                    {[
-                                        { question: "What is Nexus Future Fund?", answer: "Nexus Future Fund is an mututal fund designed to simplify your future investments. It helps you track your investments, and plan for your financial future. Go to 'About Us' to learn more." },
-                                        { question: "How do I start earning 2% monthly returns?", answer: "It's simple. Create an account, deposit your funds, and watch your investment grow each month. Click 'How To Invest' button in the header section to learn more." },
-                                        { question: "Is my investment really safe?", answer: "Absolutely. At Nexus Future Fund, we take every precaution to ensure that your funds are secure, and we back it up with a guaranteed 2% monthly return." },
-                                        { question: "Can I withdraw my money whenever I want?", answer: "Yes! You have full control over your investment. Withdraw your money anytime you like, without penalties or unwanted delays." },
-                                        { question: "Is there a mobile app available?", answer: "We're excited to announce that a mobile app for Nexus Future Fund is coming soon! This will allow you to manage your investments on-the-go, receive real-time updates, and access your account from anywhere." },
-                                        { question: "I don't want to invest, i want to trade on my own. Can I get the trading signals?", answer: "Yes, we have a dedicated discord server for that. But you need to join our telegram channel first. Learn more about it under the special link 'Premium Trading Signals' in the footer section." },
-                                        { question: "I have more questions or need more information?", answer: "DM our dedicated support team on our social pages, and we'll be happy to assist you." }
-                                    ].map((item, index) => (
+                                    {faq.map((item, index) => (
                                         <AccordionItem key={index} value={`item-${index}`}>
                                             <AccordionTrigger className="text-left">
                                                 <h3>{item.question}</h3>
@@ -498,26 +558,72 @@ export default function Subscription() {
                     </section>
                 </Element>
 
+                {/* Blogs Section */}
+                <Element name="blogs">
+                    <section className="py-8 lg:py-16 bg-gray-800">
+                        <div className="container mx-auto lg:px-36">
+                            <h2 className="text-3xl font-bold text-center mb-10">Latest Blogs</h2>
+                            <motion.div
+                                className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16"
+                                variants={staggerChildren}
+                                initial="initial"
+                                animate="animate"
+                            >
+                                {blogs.slice(0, 3).map((blog, index) => (
+                                    <motion.div key={index} className="text-center" variants={fadeIn}>
+                                        <div
+                                            className="bg-gray-700 bg-opacity-50 backdrop-blur-md p-6 rounded-lg shadow-xl h-full flex flex-col justify-between"
+                                        >
+                                            <h3 className="text-lg font-semibold mb-2 text-white">{blog.title}</h3>
+                                            <div className="flex-grow">
+                                                <p className="text-gray-300 text-justify">
+                                                    {blog.description}
+                                                </p>
+                                            </div>
+                                            <div className="mt-4">
+                                                <p className="text-gray-400 text-sm">Published on: {new Date(blog.date).toLocaleDateString()}</p>
+                                                <a
+                                                    href={blog.url}
+                                                    className="text-pink-500 mt-2 inline-block"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    Read More
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </motion.div>
+                            <div className="text-center mt-8">
+                                <Link href="/blogs">
+                                    <div className="text-pink-500 font-semibold hover:underline">See All Blogs</div>
+                                </Link>
+                            </div>
+                        </div>
+                    </section>
+                </Element>
+
                 {/* Subscribe Section */}
                 <Element name="newsletter">
-                    <section className="py-8 px-8 md:px-16 md:py-16 bg-gray-800">
+                    <section className="py-8 px-8 lg:px-16 lg:py-16 bg-gray-900">
                         <div className="container mx-auto px-4">
                             <motion.div
-                                className="bg-gray-900 bg-opacity-50 backdrop-blur-md rounded-lg p-8 flex flex-col md:flex-row items-center justify-between"
+                                className="bg-gray-800 bg-opacity-50 backdrop-blur-md rounded-lg p-8 flex flex-col lg:flex-row items-center justify-between"
                                 variants={fadeIn}
                                 initial="initial"
                                 animate="animate"
                             >
-                                <div className="mb-4 md:mb-0 md:mr-8">
+                                <div className="mb-4 lg:mb-0 lg:mr-8">
                                     <h2 className="text-2xl font-bold mb-2">Get the latest information from Us</h2>
                                 </div>
-                                <div className="w-full md:w-auto">
+                                <div className="w-full lg:w-auto">
                                     <form onSubmit={handleSubmit} className="space-y-4">
                                         <div className="flex">
                                             <Input
                                                 type="email"
                                                 placeholder="Your email address"
-                                                className="rounded-r-none bg-gray-700 text-white placeholder-gray-400 border-gray-600 w-full md:w-64"
+                                                className="rounded-r-none bg-gray-700 text-white placeholder-gray-400 border-gray-600 w-full lg:w-64"
                                                 value={email}
                                                 onChange={handleEmailChange}
                                                 required
@@ -558,10 +664,10 @@ export default function Subscription() {
             </main>
 
             {/* Footer */}
-            <footer className="bg-gray-800 py-8">
+            <footer className="bg-gray-900 py-8">
                 <div className="container mx-auto px-4">
                     <div className="flex flex-wrap justify-between">
-                        <div className="w-full md:w-1/4 mb-8 md:mb-0">
+                        <div className="w-full lg:w-1/4 mb-8 lg:mb-0">
                             <div className="flex items-center space-x-2 mb-4">
                                 <div className="w-8 h-8 bg-pink-600 rounded-full flex items-center justify-center">
                                     <DollarSign className="text-white" size={20} />
@@ -606,9 +712,9 @@ export default function Subscription() {
                         {[
                             { title: "Information", links: ["Home", "About", "Terms & Conditions"], href: ["#", "/about", "/terms"] },
                             { title: "Special Link", links: ["Nexus Future Fund"], href: ["/"] },
-                            { title: "Get In Touch", links: ["nexusfuturefund@gmail.com", "Address: 4 Endsleigh Street, London, WC1H 0DS"] }
+                            { title: "Contact", links: ["nexusfuturefund@gmail.com", "Address: 4 Endsleigh Street, London, WC1H 0DS"] }
                         ].map((column, index) => (
-                            <div key={index} className="w-full md:w-1/5 mb-8 md:mb-0">
+                            <div key={index} className="w-full lg:w-1/5 mb-8 lg:mb-0">
                                 <h3 className="text-lg font-semibold mb-4">{column.title}</h3>
                                 <ul className="space-y-2">
                                     {column.links.map((link, linkIndex) => (

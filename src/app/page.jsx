@@ -18,6 +18,7 @@ import {
 import { DollarSign, Shield, Headphones, ChevronUp, Menu, X, Star, CheckCircle, XCircle } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link as ScrollLink, Element } from 'react-scroll'
+import blogs from "./data/blogs.js";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -34,12 +35,73 @@ const staggerChildren = {
 }
 
 const feedbackData = [
-  { name: "Jeda Rowen", role: "Small Business Owner", comment: "I've been investing with Nexus Future Fund for over a year, and the 2% guaranteed monthly return has been amazing! I never have to worry about my funds. It's the easiest and safest way to grow my money without stressing about the market. Highly recommended!", rating: 5 },
-  { name: "Jane Smith", role: "Freelance Designer", comment: "I was initially skeptical of cryptocurrency investments, but Nexus Future Fund made it easy and secure. The platform is so user-friendly, and the team is always there to help. I'm earning consistent returns every month - no hassle, no risks!", rating: 4 },
-  { name: "Robert Johnson", role: "Retired Teacher", comment: "I've tried other investment platforms before, but none have been as reliable as Nexus Future Fund. The guaranteed return is real, and their transparency makes me feel confident about where my money is going. I love being able to access my funds anytime with no penalties!", rating: 5 },
-  { name: "Emily Chen", role: "Tech Entrepreneur", comment: "The 24/7 support is a game-changer. Whenever I have questions or need help, Nexus Future Fund's team is always available and super helpful. Plus, knowing my investment is in good hands with their top market experts gives me peace of mind!", rating: 5 },
-  { name: "Michael Brown", role: "Corporate Executive", comment: "I was always worried about the volatility in crypto, but Nexus Future Fund makes it simple and safe. I get a steady income every month without worrying about market crashes. It's the perfect way to secure my financial future.", rating: 4 },
-  { name: "Sarah Davis", role: "Freelance Writer", comment: "I appreciate how Nexus Future Fund simplifies complex financial concepts. It's empowered me to take control of my financial future.", rating: 5 },
+  {
+    name: "Jeda Rowen",
+    role: "Small Business Owner",
+    comment: "I was hesitant at first, but after a year with Nexus Future Fund, I can honestly say it's been one of the best decisions for my business. The 2% monthly return really takes the stress out of investing, and I love how hands-off it is. Highly recommended!",
+    rating: 5
+  },
+  {
+    name: "Jane Smith",
+    role: "Freelance Designer",
+    comment: "I'm not a finance person, so I was skeptical about crypto. But Nexus Future Fund has been so easy to use. They break everything down in a way that makes sense, and the support team is always there to answer my questions. Now, I feel way more in control of my money.",
+    rating: 4
+  },
+  {
+    name: "Robert Johnson",
+    role: "Retired Teacher",
+    comment: "I've tried other investment options over the years, but none have been as steady as Nexus Future Fund. The guaranteed return really gives me peace of mind. And being able to access my money whenever I need it without extra fees has been a game changer.",
+    rating: 5
+  },
+  {
+    name: "Emily Chen",
+    role: "Tech Entrepreneur",
+    comment: "I'm someone who likes to stay informed, and the support from Nexus Future Fund is always there when I need it. Their 24/7 availability and the expertise behind their strategy make me feel confident about where my money is going. It's like having my own financial team!",
+    rating: 5
+  },
+  {
+    name: "Michael Brown",
+    role: "Corporate Executive",
+    comment: "I've always been cautious with crypto due to the volatility, but Nexus Future Fund changed my mind. I've been getting steady returns every month without worrying about market swings. It's taken the stress out of investing in crypto.",
+    rating: 4
+  },
+  {
+    name: "Sarah Davis",
+    role: "Freelance Writer",
+    comment: "I love how Nexus Future Fund makes things simple. I've never been great with finances, but their platform breaks down everything for me. It's empowering to finally feel like I'm in control of my financial future.",
+    rating: 5
+  },
+]
+
+const faq = [
+  {
+    question: "What is Nexus Future Fund?",
+    answer: "Nexus Future Fund is a mutual fund designed to simplify your investments. It helps you track your portfolio, plan for the future, and earn steady returns. Visit our 'About Us' section to learn more."
+  },
+  {
+    question: "How do I start earning 2% monthly returns?",
+    answer: "Getting started is easy. Create an account, deposit your funds, and your investment will begin growing with a 2% monthly return. For more details, click on 'How To Invest' in the header section."
+  },
+  {
+    question: "Is my investment safe?",
+    answer: "Yes, we prioritize your security. Nexus Future Fund takes all necessary precautions to protect your funds, and we offer a guaranteed 2% monthly return to give you peace of mind."
+  },
+  {
+    question: "Can I withdraw my money whenever I want?",
+    answer: "Absolutely! You have full control over your funds. You can withdraw your investment anytime, without any penalties or delays."
+  },
+  {
+    question: "Is there a mobile app available?",
+    answer: "Not yet, but we’re excited to announce that a mobile app is coming soon! You'll be able to manage your investments, receive real-time updates, and access your account from anywhere."
+  },
+  {
+    question: "I prefer to trade on my own. Can I get the trading signals?",
+    answer: "Yes, we offer a dedicated Discord server for trading signals. To access it, join our Telegram channel first. You can find the 'Premium Trading Signals' link in the footer for more information."
+  },
+  {
+    question: "I have more questions or need help. How can I reach support?",
+    answer: "You can message our support team through any of our social media channels. We're always happy to assist you with any questions or concerns."
+  }
 ]
 
 export default function Home() {
@@ -155,7 +217,7 @@ export default function Home() {
               </div>
             </div>
           </Link>
-          <nav className="hidden md:flex space-x-6">
+          <nav className="hidden lg:flex space-x-6">
             <ScrollLink to="home" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Home</b></ScrollLink>
             <ScrollLink to="features" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Features</b></ScrollLink>
             <ScrollLink to="scams" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Awareness</b></ScrollLink>
@@ -163,9 +225,10 @@ export default function Home() {
             <ScrollLink to="benefits" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Benefits</b></ScrollLink>
             <ScrollLink to="feedback" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Feedback</b></ScrollLink>
             <ScrollLink to="faq" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>FAQ</b></ScrollLink>
+            <ScrollLink to="blogs" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Blogs</b></ScrollLink>
             <ScrollLink to="newsletter" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Newsletter</b></ScrollLink>
           </nav>
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <Link href="#" passHref>
               <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
                 Download App
@@ -173,7 +236,7 @@ export default function Home() {
             </Link>
           </div>
           <button
-            className="md:hidden text-white focus:outline-none"
+            className="lg:hidden text-white focus:outline-none"
             onClick={toggleMenu}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMenuOpen}
@@ -187,12 +250,12 @@ export default function Home() {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-gray-900 bg-opacity-95 backdrop-blur-md md:hidden"
+            className="fixed inset-0 z-40 bg-gray-900 bg-opacity-95 backdrop-blur-md lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <div className="flex flex-col items-center justify-center h-full space-y-4">
+            <div className="flex flex-col items-center justify-center h-full space-y-3">
               <ScrollLink to="home" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Home</ScrollLink>
               <ScrollLink to="features" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Features</ScrollLink>
               <ScrollLink to="scams" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Awareness</ScrollLink>
@@ -200,6 +263,7 @@ export default function Home() {
               <ScrollLink to="benefits" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Benefits</ScrollLink>
               <ScrollLink to="feedback" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Feedback</ScrollLink>
               <ScrollLink to="faq" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>FAQ</ScrollLink>
+              <ScrollLink to="blogs" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Blogs</ScrollLink>
               <ScrollLink to="newsletter" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Newsletter</ScrollLink>
               <Link href="#" passHref>
                 <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
@@ -214,16 +278,16 @@ export default function Home() {
       <main>
         {/* Home Section */}
         <Element name="home">
-          <section className="pt-24 pb-8">
-            <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
-              <motion.div className="md:w-1/2 mb-8 md:mb-0 md:px-16" variants={staggerChildren} initial="initial" animate="animate">
+          <section className="pt-36 pb-8">
+            <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
+              <motion.div className="lg:w-1/2 mb-8 lg:mb-0 lg:px-16" variants={staggerChildren} initial="initial" animate="animate">
                 <motion.div
                   className="bg-gray-800 bg-opacity-50 backdrop-blur-md inline-block px-3 py-1 rounded-full text-sm mb-4"
                   variants={fadeIn}
                 >
                   Coming Soon: We will have a mobile app soon!
                 </motion.div>
-                <motion.h1 className="text-2xl md:text-3xl mb-4 font-black" variants={fadeIn}>Welcome to Nexus Future Fund - <span className="text-pink-600">Where Your Wealth Grows Safely and Steadily</span>!</motion.h1>
+                <motion.h1 className="text-2xl lg:text-3xl mb-4 font-black" variants={fadeIn}>Welcome to Nexus Future Fund - <span className="text-pink-600">Where Your Wealth Grows Safely and Steadily</span>!</motion.h1>
                 <motion.p className="text-gray-300 mb-6 text-justify" variants={fadeIn}>At Nexus Future Fund, we don&apos;t just promise growth - we guarantee it. Imagine earning a steady <b className="text-pink-500">2% return every month</b>, without the usual risks that come with investing. It&apos;s safe. It&apos;s smart. It&apos;s the future of wealth-building.<br />Our top-tier team of market researchers and traders handpick the best cryptocurrency investments, ensuring your money works harder for you, while you relax. You&apos;re in the best hands, and your financial future has never looked brighter.</motion.p>
                 <motion.div className="flex space-x-4" variants={fadeIn}>
                   <Link href="/about" passHref>
@@ -245,7 +309,7 @@ export default function Home() {
                 </motion.div>
               </motion.div>
               <motion.div
-                className="md:w-1/2 md:pl-8"
+                className="lg:w-1/2 lg:pl-8"
                 variants={fadeIn}
                 initial="initial"
                 animate="animate"
@@ -261,11 +325,11 @@ export default function Home() {
 
         {/* Features Section */}
         <Element name="features">
-          <section className="py-8 md:py-16 bg-gray-800">
-            <div className="container mx-auto md:px-36">
+          <section className="py-8 lg:py-16 bg-gray-800">
+            <div className="container mx-auto lg:px-36">
               <h2 className="text-3xl font-bold text-center mb-10">Why Should You Choose Us</h2>
               <motion.div
-                className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16"
+                className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16"
                 variants={staggerChildren}
                 initial="initial"
                 animate="animate"
@@ -292,10 +356,10 @@ export default function Home() {
 
         {/* Scams Section */}
         <Element name="scams">
-          <section className="py-8 md:py-0">
-            <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
+          <section className="py-8 lg:py-0">
+            <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
               <motion.div
-                className="md:w-1/2 md:pl-8 hidden md:block"
+                className="lg:w-1/2 lg:pl-8 hidden lg:block"
                 variants={fadeIn}
                 initial="initial"
                 animate="animate"
@@ -305,7 +369,7 @@ export default function Home() {
                     width={1280} height={1280} className="w-full" />
                 </div>
               </motion.div>
-              <motion.div className="md:w-1/2 mb-8 md:mb-0 md:px-16" variants={staggerChildren} initial="initial" animate="animate">
+              <motion.div className="lg:w-1/2 mb-8 lg:mb-0 lg:px-16" variants={staggerChildren} initial="initial" animate="animate">
                 <div className="bg-gray-800 bg-opacity-50 backdrop-blur-md p-8 rounded-lg shadow-xl">
                   <motion.h2 className="text-2xl font-bold mb-6" variants={fadeIn}>Beware of Investment Scams</motion.h2>
                   <motion.p className="text-gray-300 mb-6 text-justify" variants={fadeIn}>Scammers often set up professional-looking websites, use complex jargon, and claim to have expert knowledge in specific markets, like cryptocurrency or forex trading. Here&apos;s how to identify:</motion.p>
@@ -334,9 +398,9 @@ export default function Home() {
 
         {/* Investments Section */}
         <Element name="investments">
-          <section className="py-8 md:py-0 bg-gray-800">
-            <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
-              <motion.div className="md:w-1/2 mb-8 md:mb-0 md:px-16" variants={staggerChildren} initial="initial" animate="animate">
+          <section className="py-8 lg:py-0 bg-gray-800">
+            <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
+              <motion.div className="lg:w-1/2 mb-8 lg:mb-0 lg:px-16" variants={staggerChildren} initial="initial" animate="animate">
                 <div className="bg-gray-700 bg-opacity-50 backdrop-blur-md p-8 rounded-lg shadow-xl">
                   <motion.h2 className="text-2xl font-bold mb-6" variants={fadeIn}>Here&apos;s how we work our magic behind the scenes</motion.h2>
                   <motion.p className="text-gray-300 text-justify" variants={fadeIn}>
@@ -348,7 +412,7 @@ export default function Home() {
                 </div>
               </motion.div>
               <motion.div
-                className="md:w-1/2 md:pl-8 hidden md:block"
+                className="lg:w-1/2 lg:pl-8 hidden lg:block"
                 variants={fadeIn}
                 initial="initial"
                 animate="animate"
@@ -364,10 +428,10 @@ export default function Home() {
 
         {/* Benefits Section */}
         <Element name="benefits">
-          <section className="py-8 md:py-0">
-            <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
+          <section className="py-8 lg:py-0">
+            <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
               <motion.div
-                className="md:w-1/2 md:pl-8 hidden md:block"
+                className="lg:w-1/2 lg:pl-8 hidden lg:block"
                 variants={fadeIn}
                 initial="initial"
                 animate="animate"
@@ -377,7 +441,7 @@ export default function Home() {
                     width={1280} height={1280} className="w-full" />
                 </div>
               </motion.div>
-              <motion.div className="md:w-1/2 mb-8 md:mb-0 md:px-16" variants={staggerChildren} initial="initial" animate="animate">
+              <motion.div className="lg:w-1/2 mb-8 lg:mb-0 lg:px-16" variants={staggerChildren} initial="initial" animate="animate">
                 <div className="bg-gray-800 bg-opacity-50 backdrop-blur-md p-8 rounded-lg shadow-xl">
                   <motion.h2 className="text-2xl font-bold mb-6" variants={fadeIn}>Boost Your Wealth with Nexus Future Fund</motion.h2>
                   <motion.p className="text-gray-300 mb-6 text-justify" variants={fadeIn}>Choosing the right investment strategy can make all the difference in reaching your financial goals. At Nexus Future Fund, we offer a safe, reliable platform where you can grow your savings with confidence. Our investment approach is tailored to match your goals, timeline, and risk preferences - all while ensuring your funds are secure.</motion.p>
@@ -412,7 +476,7 @@ export default function Home() {
 
         {/* Feedback Section */}
         <Element name="feedback">
-          <section className="py-8 md:py-16 md:px-48 bg-gray-800">
+          <section className="py-8 lg:py-16 lg:px-48 bg-gray-800">
             <div className="container mx-auto px-4">
               <h2 className="text-3xl font-bold text-center mb-10">What Our Clients Say</h2>
               <div className="relative overflow-hidden">
@@ -464,7 +528,7 @@ export default function Home() {
 
         {/* FAQ Section */}
         <Element name="faq">
-          <section className="py-8 md:py-16">
+          <section className="py-8 lg:py-16">
             <div className="container mx-auto px-4">
               <h2 className="text-3xl font-bold text-center mb-10">Frequently Asked Questions</h2>
               <motion.div
@@ -474,15 +538,7 @@ export default function Home() {
                 animate="animate"
               >
                 <Accordion type="single" collapsible className="w-full space-y-4">
-                  {[
-                    { question: "What is Nexus Future Fund?", answer: "Nexus Future Fund is an mututal fund designed to simplify your future investments. It helps you track your investments, and plan for your financial future. Go to 'About Us' to learn more." },
-                    { question: "How do I start earning 2% monthly returns?", answer: "It's simple. Create an account, deposit your funds, and watch your investment grow each month. Click 'How To Invest' button in the header section to learn more." },
-                    { question: "Is my investment really safe?", answer: "Absolutely. At Nexus Future Fund, we take every precaution to ensure that your funds are secure, and we back it up with a guaranteed 2% monthly return." },
-                    { question: "Can I withdraw my money whenever I want?", answer: "Yes! You have full control over your investment. Withdraw your money anytime you like, without penalties or unwanted delays." },
-                    { question: "Is there a mobile app available?", answer: "We're excited to announce that a mobile app for Nexus Future Fund is coming soon! This will allow you to manage your investments on-the-go, receive real-time updates, and access your account from anywhere." },
-                    { question: "I don't want to invest, i want to trade on my own. Can I get the trading signals?", answer: "Yes, we have a dedicated discord server for that. But you need to join our telegram channel first. Learn more about it under the special link 'Premium Trading Signals' in the footer section." },
-                    { question: "I have more questions or need more information?", answer: "DM our dedicated support team on our social pages, and we'll be happy to assist you." }
-                  ].map((item, index) => (
+                  {faq.map((item, index) => (
                     <AccordionItem key={index} value={`item-${index}`}>
                       <AccordionTrigger className="text-left">
                         <h3>{item.question}</h3>
@@ -496,26 +552,72 @@ export default function Home() {
           </section>
         </Element>
 
+        {/* Blogs Section */}
+        <Element name="blogs">
+          <section className="py-8 lg:py-16 bg-gray-800">
+            <div className="container mx-auto lg:px-36">
+              <h2 className="text-3xl font-bold text-center mb-10">Latest Blogs</h2>
+              <motion.div
+                className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16"
+                variants={staggerChildren}
+                initial="initial"
+                animate="animate"
+              >
+                {blogs.slice(0, 3).map((blog, index) => (
+                  <motion.div key={index} className="text-center" variants={fadeIn}>
+                    <div
+                      className="bg-gray-700 bg-opacity-50 backdrop-blur-md p-6 rounded-lg shadow-xl h-full flex flex-col justify-between"
+                    >
+                      <h3 className="text-lg font-semibold mb-2 text-white">{blog.title}</h3>
+                      <div className="flex-grow">
+                        <p className="text-gray-300 text-justify">
+                          {blog.description}
+                        </p>
+                      </div>
+                      <div className="mt-4">
+                        <p className="text-gray-400 text-sm">Published on: {new Date(blog.date).toLocaleDateString()}</p>
+                        <a
+                          href={blog.url}
+                          className="text-pink-500 mt-2 inline-block"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Read More
+                        </a>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+              <div className="text-center mt-8">
+                <Link href="/blogs">
+                  <div className="text-pink-500 font-semibold hover:underline">See All Blogs</div>
+                </Link>
+              </div>
+            </div>
+          </section>
+        </Element>
+
         {/* Subscribe Section */}
         <Element name="newsletter">
-          <section className="py-8 px-8 md:px-16 md:py-16 bg-gray-800">
+          <section className="py-8 px-8 lg:px-16 lg:py-16 bg-gray-900">
             <div className="container mx-auto px-4">
               <motion.div
-                className="bg-gray-900 bg-opacity-50 backdrop-blur-md rounded-lg p-8 flex flex-col md:flex-row items-center justify-between"
+                className="bg-gray-800 bg-opacity-50 backdrop-blur-md rounded-lg p-8 flex flex-col lg:flex-row items-center justify-between"
                 variants={fadeIn}
                 initial="initial"
                 animate="animate"
               >
-                <div className="mb-4 md:mb-0 md:mr-8">
+                <div className="mb-4 lg:mb-0 lg:mr-8">
                   <h2 className="text-2xl font-bold mb-2">Get the latest information from Us</h2>
                 </div>
-                <div className="w-full md:w-auto">
+                <div className="w-full lg:w-auto">
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="flex">
                       <Input
                         type="email"
                         placeholder="Your email address"
-                        className="rounded-r-none bg-gray-700 text-white placeholder-gray-400 border-gray-600 w-full md:w-64"
+                        className="rounded-r-none bg-gray-700 text-white placeholder-gray-400 border-gray-600 w-full lg:w-64"
                         value={email}
                         onChange={handleEmailChange}
                         required
@@ -556,10 +658,10 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-800 py-8">
+      <footer className="bg-gray-900 py-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-between">
-            <div className="w-full md:w-1/4 mb-8 md:mb-0">
+            <div className="w-full lg:w-1/4 mb-8 lg:mb-0">
               <div className="flex items-center space-x-2 mb-4">
                 <div className="w-8 h-8 bg-pink-600 rounded-full flex items-center justify-center">
                   <DollarSign className="text-white" size={20} />
@@ -604,9 +706,9 @@ export default function Home() {
             {[
               { title: "Information", links: ["Home", "About", "Terms & Conditions"], href: ["#", "/about", "/terms"] },
               { title: "Special Link", links: ["Premium Trading Signals"], href: ["/subscription"] },
-              { title: "Get In Touch", links: ["nexusfuturefund@gmail.com", "Address: 4 Endsleigh Street, London, WC1H 0DS"] }
+              { title: "Contact", links: ["nexusfuturefund@gmail.com", "Address: 4 Endsleigh Street, London, WC1H 0DS"] }
             ].map((column, index) => (
-              <div key={index} className="w-full md:w-1/5 mb-8 md:mb-0">
+              <div key={index} className="w-full lg:w-1/5 mb-8 lg:mb-0">
                 <h3 className="text-lg font-semibold mb-4">{column.title}</h3>
                 <ul className="space-y-2">
                   {column.links.map((link, linkIndex) => (

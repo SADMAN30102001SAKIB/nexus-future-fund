@@ -22,6 +22,69 @@ const staggerChildren = {
     }
 }
 
+const termsAndConditions = [
+    {
+        title: "Acceptance of Terms",
+        content:
+            "By accessing or using Nexus Future Fund's website or services, you agree to be bound by these Terms and Conditions, our Privacy Policy, and any other policies or agreements that may apply to specific services."
+    },
+    {
+        title: "Services",
+        content:
+            "Nexus Future Fund provides fund management services that focus primarily on cryptocurrency investments. We offer clients a guaranteed 2% monthly return on their investments."
+    },
+    {
+        title: "Eligibility",
+        content:
+            "To use our services, you must be at least 18 years old and legally capable of entering into binding contracts."
+    },
+    {
+        title: "Investment Risks",
+        content:
+            "All investments carry inherent risks. We invest primarily in cryptocurrency markets, which can be volatile."
+    },
+    {
+        title: "Fees and Payment",
+        content:
+            "A management fee may apply to the services provided by Nexus Future Fund. All payments are due in accordance with the terms specified in your investment agreement."
+    },
+    {
+        title: "Confidentiality and Data Privacy",
+        content:
+            "Your privacy is important to us. All personal information collected from clients is handled in accordance with our Privacy Policy. We take appropriate measures to protect your data and ensure confidentiality."
+    },
+    {
+        title: "Refund Policy",
+        content:
+            "Due to the nature of our investment services, refunds are not typically provided unless explicitly stated in a specific contract."
+    },
+    {
+        title: "Transparency and Reporting",
+        content:
+            "We provide regular updates on your investment performance, and all trade data is available upon request."
+    },
+    {
+        title: "Limitation of Liability",
+        content:
+            "Nexus Future Fund is not liable for any direct, indirect, incidental, or consequential losses arising from the use of our services."
+    },
+    {
+        title: "Modification of Terms",
+        content:
+            "We reserve the right to modify these Terms and Conditions at any time."
+    },
+    {
+        title: "Termination",
+        content:
+            "Nexus Future Fund reserves the right to terminate any client account if the terms of service are violated or in the case of fraudulent activity."
+    },
+    {
+        title: "Governing Law",
+        content:
+            "These Terms and Conditions are governed by and construed in accordance with the laws of London."
+    }
+]
+
 export default function About() {
     const [showScrollUp, setShowScrollUp] = useState(false)
 
@@ -83,68 +146,7 @@ export default function About() {
                                 </motion.p>
 
                                 <div className="space-y-8 text-gray-300 leading-relaxed">
-                                    {[
-                                        {
-                                            title: "Acceptance of Terms",
-                                            content:
-                                                "By accessing or using Nexus Future Fund's website or services, you agree to be bound by these Terms and Conditions, our Privacy Policy, and any other policies or agreements that may apply to specific services."
-                                        },
-                                        {
-                                            title: "Services",
-                                            content:
-                                                "Nexus Future Fund provides fund management services that focus primarily on cryptocurrency investments. We offer clients a guaranteed 2% monthly return on their investments."
-                                        },
-                                        {
-                                            title: "Eligibility",
-                                            content:
-                                                "To use our services, you must be at least 18 years old and legally capable of entering into binding contracts."
-                                        },
-                                        {
-                                            title: "Investment Risks",
-                                            content:
-                                                "All investments carry inherent risks. We invest primarily in cryptocurrency markets, which can be volatile."
-                                        },
-                                        {
-                                            title: "Fees and Payment",
-                                            content:
-                                                "A management fee may apply to the services provided by Nexus Future Fund. All payments are due in accordance with the terms specified in your investment agreement."
-                                        },
-                                        {
-                                            title: "Confidentiality and Data Privacy",
-                                            content:
-                                                "Your privacy is important to us. All personal information collected from clients is handled in accordance with our Privacy Policy. We take appropriate measures to protect your data and ensure confidentiality."
-                                        },
-                                        {
-                                            title: "Refund Policy",
-                                            content:
-                                                "Due to the nature of our investment services, refunds are not typically provided unless explicitly stated in a specific contract."
-                                        },
-                                        {
-                                            title: "Transparency and Reporting",
-                                            content:
-                                                "We provide regular updates on your investment performance, and all trade data is available upon request."
-                                        },
-                                        {
-                                            title: "Limitation of Liability",
-                                            content:
-                                                "Nexus Future Fund is not liable for any direct, indirect, incidental, or consequential losses arising from the use of our services."
-                                        },
-                                        {
-                                            title: "Modification of Terms",
-                                            content:
-                                                "We reserve the right to modify these Terms and Conditions at any time."
-                                        },
-                                        {
-                                            title: "Termination",
-                                            content:
-                                                "Nexus Future Fund reserves the right to terminate any client account if the terms of service are violated or in the case of fraudulent activity."
-                                        },
-                                        {
-                                            title: "Governing Law",
-                                            content:
-                                                "These Terms and Conditions are governed by and construed in accordance with the laws of London."
-                                        }
-                                    ].map((term, index) => (
+                                    {termsAndConditions.map((term, index) => (
                                         <div key={index} className="p-6 bg-gray-800 rounded-lg shadow-lg">
                                             <motion.h3 className="text-2xl font-semibold mb-2 text-white" variants={fadeIn}>
                                                 {term.title}
@@ -165,7 +167,7 @@ export default function About() {
             <footer className="bg-gray-900 py-8">
                 <div className="container mx-auto px-4">
                     <div className="flex flex-wrap justify-between">
-                        <div className="w-full md:w-1/4 mb-8 md:mb-0">
+                        <div className="w-full lg:w-1/4 mb-8 lg:mb-0">
                             <div className="flex items-center space-x-2 mb-4">
                                 <div className="w-8 h-8 bg-pink-600 rounded-full flex items-center justify-center">
                                     <DollarSign className="text-white" size={20} />
@@ -212,7 +214,7 @@ export default function About() {
                             { title: "Special Link", links: ["Premium Trading Signals"], href: ["/subscription"] },
                             { title: "Get In Touch", links: ["nexusfuturefund@gmail.com", "Address: 4 Endsleigh Street, London, WC1H 0DS"] }
                         ].map((column, index) => (
-                            <div key={index} className="w-full md:w-1/5 mb-8 md:mb-0">
+                            <div key={index} className="w-full lg:w-1/5 mb-8 lg:mb-0">
                                 <h3 className="text-lg font-semibold mb-4">{column.title}</h3>
                                 <ul className="space-y-2">
                                     {column.links.map((link, linkIndex) => (

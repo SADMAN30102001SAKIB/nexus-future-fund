@@ -80,7 +80,7 @@ export default function About() {
             <main>
                 <Element name="howto">
                     <section className="pt-36 pb-12">
-                        <div className="container mx-auto md:px-36">
+                        <div className="container mx-auto lg:px-36">
                             <motion.div variants={staggerChildren} initial="initial" animate="animate">
                                 <div className="bg-gray-800 bg-opacity-50 backdrop-blur-md p-8 rounded-lg shadow-xl">
                                     <motion.h2 className="text-3xl font-bold mb-6" variants={fadeIn}>How to Join Nexus Future Fund and Start Growing Your Money - Step by Step Guide</motion.h2>
@@ -125,7 +125,7 @@ export default function About() {
             <footer className="bg-gray-900 py-8">
                 <div className="container mx-auto px-4">
                     <div className="flex flex-wrap justify-between">
-                        <div className="w-full md:w-1/4 mb-8 md:mb-0">
+                        <div className="w-full lg:w-1/4 mb-8 lg:mb-0">
                             <div className="flex items-center space-x-2 mb-4">
                                 <div className="w-8 h-8 bg-pink-600 rounded-full flex items-center justify-center">
                                     <DollarSign className="text-white" size={20} />
@@ -172,7 +172,7 @@ export default function About() {
                             { title: "Special Link", links: ["Premium Trading Signals"], href: ["/subscription"] },
                             { title: "Get In Touch", links: ["nexusfuturefund@gmail.com", "Address: 4 Endsleigh Street, London, WC1H 0DS"] }
                         ].map((column, index) => (
-                            <div key={index} className="w-full md:w-1/5 mb-8 md:mb-0">
+                            <div key={index} className="w-full lg:w-1/5 mb-8 lg:mb-0">
                                 <h3 className="text-lg font-semibold mb-4">{column.title}</h3>
                                 <ul className="space-y-2">
                                     {column.links.map((link, linkIndex) => (
