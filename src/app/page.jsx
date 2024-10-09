@@ -566,24 +566,33 @@ export default function Home() {
                 {blogs.slice(0, 3).map((blog, index) => (
                   <motion.div key={index} className="text-center" variants={fadeIn}>
                     <div
-                      className="bg-gray-700 bg-opacity-50 backdrop-blur-md p-6 rounded-lg shadow-xl h-full flex flex-col justify-between"
+                      className="bg-gray-700 bg-opacity-50 backdrop-blur-md p-4 rounded-lg shadow-xl h-full flex flex-col justify-between"
                     >
-                      <h3 className="text-lg font-semibold mb-2 text-white">{blog.title}</h3>
-                      <div className="flex-grow">
-                        <p className="text-gray-300 text-justify">
-                          {blog.description}
-                        </p>
-                      </div>
-                      <div className="mt-4">
-                        <p className="text-gray-400 text-sm">Published on: {new Date(blog.date).toLocaleDateString()}</p>
-                        <a
-                          href={blog.url}
-                          className="text-pink-500 mt-2 inline-block"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Read More
-                        </a>
+                      <Image
+                        src={blog.img}
+                        alt={blog.title}
+                        width={500}
+                        height={300}
+                        className="w-full h-36 object-cover rounded-lg"
+                      />
+                      <div className="pt-4 flex flex-col justify-between flex-grow">
+                        <h3 className="text-lg font-semibold mb-2 text-white">{blog.title}</h3>
+                        <div className="flex-grow">
+                          <p className="text-gray-300 text-justify">
+                            {blog.description}
+                          </p>
+                        </div>
+                        <div className="mt-4">
+                          <p className="text-gray-400 text-sm">Published on: {new Date(blog.date).toLocaleDateString()}</p>
+                          <a
+                            href={blog.url}
+                            className="text-pink-500 mt-2 inline-block"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Read More
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </motion.div>
@@ -617,7 +626,7 @@ export default function Home() {
                       <Input
                         type="email"
                         placeholder="Your email address"
-                        className="rounded-r-none bg-gray-700 text-white placeholder-gray-400 border-gray-600 w-full lg:w-64"
+                        className="rounded-r-none bg-gray-700 text-white placeholder-gray-400 border-gray-600 w-full lg:w-64 focus:ring-0"
                         value={email}
                         onChange={handleEmailChange}
                         required
@@ -704,7 +713,7 @@ export default function Home() {
               <p className="text-gray-400 mt-2">Stay up-to-date with our market insights and live trading results by following us.</p>
             </div>
             {[
-              { title: "Information", links: ["Home", "About", "Terms & Conditions"], href: ["#", "/about", "/terms"] },
+              { title: "Links", links: ["Home", "About", "Terms & Conditions"], href: ["/", "/about", "/terms"] },
               { title: "Special Link", links: ["Premium Trading Signals"], href: ["/subscription"] },
               { title: "Contact", links: ["nexusfuturefund@gmail.com", "Address: 4 Endsleigh Street, London, WC1H 0DS"] }
             ].map((column, index) => (

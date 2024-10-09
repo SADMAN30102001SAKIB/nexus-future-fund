@@ -150,7 +150,7 @@ export default function About() {
                             <p className="text-gray-400 mt-2">Stay up-to-date with our market insights and live trading results by following us.</p>
                         </div>
                         {[
-                            { title: "Information", links: ["Home", "About", "Terms & Conditions"], href: ["/", "/about", "/terms"] },
+                            { title: "Links", links: ["Home", "About", "Terms & Conditions"], href: ["/", "/about", "/terms"] },
                             { title: "Special Link", links: ["Premium Trading Signals"], href: ["/subscription"] },
                             { title: "Contact", links: ["nexusfuturefund@gmail.com", "Address: 4 Endsleigh Street, London, WC1H 0DS"] }
                         ].map((column, index) => (

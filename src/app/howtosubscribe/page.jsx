@@ -169,8 +169,8 @@ export default function About() {
                             <p className="text-gray-400 mt-2">Stay up-to-date with our market insights and live trading results by following us.</p>
                         </div>
                         {[
-                            { title: "Information", links: ["Home", "About", "Terms & Conditions"], href: ["/subscription", "/about", "/terms"] },
-                            { title: "Main Page", links: ["Nexus Future Fund"], href: ["/"] },
+                            { title: "Links", links: ["Nexus Future Fund", "About", "Terms & Conditions"], href: ["/", "/about", "/terms"] },
+                            { title: "Special Link", links: ["See Our Results"], href: ["https://docs.google.com/spreadsheets/d/1BAKN4CWq4dlS9xsxRF4xwNFSKMqU-bKG/edit?usp=sharing&rtpof=true&sd=true"] },
                             { title: "Contact", links: ["nexusfuturefund@gmail.com", "Address: 4 Endsleigh Street, London, WC1H 0DS"] }
                         ].map((column, index) => (
                             <div key={index} className="w-full lg:w-1/5 mb-8 lg:mb-0">

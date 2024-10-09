@@ -139,18 +139,32 @@ export default function Blog() {
                                         {sortOrder === 'desc' ? <SortDesc size={24} /> : <SortAsc size={24} />}
                                     </motion.button>
                                 </motion.div>
-
                                 <div className="space-y-8 text-gray-300 leading-relaxed">
                                     {sortedBlogs.map((blog, index) => (
-                                        <motion.div key={index} className="p-6 bg-gray-800 bg-opacity-80 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 hover:scale-105 transform" variants={fadeIn}>
-                                            <h3 className="text-2xl font-semibold mb-2 text-pink-400 hover:text-pink-600 transition-colors duration-300">
-                                                {blog.title}
-                                            </h3>
-                                            <p className="mb-2 text-gray-300">{blog.description}</p>
-                                            <p className="text-gray-400 mb-4">{new Date(blog.date).toLocaleDateString()}</p>
-                                            <a href={blog.url} target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:underline">
-                                                Read more
-                                            </a>
+                                        <motion.div
+                                            key={index}
+                                            className="p-4 bg-gray-800 bg-opacity-80 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 hover:scale-105 transform flex flex-col md:flex-row"
+                                            variants={fadeIn}
+                                        >
+                                            <div className='md:w-1/4'>
+                                                <Image
+                                                    src={blog.img}
+                                                    alt={blog.title}
+                                                    width={500}
+                                                    height={300}
+                                                    className="w-full h-36 object-cover rounded-lg"
+                                                />
+                                            </div>
+                                            <div className="mt-3 md:mt-0 md:ml-6 md:w-3/4">
+                                                <h3 className="text-2xl font-semibold mb-2 text-pink-400 hover:text-pink-600 transition-colors duration-300">
+                                                    {blog.title}
+                                                </h3>
+                                                <p className="mb-2 text-white">{blog.description}</p>
+                                                <p className="text-gray-400 mb-4">Published on: {new Date(blog.date).toLocaleDateString()}</p>
+                                                <a href={blog.url} target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:underline">
+                                                    Read more
+                                                </a>
+                                            </div>
                                         </motion.div>
                                     ))}
                                 </div>
@@ -207,7 +221,7 @@ export default function Blog() {
                             <p className="text-gray-400 mt-2">Stay up-to-date with our market insights and live trading results by following us.</p>
                         </div>
                         {[
-                            { title: "Information", links: ["Home", "About", "Terms & Conditions"], href: ["/", "/about", "/terms"] },
+                            { title: "Links", links: ["Home", "About", "Terms & Conditions"], href: ["/", "/about", "/terms"] },
                             { title: "Special Link", links: ["Premium Trading Signals"], href: ["/subscription"] },
                             { title: "Contact", links: ["nexusfuturefund@gmail.com", "Address: 4 Endsleigh Street, London, WC1H 0DS"] }
                         ].map((column, index) => (

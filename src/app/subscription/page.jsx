@@ -335,7 +335,7 @@ export default function Subscription() {
                                 animate="animate"
                             >
                                 {[
-                                    { icon: Eye, title: "Transparency", description: "We provide <b class='text-pink-500'>real-time access</b> to all our trade information, including entry points, stop loss, take profit, and trade results, published in a public <b class='text-pink-500'>Excel sheet</b> and shared across our social media channels." },
+                                    { icon: Eye, title: "Transparency", description: "We provide <b class='text-pink-500'>real-time access</b> to all our trade information, including entry points, stop loss, profit, and results published in a <b class='text-pink-500'>Excel sheet</b> linked in the footer section under 'Special Link'." },
                                     { icon: DollarSign, title: "Refund Guarantee", description: "It is highly unlikely that we close a month with a negative Return Of Investment. But if we do, then we'll refund your <b class='text-pink-500'>full subscription fee</b>. That's how confident we are in our performance." },
                                     { icon: Headphones, title: "Friendly support", description: "Our premium group comes with <b class='text-pink-500'>round-the-clock support</b>, which is for guiding you through each trade on our <b class='text-pink-500'>Discord channel </b> live. Don't hesitate to reach out - we're always happy to help!" }
                                 ].map((feature, index) => (
@@ -572,24 +572,33 @@ export default function Subscription() {
                                 {blogs.slice(0, 3).map((blog, index) => (
                                     <motion.div key={index} className="text-center" variants={fadeIn}>
                                         <div
-                                            className="bg-gray-700 bg-opacity-50 backdrop-blur-md p-6 rounded-lg shadow-xl h-full flex flex-col justify-between"
+                                            className="bg-gray-700 bg-opacity-50 backdrop-blur-md p-4 rounded-lg shadow-xl h-full flex flex-col justify-between"
                                         >
-                                            <h3 className="text-lg font-semibold mb-2 text-white">{blog.title}</h3>
-                                            <div className="flex-grow">
-                                                <p className="text-gray-300 text-justify">
-                                                    {blog.description}
-                                                </p>
-                                            </div>
-                                            <div className="mt-4">
-                                                <p className="text-gray-400 text-sm">Published on: {new Date(blog.date).toLocaleDateString()}</p>
-                                                <a
-                                                    href={blog.url}
-                                                    className="text-pink-500 mt-2 inline-block"
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                >
-                                                    Read More
-                                                </a>
+                                            <Image
+                                                src={blog.img}
+                                                alt={blog.title}
+                                                width={500}
+                                                height={300}
+                                                className="w-full h-36 object-cover rounded-lg"
+                                            />
+                                            <div className="pt-4 flex flex-col justify-between flex-grow">
+                                                <h3 className="text-lg font-semibold mb-2 text-white">{blog.title}</h3>
+                                                <div className="flex-grow">
+                                                    <p className="text-gray-300 text-justify">
+                                                        {blog.description}
+                                                    </p>
+                                                </div>
+                                                <div className="mt-4">
+                                                    <p className="text-gray-400 text-sm">Published on: {new Date(blog.date).toLocaleDateString()}</p>
+                                                    <a
+                                                        href={blog.url}
+                                                        className="text-pink-500 mt-2 inline-block"
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                    >
+                                                        Read More
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </motion.div>
@@ -623,7 +632,7 @@ export default function Subscription() {
                                             <Input
                                                 type="email"
                                                 placeholder="Your email address"
-                                                className="rounded-r-none bg-gray-700 text-white placeholder-gray-400 border-gray-600 w-full lg:w-64"
+                                                className="rounded-r-none bg-gray-700 text-white placeholder-gray-400 border-gray-600 w-full lg:w-64 focus:ring-0"
                                                 value={email}
                                                 onChange={handleEmailChange}
                                                 required
@@ -710,8 +719,8 @@ export default function Subscription() {
                             <p className="text-gray-400 mt-2">Stay up-to-date with our market insights and live trading results by following us.</p>
                         </div>
                         {[
-                            { title: "Information", links: ["Home", "About", "Terms & Conditions"], href: ["#", "/about", "/terms"] },
-                            { title: "Main Page", links: ["Nexus Future Fund"], href: ["/"] },
+                            { title: "Links", links: ["Nexus Future Fund", "About", "Terms & Conditions"], href: ["/", "/about", "/terms"] },
+                            { title: "Special Link", links: ["See Our Results"], href: ["https://docs.google.com/spreadsheets/d/1BAKN4CWq4dlS9xsxRF4xwNFSKMqU-bKG/edit?usp=sharing&rtpof=true&sd=true"] },
                             { title: "Contact", links: ["nexusfuturefund@gmail.com", "Address: 4 Endsleigh Street, London, WC1H 0DS"] }
                         ].map((column, index) => (
                             <div key={index} className="w-full lg:w-1/5 mb-8 lg:mb-0">

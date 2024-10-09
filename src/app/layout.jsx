@@ -133,6 +133,7 @@ export default function RootLayout({ children }) {
         <link rel="canonical" href={currentMetadata.openGraph?.url} />
 
         <title>{currentMetadata.title}</title>
+        <meta name="google-site-verification" content="RF9MA_ckfQK4-31eFkaHfioB3xgDXxkOEUNSthsFgEc" />
       </head>
       <body className={ubuntu.className}>
         {children}
