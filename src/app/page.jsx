@@ -92,7 +92,7 @@ const faq = [
   },
   {
     question: "Is there a mobile app available?",
-    answer: "Not yet, but we’re excited to announce that a mobile app is coming soon! You'll be able to manage your investments, receive real-time updates, and access your account from anywhere."
+    answer: "Not yet, but we're excited to announce that a mobile app is coming soon! You'll be able to manage your investments, receive real-time updates, and access your account from anywhere."
   },
   {
     question: "I prefer to trade on my own. Can I get the trading signals?",
@@ -221,7 +221,7 @@ export default function Home() {
             <ScrollLink to="home" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Home</b></ScrollLink>
             <ScrollLink to="features" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Features</b></ScrollLink>
             <ScrollLink to="scams" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Awareness</b></ScrollLink>
-            <ScrollLink to="investments" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Investments</b></ScrollLink>
+            <ScrollLink to="workflow" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Workflow</b></ScrollLink>
             <ScrollLink to="benefits" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Benefits</b></ScrollLink>
             <ScrollLink to="feedback" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>Feedback</b></ScrollLink>
             <ScrollLink to="faq" smooth={true} duration={500} className="hover:text-pink-600 cursor-pointer"><b>FAQ</b></ScrollLink>
@@ -256,17 +256,17 @@ export default function Home() {
             exit={{ opacity: 0 }}
           >
             <div className="flex flex-col items-center justify-center h-full space-y-3">
-              <ScrollLink to="home" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Home</ScrollLink>
-              <ScrollLink to="features" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Features</ScrollLink>
-              <ScrollLink to="scams" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Awareness</ScrollLink>
-              <ScrollLink to="investments" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Investments</ScrollLink>
-              <ScrollLink to="benefits" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Benefits</ScrollLink>
-              <ScrollLink to="feedback" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Feedback</ScrollLink>
-              <ScrollLink to="faq" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>FAQ</ScrollLink>
-              <ScrollLink to="blogs" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Blogs</ScrollLink>
-              <ScrollLink to="newsletter" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Newsletter</ScrollLink>
+              <ScrollLink to="home" smooth={true} duration={500} className="text-white text-sm font-black" onClick={closeMenu}>Home</ScrollLink>
+              <ScrollLink to="features" smooth={true} duration={500} className="text-white text-sm font-black" onClick={closeMenu}>Features</ScrollLink>
+              <ScrollLink to="scams" smooth={true} duration={500} className="text-white text-sm font-black" onClick={closeMenu}>Awareness</ScrollLink>
+              <ScrollLink to="workflow" smooth={true} duration={500} className="text-white text-sm font-black" onClick={closeMenu}>Workflow</ScrollLink>
+              <ScrollLink to="benefits" smooth={true} duration={500} className="text-white text-sm font-black" onClick={closeMenu}>Benefits</ScrollLink>
+              <ScrollLink to="feedback" smooth={true} duration={500} className="text-white text-sm font-black" onClick={closeMenu}>Feedback</ScrollLink>
+              <ScrollLink to="faq" smooth={true} duration={500} className="text-white text-sm font-black" onClick={closeMenu}>FAQ</ScrollLink>
+              <ScrollLink to="blogs" smooth={true} duration={500} className="text-white text-sm font-black" onClick={closeMenu}>Blogs</ScrollLink>
+              <ScrollLink to="newsletter" smooth={true} duration={500} className="text-white text-sm font-black" onClick={closeMenu}>Newsletter</ScrollLink>
               <Link href="#" passHref>
-                <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
+                <Button className="px-2 py-1 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400 text-sm">
                   Download App
                 </Button>
               </Link>
@@ -278,7 +278,7 @@ export default function Home() {
       <main>
         {/* Home Section */}
         <Element name="home">
-          <section className="pt-36 pb-8">
+          <section className="pt-36 lg:pt-24 pb-8">
             <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
               <motion.div className="lg:w-1/2 mb-8 lg:mb-0 lg:px-16" variants={staggerChildren} initial="initial" animate="animate">
                 <motion.div
@@ -396,8 +396,8 @@ export default function Home() {
           </section>
         </Element>
 
-        {/* Investments Section */}
-        <Element name="investments">
+        {/* Workflow Section */}
+        <Element name="workflow">
           <section className="py-8 lg:py-0 bg-gray-800">
             <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
               <motion.div className="lg:w-1/2 mb-8 lg:mb-0 lg:px-16" variants={staggerChildren} initial="initial" animate="animate">
@@ -701,7 +701,7 @@ export default function Home() {
                   </svg>
                 </a>
               </div>
-              <p className="text-gray-400 mt-2">Stay up-to-date with our market insights and live trading results by following us on:</p>
+              <p className="text-gray-400 mt-2">Stay up-to-date with our market insights and live trading results by following us.</p>
             </div>
             {[
               { title: "Information", links: ["Home", "About", "Terms & Conditions"], href: ["#", "/about", "/terms"] },

@@ -264,17 +264,17 @@ export default function Subscription() {
                         exit={{ opacity: 0 }}
                     >
                         <div className="flex flex-col items-center justify-center h-full space-y-3">
-                            <ScrollLink to="home" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Home</ScrollLink>
-                            <ScrollLink to="features" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Features</ScrollLink>
-                            <ScrollLink to="scams" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Awareness</ScrollLink>
-                            <ScrollLink to="benefits" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Benefits</ScrollLink>
-                            <ScrollLink to="workflow" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Workflow</ScrollLink>
-                            <ScrollLink to="feedback" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Feedback</ScrollLink>
-                            <ScrollLink to="faq" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>FAQ</ScrollLink>
-                            <ScrollLink to="blogs" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Blogs</ScrollLink>
-                            <ScrollLink to="newsletter" smooth={true} duration={500} className="text-white text-xl" onClick={closeMenu}>Newsletter</ScrollLink>
+                            <ScrollLink to="home" smooth={true} duration={500} className="text-white text-sm" onClick={closeMenu}>Home</ScrollLink>
+                            <ScrollLink to="features" smooth={true} duration={500} className="text-white text-sm" onClick={closeMenu}>Features</ScrollLink>
+                            <ScrollLink to="scams" smooth={true} duration={500} className="text-white text-sm" onClick={closeMenu}>Awareness</ScrollLink>
+                            <ScrollLink to="benefits" smooth={true} duration={500} className="text-white text-sm" onClick={closeMenu}>Benefits</ScrollLink>
+                            <ScrollLink to="workflow" smooth={true} duration={500} className="text-white text-sm" onClick={closeMenu}>Workflow</ScrollLink>
+                            <ScrollLink to="feedback" smooth={true} duration={500} className="text-white text-sm" onClick={closeMenu}>Feedback</ScrollLink>
+                            <ScrollLink to="faq" smooth={true} duration={500} className="text-white text-sm" onClick={closeMenu}>FAQ</ScrollLink>
+                            <ScrollLink to="blogs" smooth={true} duration={500} className="text-white text-sm" onClick={closeMenu}>Blogs</ScrollLink>
+                            <ScrollLink to="newsletter" smooth={true} duration={500} className="text-white text-sm" onClick={closeMenu}>Newsletter</ScrollLink>
                             <Link href="https://t.me/nexusfuturefund" passHref>
-                                <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">Join Us</Button>
+                                <Button className="px-2 py-1 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400 text-sm">Join Us</Button>
                             </Link>
                         </div>
                     </motion.div>
@@ -284,7 +284,7 @@ export default function Subscription() {
             <main>
                 {/* Home Section */}
                 <Element name="home">
-                    <section className="pt-36 pb-8">
+                    <section className="pt-36 lg:pt-24 pb-8">
                         <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
                             <motion.div className="lg:w-1/2 mb-8 lg:mb-0 lg:px-16" variants={staggerChildren} initial="initial" animate="animate">
                                 <motion.h1 className="text-2xl lg:text-3xl font-bold mb-4" variants={fadeIn}>Welcome to Nexus Future Trade Signals - <span className="text-pink-600">Your Trusted Partner for Bitcoin Trading Success</span>.</motion.h1>
@@ -707,11 +707,11 @@ export default function Subscription() {
                                     </svg>
                                 </a>
                             </div>
-                            <p className="text-gray-400 mt-2">Stay up-to-date with our market insights and live trading results by following us on:</p>
+                            <p className="text-gray-400 mt-2">Stay up-to-date with our market insights and live trading results by following us.</p>
                         </div>
                         {[
                             { title: "Information", links: ["Home", "About", "Terms & Conditions"], href: ["#", "/about", "/terms"] },
-                            { title: "Special Link", links: ["Nexus Future Fund"], href: ["/"] },
+                            { title: "Main Page", links: ["Nexus Future Fund"], href: ["/"] },
                             { title: "Contact", links: ["nexusfuturefund@gmail.com", "Address: 4 Endsleigh Street, London, WC1H 0DS"] }
                         ].map((column, index) => (
                             <div key={index} className="w-full lg:w-1/5 mb-8 lg:mb-0">

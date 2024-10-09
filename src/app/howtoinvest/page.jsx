@@ -165,12 +165,12 @@ export default function About() {
                                     </svg>
                                 </a>
                             </div>
-                            <p className="text-gray-400 mt-2">Stay up-to-date with our market insights and live trading results by following us on:</p>
+                            <p className="text-gray-400 mt-2">Stay up-to-date with our market insights and live trading results by following us.</p>
                         </div>
                         {[
                             { title: "Information", links: ["Home", "About", "Terms & Conditions"], href: ["/", "/about", "/terms"] },
                             { title: "Special Link", links: ["Premium Trading Signals"], href: ["/subscription"] },
-                            { title: "Get In Touch", links: ["nexusfuturefund@gmail.com", "Address: 4 Endsleigh Street, London, WC1H 0DS"] }
+                            { title: "Contact", links: ["nexusfuturefund@gmail.com", "Address: 4 Endsleigh Street, London, WC1H 0DS"] }
                         ].map((column, index) => (
                             <div key={index} className="w-full lg:w-1/5 mb-8 lg:mb-0">
                                 <h3 className="text-lg font-semibold mb-4">{column.title}</h3>
