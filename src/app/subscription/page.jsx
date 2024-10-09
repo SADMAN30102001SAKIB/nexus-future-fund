@@ -402,13 +402,13 @@ export default function Subscription() {
                             <motion.div className="lg:w-1/2 mb-8 lg:mb-0 lg:px-16" variants={staggerChildren} initial="initial" animate="animate">
                                 <div className="bg-gray-700 bg-opacity-50 backdrop-blur-md p-8 rounded-lg shadow-xl">
                                     <motion.h2 className="text-2xl font-bold" variants={fadeIn}>What We Offer</motion.h2>
-                                    <motion.ul className="space-y-4" variants={staggerChildren}>
+                                    <motion.div className="space-y-4" variants={staggerChildren}>
                                         {[
                                             "Premium Discord support",
                                             "Live Trading Recordings",
                                             "Monthly Target"
                                         ].map((item, index) => (
-                                            <motion.div variants={fadeIn} key={index}>
+                                            <motion.ul variants={fadeIn} key={index}>
                                                 <li className="flex items-center mt-8">
                                                     <svg className="w-6 h-6 text-pink-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
@@ -416,9 +416,9 @@ export default function Subscription() {
                                                     <span className="text-white"><b>{item}</b></span>
                                                 </li>
                                                 <div className="pl-8 text-gray-300 text-justify" dangerouslySetInnerHTML={{ __html: offerDetails[index] }} />
-                                            </motion.div>
+                                            </motion.ul>
                                         ))}
-                                    </motion.ul>
+                                    </motion.div>
                                 </div>
                             </motion.div>
                             <motion.div
