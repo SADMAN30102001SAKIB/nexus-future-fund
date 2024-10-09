@@ -54,7 +54,8 @@ const subscriptionMetadata = {
   authors: [{ name: 'Nexus Future Fund', url: 'https://nexusfuturefund.vercel.app' }],
   robots: 'index, follow',
   openGraph: {
-    title: 'Maximize your Bitcoin profits with Nexus Future Trade Signals! Enjoy 10%+ monthly returns and 70% accuracy. Get real-time signals, full transparency, and 24/7 support. Limited-time offer: Join our trusted, risk-free subscription for just $100/month!',
+    title: 'Nexus Future Trade Signals | risk-free 10%+ Monthly Profits, 24/7 Support',
+    description: 'Maximize your Bitcoin profits with Nexus Future Trade Signals! Enjoy 10%+ monthly returns and 70% accuracy. Get real-time signals, full transparency, and 24/7 support. Limited-time offer: Join our trusted, risk-free subscription for just $100/month!',
     url: 'https://nexusfuturefund.vercel.app',
     siteName: 'Nexus Future Fund',
     images: [
