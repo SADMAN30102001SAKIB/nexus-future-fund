@@ -74,7 +74,7 @@ export default function About() {
             </div>
           </Link>
           <div>
-            <Link href="https://t.me/nexusfuturefund" passHref>
+            <Link href="https://t.me/+RDx7Eyd2728zZDU1" passHref>
               <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
                 Join Us
               </Button>
@@ -155,7 +155,7 @@ export default function About() {
                     firsthand. Don&apos;t miss your chance to make steady,
                     reliable profits with us!
                   </motion.p>
-                  <Link href="https://t.me/nexusfuturefund" passHref>
+                  <Link href="https://t.me/+RDx7Eyd2728zZDU1" passHref>
                     <Button className="px-4 py-2 my-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
                       Join
                     </Button>
@@ -239,7 +239,7 @@ export default function About() {
                   </svg>
                 </a>
                 <a
-                  href="https://t.me/nexusfuturefund"
+                  href="https://t.me/+RDx7Eyd2728zZDU1"
                   className="text-gray-300 hover:text-white transition-colors duration-300"
                   aria-label="Telegram">
                   <svg

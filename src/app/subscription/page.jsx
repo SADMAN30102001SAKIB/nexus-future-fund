@@ -350,7 +350,7 @@ export default function Subscription() {
             </ScrollLink>
           </nav>
           <div className="hidden lg:block">
-            <Link href="https://t.me/nexusfuturefund" passHref>
+            <Link href="https://t.me/+RDx7Eyd2728zZDU1" passHref>
               <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
                 Join Us
               </Button>
@@ -456,7 +456,7 @@ export default function Subscription() {
                 onClick={closeMenu}>
                 Newsletter
               </ScrollLink>
-              <Link href="https://t.me/nexusfuturefund" passHref>
+              <Link href="https://t.me/+RDx7Eyd2728zZDU1" passHref>
                 <Button className="px-2 py-1 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400 text-sm">
                   Join Us
                 </Button>
@@ -822,7 +822,7 @@ export default function Subscription() {
                     negatively (which has never happened!)
                   </motion.p>
                   <motion.div className="flex space-x-4 mt-3" variants={fadeIn}>
-                    <Link href="https://t.me/nexusfuturefund" passHref>
+                    <Link href="https://t.me/+RDx7Eyd2728zZDU1" passHref>
                       <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
                         Join
                       </Button>
@@ -1131,7 +1131,7 @@ export default function Subscription() {
                   </svg>
                 </a>
                 <a
-                  href="https://t.me/nexusfuturefund"
+                  href="https://t.me/+RDx7Eyd2728zZDU1"
                   className="text-gray-300 hover:text-white transition-colors duration-300"
                   aria-label="Telegram">
                   <svg

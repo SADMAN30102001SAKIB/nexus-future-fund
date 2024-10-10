@@ -238,7 +238,7 @@ export default function About() {
                   </svg>
                 </a>
                 <a
-                  href="https://t.me/nexusfuturefund"
+                  href="https://t.me/+RDx7Eyd2728zZDU1"
                   className="text-gray-300 hover:text-white transition-colors duration-300"
                   aria-label="Telegram">
                   <svg
