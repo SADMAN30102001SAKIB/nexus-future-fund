@@ -7,6 +7,7 @@ import logo from "../assets/logo.png";
 import homeImage from "../assets/home.png";
 import benefitsImage from "../assets/benefits.png";
 import investmentsImage from "../assets/investments.png";
+import placeholderImage from "../assets/userPlaceholder.jpg";
 import { Button } from "../components/Button";
 import { Input } from "../components/Input";
 import {
@@ -51,6 +52,7 @@ const feedbackData = [
     comment:
       "I was hesitant at first, but after a year with Nexus Future Fund, I can honestly say it's been one of the best decisions for my business. The 2% monthly return really takes the stress out of investing, and I love how hands-off it is. Highly recommended!",
     rating: 5,
+    img: "https://media.licdn.com/dms/image/v2/D4E03AQGTcs9UNQz44w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1699893372299?e=1733961600&v=beta&t=U9SYUdxMWtnJD_rciTMvqeOmAlg-GZNf_VOYmbsi2Oo",
   },
   {
     name: "Jane Smith",
@@ -58,6 +60,7 @@ const feedbackData = [
     comment:
       "I'm not a finance person, so I was skeptical about crypto. But Nexus Future Fund has been so easy to use. They break everything down in a way that makes sense, and the support team is always there to answer my questions. Now, I feel way more in control of my money.",
     rating: 4,
+    img: "https://media.licdn.com/dms/image/v2/D4E03AQG72eA_wpqfKQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1718239210818?e=1733961600&v=beta&t=1Wh7pYnUD_kg-aGkLwRVf2oCYM11dFljtb1X43iEPu0",
   },
   {
     name: "Robert Johnson",
@@ -65,6 +68,7 @@ const feedbackData = [
     comment:
       "I've tried other investment options over the years, but none have been as steady as Nexus Future Fund. The guaranteed return really gives me peace of mind. And being able to access my money whenever I need it without extra fees has been a game changer.",
     rating: 5,
+    img: "https://media.licdn.com/dms/image/v2/C4D03AQHIu0qJ3xBLEw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1590996021147?e=1733961600&v=beta&t=30ZaXsEw929zZciA3xp0tc5vN42EedbRWAtWPVIWasQ",
   },
   {
     name: "Emily Chen",
@@ -72,6 +76,7 @@ const feedbackData = [
     comment:
       "I'm someone who likes to stay informed, and the support from Nexus Future Fund is always there when I need it. Their 24/7 availability and the expertise behind their strategy make me feel confident about where my money is going. It's like having my own financial team!",
     rating: 5,
+    img: "https://media.licdn.com/dms/image/v2/D4E03AQEGaawKahJBWw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1687465044671?e=1733961600&v=beta&t=SsboU-a440PPw0RgP7QBFY2UrInzpI2s9oHMycq0RdA",
   },
   {
     name: "Michael Brown",
@@ -79,6 +84,7 @@ const feedbackData = [
     comment:
       "I've always been cautious with crypto due to the volatility, but Nexus Future Fund changed my mind. I've been getting steady returns every month without worrying about market swings. It's taken the stress out of investing in crypto.",
     rating: 4,
+    img: "https://media.licdn.com/dms/image/v2/D5603AQGEBpyMr8Ch4w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1675731907412?e=1733961600&v=beta&t=ANayc9CxSZE-vexkEFhQTpLaJGDu94zqteRdNbQXjNw",
   },
   {
     name: "Sarah Davis",
@@ -86,6 +92,7 @@ const feedbackData = [
     comment:
       "I love how Nexus Future Fund makes things simple. I've never been great with finances, but their platform breaks down everything for me. It's empowering to finally feel like I'm in control of my financial future.",
     rating: 5,
+    img: "https://media.licdn.com/dms/image/v2/C4D03AQF4TzAr4pOHtg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1635094558713?e=1733961600&v=beta&t=t5dNrWfJ3p4Kl0zqSEN0N62FWpO_AmyABswHFkrn6Iw",
   },
 ];
 
@@ -362,7 +369,7 @@ export default function Home() {
                 smooth={true}
                 duration={500}
                 offset={-headerHeight}
-                className="text-white text-sm font-black"
+                className="text-white text-sm font-black border-b-2"
                 onClick={closeMenu}>
                 Home
               </ScrollLink>
@@ -371,7 +378,7 @@ export default function Home() {
                 smooth={true}
                 duration={500}
                 offset={-headerHeight}
-                className="text-white text-sm font-black"
+                className="text-white text-sm font-black border-b-2"
                 onClick={closeMenu}>
                 Features
               </ScrollLink>
@@ -380,7 +387,7 @@ export default function Home() {
                 smooth={true}
                 duration={500}
                 offset={-headerHeight}
-                className="text-white text-sm font-black"
+                className="text-white text-sm font-black border-b-2"
                 onClick={closeMenu}>
                 Awareness
               </ScrollLink>
@@ -389,7 +396,7 @@ export default function Home() {
                 smooth={true}
                 duration={500}
                 offset={-headerHeight}
-                className="text-white text-sm font-black"
+                className="text-white text-sm font-black border-b-2"
                 onClick={closeMenu}>
                 Workflow
               </ScrollLink>
@@ -398,7 +405,7 @@ export default function Home() {
                 smooth={true}
                 duration={500}
                 offset={-headerHeight}
-                className="text-white text-sm font-black"
+                className="text-white text-sm font-black border-b-2"
                 onClick={closeMenu}>
                 Benefits
               </ScrollLink>
@@ -407,7 +414,7 @@ export default function Home() {
                 smooth={true}
                 duration={500}
                 offset={-headerHeight}
-                className="text-white text-sm font-black"
+                className="text-white text-sm font-black border-b-2"
                 onClick={closeMenu}>
                 Feedback
               </ScrollLink>
@@ -416,7 +423,7 @@ export default function Home() {
                 smooth={true}
                 duration={500}
                 offset={-headerHeight}
-                className="text-white text-sm font-black"
+                className="text-white text-sm font-black border-b-2"
                 onClick={closeMenu}>
                 FAQ
               </ScrollLink>
@@ -425,7 +432,7 @@ export default function Home() {
                 smooth={true}
                 duration={500}
                 offset={-headerHeight}
-                className="text-white text-sm font-black"
+                className="text-white text-sm font-black border-b-2"
                 onClick={closeMenu}>
                 Blogs
               </ScrollLink>
@@ -434,7 +441,7 @@ export default function Home() {
                 smooth={true}
                 duration={500}
                 offset={-headerHeight}
-                className="text-white text-sm font-black"
+                className="text-white text-sm font-black border-b-2"
                 onClick={closeMenu}>
                 Newsletter
               </ScrollLink>
@@ -838,7 +845,13 @@ export default function Home() {
                       transition={{ duration: 0.5 }}>
                       <div className="bg-gray-700 bg-opacity-50 backdrop-blur-md p-6 rounded-lg shadow-xl">
                         <div className="flex items-center mb-4">
-                          <div className="w-12 h-12 bg-gray-600 rounded-full mr-4"></div>
+                          <Image
+                            src={feedback.img ? feedback.img : placeholderImage}
+                            alt={feedback.name}
+                            width={120}
+                            height={120}
+                            className="w-12 h-12 rounded-full mr-4 border-2 border-pink-500"
+                          />
                           <div>
                             <h3 className="font-semibold">{feedback.name}</h3>
                             <p className="text-sm text-gray-400">

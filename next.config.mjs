@@ -1,6 +1,6 @@
 const nextConfig = {
   images: {
-    domains: ["images.unsplash.com", "plus.unsplash.com"],
+    domains: ["miro.medium.com", "media.licdn.com"],
   },
 };
 

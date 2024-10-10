@@ -7,6 +7,7 @@ import logo from "../../assets/logo.png";
 import homeImage from "../../assets/home.png";
 import benefitsImage from "../../assets/benefits.png";
 import investmentsImage from "../../assets/investments.png";
+import placeholderImage from "../../assets/userPlaceholder.jpg";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import {
@@ -46,18 +47,20 @@ const staggerChildren = {
 
 const feedbackData = [
   {
-    name: "Sophia W.",
+    name: "Sophia Williams",
     role: "Full-Time Trader",
     comment:
       "Nexus Future Trade Signals has completely changed how I trade. The real-time signals are incredibly accurate, and I've seen a consistent 10%+ growth in my capital every month. Their transparency is what sets them apart; I always know exactly what's happening with my trades.",
     rating: 5,
+    img: "https://media.licdn.com/dms/image/v2/D4E03AQHvlN_c_3tT2Q/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1679663026342?e=1733961600&v=beta&t=UZsfSWvA2aKPWMXaUxD5VwCOFXpll0fCharkAb-zlEQ",
   },
   {
-    name: "James P.",
+    name: "James Pascal",
     role: "Entrepreneur",
     comment:
       "I was skeptical at first, but after joining the premium group, I'm impressed. The team walks you through every trade, and the second entry strategy has saved me multiple times. Definitely the most reliable service I've used for Bitcoin futures.",
     rating: 4,
+    img: "https://media.licdn.com/dms/image/v2/D4E03AQHUOaXSKpY1Ng/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1724499115353?e=1733961600&v=beta&t=5VP-q3jgzYbXrGkF1YiGybxBpy7Y8_VhogPkSdM5l-8",
   },
   {
     name: "Liam T.",
@@ -65,27 +68,31 @@ const feedbackData = [
     comment:
       "The 70% accuracy rate is no joke. I joined for the transparency, stayed for the results. The daily signals have become part of my routine, and I've already made back the subscription fee within the first week. Can't recommend it enough!",
     rating: 5,
+    img: "https://media.licdn.com/dms/image/v2/D4D03AQFaR7ScpR7CnA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1702585617004?e=1733961600&v=beta&t=Qtg7h2jFTZPgUpbMX2QenJf5mBptHYK4pGohXFPhWUY",
   },
   {
-    name: "Aisha K.",
-    role: "Freelancer",
-    comment:
-      "What I love most is how transparent Nexus Future Trade Signals is. I can see every trade in real time, and the Excel sheet showing all the trades really builds trust. My portfolio has grown steadily, and the 24/7 support is a huge plus!",
-    rating: 5,
-  },
-  {
-    name: "Daniel R.",
+    name: "Daniel Raffalo",
     role: "Small Business Owner",
     comment:
       "I've been burned by a lot of platforms before, but this one is the real deal. The refund guarantee gives me peace of mind, and the trading strategies actually work. The fact that they document all their trades publicly really helps build trust.",
     rating: 4,
+    img: "https://media.licdn.com/dms/image/v2/D5603AQFQT1CouRj9gg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1676912920297?e=1733961600&v=beta&t=Ibc4W4nnha5q1_LEcwGoQ2ZcqpYjLsA1kZTPM-0zRAw",
   },
   {
-    name: "Olivia M.",
+    name: "Aisha",
+    role: "Freelancer",
+    comment:
+      "What I love most is how transparent Nexus Future Trade Signals is. I can see every trade in real time, and the Excel sheet showing all the trades really builds trust. My portfolio has grown steadily, and the 24/7 support is a huge plus!",
+    rating: 5,
+    img: "https://media.licdn.com/dms/image/v2/C4E03AQEqdL1hNelu8A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1621878420085?e=1733961600&v=beta&t=bcX21wxVKzebQVc4xEd1CoOI2Iddc5NBFnNDO03QEvU",
+  },
+  {
+    name: "Olivia Morison",
     role: "Part-Time Trader",
     comment:
       "Joining Nexus was the best decision I've made for my financial future. The real-time signals are so accurate, and I've had incredible returns. The best part? They're always there to help whenever I have questions, no matter what time it is.",
     rating: 5,
+    img: "https://media.licdn.com/dms/image/v2/D4E03AQG-mLFE_y7p5Q/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1724335569133?e=1733961600&v=beta&t=gAq2m-aw2aAjiDSJcvT_PIIqCpkCwdeYFi-2IaHt3y8",
   },
 ];
 
@@ -373,7 +380,7 @@ export default function Subscription() {
                 smooth={true}
                 duration={500}
                 offset={-headerHeight}
-                className="text-white text-sm"
+                className="text-white text-sm border-b-2"
                 onClick={closeMenu}>
                 Home
               </ScrollLink>
@@ -382,7 +389,7 @@ export default function Subscription() {
                 smooth={true}
                 duration={500}
                 offset={-headerHeight}
-                className="text-white text-sm"
+                className="text-white text-sm border-b-2"
                 onClick={closeMenu}>
                 Features
               </ScrollLink>
@@ -391,7 +398,7 @@ export default function Subscription() {
                 smooth={true}
                 duration={500}
                 offset={-headerHeight}
-                className="text-white text-sm"
+                className="text-white text-sm border-b-2"
                 onClick={closeMenu}>
                 Awareness
               </ScrollLink>
@@ -400,7 +407,7 @@ export default function Subscription() {
                 smooth={true}
                 duration={500}
                 offset={-headerHeight}
-                className="text-white text-sm"
+                className="text-white text-sm border-b-2"
                 onClick={closeMenu}>
                 Benefits
               </ScrollLink>
@@ -409,7 +416,7 @@ export default function Subscription() {
                 smooth={true}
                 duration={500}
                 offset={-headerHeight}
-                className="text-white text-sm"
+                className="text-white text-sm border-b-2"
                 onClick={closeMenu}>
                 Workflow
               </ScrollLink>
@@ -418,7 +425,7 @@ export default function Subscription() {
                 smooth={true}
                 duration={500}
                 offset={-headerHeight}
-                className="text-white text-sm"
+                className="text-white text-sm border-b-2"
                 onClick={closeMenu}>
                 Feedback
               </ScrollLink>
@@ -427,7 +434,7 @@ export default function Subscription() {
                 smooth={true}
                 duration={500}
                 offset={-headerHeight}
-                className="text-white text-sm"
+                className="text-white text-sm border-b-2"
                 onClick={closeMenu}>
                 FAQ
               </ScrollLink>
@@ -436,7 +443,7 @@ export default function Subscription() {
                 smooth={true}
                 duration={500}
                 offset={-headerHeight}
-                className="text-white text-sm"
+                className="text-white text-sm border-b-2"
                 onClick={closeMenu}>
                 Blogs
               </ScrollLink>
@@ -445,7 +452,7 @@ export default function Subscription() {
                 smooth={true}
                 duration={500}
                 offset={-headerHeight}
-                className="text-white text-sm"
+                className="text-white text-sm border-b-2"
                 onClick={closeMenu}>
                 Newsletter
               </ScrollLink>
@@ -855,7 +862,13 @@ export default function Subscription() {
                       transition={{ duration: 0.5 }}>
                       <div className="bg-gray-700 bg-opacity-50 backdrop-blur-md p-6 rounded-lg shadow-xl">
                         <div className="flex items-center mb-4">
-                          <div className="w-12 h-12 bg-gray-600 rounded-full mr-4"></div>
+                          <Image
+                            src={feedback.img ? feedback.img : placeholderImage}
+                            alt={feedback.name}
+                            width={120}
+                            height={120}
+                            className="w-12 h-12 rounded-full mr-4 border-2 border-pink-500"
+                          />
                           <div>
                             <h3 className="font-semibold">{feedback.name}</h3>
                             <p className="text-sm text-gray-400">
