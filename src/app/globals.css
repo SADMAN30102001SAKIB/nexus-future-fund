@@ -14,7 +14,15 @@
   }
 }
 
+* {
+  -webkit-user-select: none;
+}
+
+html,
 body {
+  touch-action: manipulation;
+  -ms-touch-action: manipulation;
+  user-select: none;
   color: var(--foreground);
   background: var(--background);
 }
