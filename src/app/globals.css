@@ -20,11 +20,10 @@
 
 html,
 body {
-  touch-action: manipulation;
-  -ms-touch-action: manipulation;
+  touch-action: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
   user-select: none;
-  color: var(--foreground);
-  background: var(--background);
 }
 
 @layer utilities {
