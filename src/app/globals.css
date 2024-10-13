@@ -15,7 +15,7 @@
 }
 
 body {
-  touch-action: pan-y;
+  /* touch-action: pan-y; */
   color: var(--foreground);
   background: var(--background);
 }

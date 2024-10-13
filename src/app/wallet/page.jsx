@@ -46,7 +46,7 @@ export default function About() {
   };
 
   return (
-    <div className="bg-gray-900 min-h-screen text-gray-100">
+    <div className="bg-gray-900 min-h-screen text-gray-100 touch-pan-y">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900 bg-opacity-80 backdrop-blur-md">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
