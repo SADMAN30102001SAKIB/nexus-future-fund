@@ -14,16 +14,10 @@
   }
 }
 
-* {
-  -webkit-user-select: none;
-}
-
-html,
 body {
-  touch-action: none;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  user-select: none;
+  touch-action: pan-y;
+  color: var(--foreground);
+  background: var(--background);
 }
 
 @layer utilities {

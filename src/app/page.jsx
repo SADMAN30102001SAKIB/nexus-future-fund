@@ -146,30 +146,8 @@ export default function Home() {
   const headerHeight = 80;
 
   useEffect(() => {
-    const registerServiceWorker = async () => {
-      if ("serviceWorker" in navigator) {
-        navigator.serviceWorker
-          .register("/sw.js")
-          .then(function (registration) {
-            console.log(
-              "Service Worker registered with scope:",
-              registration.scope,
-            );
-          })
-          .catch(function (error) {
-            console.log("Service Worker registration failed:", error);
-          });
-      } else {
-        alert("Service Worker is not supported in this browser.");
-      }
-    };
-
-    registerServiceWorker();
-  }, []);
-
-  useEffect(() => {
     const handleBeforeInstallPrompt = (e) => {
-      console.log("beforeinstallprompt event fired");
+      console.log("beforeInstallPrompt event fired");
       e.preventDefault();
       setDeferredPrompt(e);
     };
@@ -198,7 +176,7 @@ export default function Home() {
       });
     } else {
       console.log(deferredPrompt);
-      alert("Something went wrong!");
+      alert("Can't Install!");
     }
   };
 

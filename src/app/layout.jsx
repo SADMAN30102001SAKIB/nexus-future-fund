@@ -3,7 +3,6 @@
 import { usePathname } from "next/navigation";
 import "./globals.css";
 import { Ubuntu } from "next/font/google";
-import { useEffect } from "react";
 
 const ubuntu = Ubuntu({
   subsets: ["latin"],
@@ -99,22 +98,6 @@ const subscriptionMetadata = {
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
-
-  useEffect(() => {
-    const preventZoom = (e) => {
-      e.preventDefault();
-    };
-
-    document.addEventListener("gesturestart", preventZoom);
-    document.addEventListener("gesturechange", preventZoom);
-    document.addEventListener("gestureend", preventZoom);
-
-    return () => {
-      document.removeEventListener("gesturestart", preventZoom);
-      document.removeEventListener("gesturechange", preventZoom);
-      document.removeEventListener("gestureend", preventZoom);
-    };
-  }, []);
 
   const currentMetadata =
     pathname === "/subscription" || pathname === "/howtosubscribe"
