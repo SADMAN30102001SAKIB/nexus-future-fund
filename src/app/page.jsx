@@ -142,7 +142,65 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [submitionError, setSubmitionError] = useState("");
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
   const headerHeight = 80;
+
+  useEffect(() => {
+    const registerServiceWorker = async () => {
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("/sw.js")
+          .then(function (registration) {
+            console.log(
+              "Service Worker registered with scope:",
+              registration.scope,
+            );
+          })
+          .catch(function (error) {
+            console.log("Service Worker registration failed:", error);
+          });
+      } else {
+        alert("Service Worker is not supported in this browser.");
+      }
+    };
+
+    registerServiceWorker();
+  }, []);
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e) => {
+      console.log("beforeinstallprompt event fired");
+      e.preventDefault();
+      setDeferredPrompt(e);
+    };
+
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    console.log("PWAInstall component mounted");
+
+    return () => {
+      window.removeEventListener(
+        "beforeinstallprompt",
+        handleBeforeInstallPrompt,
+      );
+    };
+  }, []);
+
+  const handleInstallClick = () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === "accepted") {
+          console.log("User accepted the PWA prompt");
+        } else {
+          console.log("User dismissed the PWA prompt");
+        }
+        setDeferredPrompt(null);
+      });
+    } else {
+      console.log(deferredPrompt);
+      alert("Something went wrong!");
+    }
+  };
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -339,11 +397,11 @@ export default function Home() {
             </ScrollLink>
           </nav>
           <div className="hidden lg:block">
-            <Link href="#" passHref>
-              <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
-                Download App
-              </Button>
-            </Link>
+            <Button
+              onClick={handleInstallClick}
+              className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
+              Download App
+            </Button>
           </div>
           <button
             className="lg:hidden text-white focus:outline-none"
@@ -445,11 +503,11 @@ export default function Home() {
                 onClick={closeMenu}>
                 Newsletter
               </ScrollLink>
-              <Link href="#" passHref>
-                <Button className="px-2 py-1 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400 text-sm">
-                  Download App
-                </Button>
-              </Link>
+              <Button
+                onClick={handleInstallClick}
+                className="px-2 py-1 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400 text-sm">
+                Download App
+              </Button>
             </div>
           </motion.div>
         )}
@@ -603,7 +661,7 @@ export default function Home() {
 
         {/* Scams Section */}
         <Element name="scams">
-          <section className="py-8 lg:py-0">
+          <section className="py-8 lg:py-4">
             <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
               <motion.div
                 className="lg:w-1/2 lg:pl-8 hidden lg:block"
@@ -683,7 +741,7 @@ export default function Home() {
 
         {/* Workflow Section */}
         <Element name="workflow">
-          <section className="py-8 lg:py-0 bg-gray-800">
+          <section className="py-8 lg:py-4 bg-gray-800">
             <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
               <motion.div
                 className="lg:w-1/2 mb-8 lg:mb-0 lg:px-16"
@@ -700,12 +758,15 @@ export default function Home() {
                     className="text-gray-300 text-justify"
                     variants={fadeIn}>
                     <b className="text-white">Top-Tier Research:</b> Our expert
-                    team monitors the market 24/7, identifying the most
-                    promising crypto assets before they boom.
+                    team monitors the crypto market 24/7, identifying
+                    high-potential assets before they boom. Using advanced tools
+                    and insights, we target investments with strong growth
+                    potential.
                     <br />
                     <b className="text-white">Strategic Investments:</b> We act
                     quickly and strategically, placing your money where it will
-                    grow the fastest and safest.
+                    grow the fastest, balancing both returns and safety.
+                    <br />
                     <br />
                     <br />
                     <b className="text-pink-500">Why Cryptocurrency?</b>
@@ -739,7 +800,7 @@ export default function Home() {
 
         {/* Benefits Section */}
         <Element name="benefits">
-          <section className="py-8 lg:py-0">
+          <section className="py-8 lg:py-4">
             <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
               <motion.div
                 className="lg:w-1/2 lg:pl-8 hidden lg:block"
@@ -805,11 +866,11 @@ export default function Home() {
                   <motion.div
                     className="flex space-x-4  mt-6"
                     variants={fadeIn}>
-                    <Link href="#" passHref>
-                      <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
-                        Download
-                      </Button>
-                    </Link>
+                    <Button
+                      onClick={handleInstallClick}
+                      className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
+                      Download
+                    </Button>
                     <Link href="/howtoinvest" passHref>
                       <Button
                         className="px-4 py-2 bg-white text-pink-600 rounded-md hover:bg-pink-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-pink-400"
@@ -826,7 +887,7 @@ export default function Home() {
 
         {/* Feedback Section */}
         <Element name="feedback">
-          <section className="py-8 lg:py-16 lg:px-48 bg-gray-800">
+          <section className="py-8 lg:py-16 lg:px-36 bg-gray-800">
             <div className="container mx-auto px-4">
               <h2 className="text-3xl font-bold text-center mb-10">
                 What Our Clients Say
@@ -926,7 +987,7 @@ export default function Home() {
         {/* Blogs Section */}
         <Element name="blogs">
           <section className="py-8 lg:py-16 bg-gray-800">
-            <div className="container mx-auto lg:px-36">
+            <div className="container mx-auto lg:px-24">
               <h2 className="text-3xl font-bold text-center mb-10">
                 Latest Blogs
               </h2>
@@ -953,9 +1014,7 @@ export default function Home() {
                           {blog.title}
                         </h3>
                         <div className="flex-grow">
-                          <p className="text-gray-300 text-justify">
-                            {blog.description}
-                          </p>
+                          <p className="text-gray-300">{blog.description}</p>
                         </div>
                         <div className="mt-4">
                           <p className="text-gray-400 text-sm">

@@ -609,7 +609,7 @@ export default function Subscription() {
 
         {/* Scams Section */}
         <Element name="scams">
-          <section className="py-8 lg:py-0">
+          <section className="py-8 lg:py-4">
             <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
               <motion.div
                 className="lg:w-1/2 lg:pl-8 hidden lg:block"
@@ -688,7 +688,7 @@ export default function Subscription() {
 
         {/* Benefits Section */}
         <Element name="benefits">
-          <section className="py-8 lg:py-0 bg-gray-800">
+          <section className="py-8 lg:py-4 bg-gray-800">
             <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
               <motion.div
                 className="lg:w-1/2 mb-8 lg:mb-0 lg:px-16"
@@ -753,7 +753,7 @@ export default function Subscription() {
 
         {/* Workflow Section */}
         <Element name="workflow">
-          <section className="py-8 lg:py-0">
+          <section className="py-8 lg:py-4">
             <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
               <motion.div
                 className="lg:w-1/2 lg:pl-8 hidden lg:block"
@@ -843,7 +843,7 @@ export default function Subscription() {
 
         {/* Feedback Section */}
         <Element name="feedback">
-          <section className="py-8 lg:py-16 lg:px-48 bg-gray-800">
+          <section className="py-8 lg:py-16 lg:px-36 bg-gray-800">
             <div className="container mx-auto px-4">
               <h2 className="text-3xl font-bold text-center mb-10">
                 What Our Subscribers Say
@@ -943,7 +943,7 @@ export default function Subscription() {
         {/* Blogs Section */}
         <Element name="blogs">
           <section className="py-8 lg:py-16 bg-gray-800">
-            <div className="container mx-auto lg:px-36">
+            <div className="container mx-auto lg:px-24">
               <h2 className="text-3xl font-bold text-center mb-10">
                 Latest Blogs
               </h2>
@@ -970,9 +970,7 @@ export default function Subscription() {
                           {blog.title}
                         </h3>
                         <div className="flex-grow">
-                          <p className="text-gray-300 text-justify">
-                            {blog.description}
-                          </p>
+                          <p className="text-gray-300">{blog.description}</p>
                         </div>
                         <div className="mt-4">
                           <p className="text-gray-400 text-sm">
