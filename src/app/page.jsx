@@ -1129,7 +1129,7 @@ export default function Home() {
                   </svg>
                 </a>
                 <a
-                  href="https://www.youtube.com/@nexusFutureFund7"
+                  href="https://www.youtube.com/@nexusFutureFundOfficial"
                   className="text-gray-300 hover:text-white transition-colors duration-300"
                   aria-label="YouTube">
                   <svg
