@@ -116,7 +116,7 @@ export default function RootLayout({ children }) {
         <meta name="description" content={currentMetadata.description} />
         <meta name="keywords" content={currentMetadata.keywords} />
         <meta name="robots" content={currentMetadata.robots} />
-        <meta name="theme-color" content="#db2777" />
+        <meta name="theme-color" content="#111827" />
 
         {/* Open Graph */}
         <meta property="og:title" content={currentMetadata.openGraph?.title} />
