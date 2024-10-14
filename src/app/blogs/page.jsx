@@ -236,7 +236,7 @@ export default function Blog() {
                   </svg>
                 </a>
                 <a
-                  href="https://www.youtube.com/@NexusFutureFund"
+                  href="https://www.youtube.com/@nexusFutureFund7"
                   className="text-gray-300 hover:text-white transition-colors duration-300"
                   aria-label="YouTube">
                   <svg
