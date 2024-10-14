@@ -1096,7 +1096,7 @@ export default function Home() {
               <b className="text-white">Follow Us & Stay Connected.</b>
               <div className="flex space-x-4 mt-4">
                 <a
-                  href="https://www.facebook.com/nexusfundfuture"
+                  href="https://www.facebook.com/nexusfuturefundofficial"
                   className="text-gray-300 hover:text-white transition-colors duration-300"
                   aria-label="Facebook">
                   <svg
