@@ -3,7 +3,7 @@ const blogs = [
     title: "Turn $1K into $90M with Compounding",
     description:
       "Learn how to turn $1K into $90M with compounding with 10% monthly growth.",
-    date: "2024-15-10",
+    date: "2024-10-15",
     url: "https://nexusfuturefund2024.medium.com/turn-1k-into-90m-with-compounding-achieve-10-monthly-growth-98162605b511",
     img: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*WMlEDVfDN1gmQwfYYHTZ7g.jpeg",
   },
