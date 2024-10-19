@@ -8,14 +8,14 @@ import homeImage from "../../assets/home.png";
 import benefitsImage from "../../assets/benefits.png";
 import investmentsImage from "../../assets/investments.png";
 import placeholderImage from "../../assets/userPlaceholder.jpg";
-import { Button } from "../../components/Button";
-import { Input } from "../../components/Input";
+import { Button } from "../../components/Button.jsx";
+import { Input } from "../../components/Input.jsx";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "../../components/accordion";
+} from "../../components/accordion.jsx";
 import {
   DollarSign,
   Eye,

@@ -195,7 +195,7 @@ export default function About() {
               {
                 title: "Special Link",
                 links: ["Premium Trading Signals"],
-                href: ["/subscription"],
+                href: ["/signals"],
               },
               {
                 title: "Contact",

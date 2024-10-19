@@ -283,7 +283,7 @@ export default function Blog() {
               {
                 title: "Special Link",
                 links: ["Premium Trading Signals"],
-                href: ["/subscription"],
+                href: ["/signals"],
               },
               {
                 title: "Contact",

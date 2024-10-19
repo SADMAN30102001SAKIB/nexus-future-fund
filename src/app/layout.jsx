@@ -100,7 +100,7 @@ export default function RootLayout({ children }) {
   const pathname = usePathname();
 
   const currentMetadata =
-    pathname === "/subscription" || pathname === "/howtosubscribe"
+    pathname === "/signals" || pathname === "/howtosubscribe"
       ? subscriptionMetadata
       : defaultMetadata;
 
