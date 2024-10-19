@@ -56,6 +56,7 @@ export default function Wallet() {
       let sessionUser = "";
       try {
         sessionUser = await account.get();
+        console.log(sessionUser);
         setUser(sessionUser);
       } catch (error) {
         console.log(
