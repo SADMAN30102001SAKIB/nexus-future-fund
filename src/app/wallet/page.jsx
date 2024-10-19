@@ -56,7 +56,6 @@ export default function Wallet() {
       let sessionUser = "";
       try {
         sessionUser = await account.get();
-        console.log(sessionUser);
         setUser(sessionUser);
       } catch (error) {
         console.log(
@@ -98,6 +97,11 @@ export default function Wallet() {
     getUser();
   }, [router]);
 
+  const getUserName = async () => {
+    const res = await db.users.get(user.$id);
+    return res.name;
+  };
+
   if (loading)
     return (
       <div>
@@ -125,7 +129,7 @@ export default function Wallet() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900 bg-opacity-80 backdrop-blur-md">
         <div className="container mx-auto p-6 flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            <h1 className="text-2xl font-black">{user.name}</h1>
+            <h1 className="text-2xl font-black">{getUserName()}</h1>
           </div>
         </div>
       </header>
