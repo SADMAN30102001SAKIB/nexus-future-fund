@@ -504,7 +504,7 @@ export default function Home() {
                 <motion.div
                   className="bg-gray-800 bg-opacity-50 backdrop-blur-md inline-block px-3 py-1 rounded-full text-sm mb-4"
                   variants={fadeIn}>
-                  Coming Soon: We will have a mobile app soon!
+                  Coming Soon: We will have an installable app soon!
                 </motion.div>
                 <motion.h1
                   className="text-2xl lg:text-3xl mb-4 font-black"

@@ -25,7 +25,7 @@ const staggerChildren = {
 
 const howToDetails = [
   "<p>Before you begin, it's important to understand how our fund works. Take your time to read all the information provided on our website about our services, returns, and how we manage your investments.<br/><br/><b>Need Help?</b><br/>If anything is unclear, or if you have any questions, don't hesitate to reach out to us. Contact our support team and we'll guide you through the process step by step.</p>",
-  "<p>To join our fund and start investing, you need to download the Nexus Future Fund app, available on both:<br/>Google Play Store (for Android users)<br/>App Store (for iPhone users)<br/>Simply search for 'Nexus Future Fund' or click 'Download The App' on our page and install the app on your device.</p>",
+  "<p>To join our fund and start investing, you should install the Nexus Future Fund app (even though everything can be done in the website), available for both:<br/>Android & iOS<br/>When you're on our website, simply tap 'Add to Home Screen' in your browser and this will automatically install the app on your device (watch our video tutorial on YouTube for step by step guide).</p>",
   "<p>Once the app is installed, open it and Sign up for a new account using your personal information.<br/>Complete the verification process to ensure your account is secure and ready for investment. Verification helps protect your funds and ensures the safety of our platform.</p>",
   "<p>Now that your account is set up and verified, it's time to deposit the amount you wish to invest.<br/><b>Important:</b> You can only deposit money between the 21st and 28th of each month.<br/><br/>Select the deposit option in the app.<br/>Choose the amount you want to invest and complete the deposit.</p>",
   "<p>Your investment will officially start counting from the 1st of the next month. From then on, you will receive a guaranteed 2% interest every month on your investment.</p>",
@@ -75,7 +75,7 @@ export default function HowToInvest() {
           <div>
             <Link href="/wallet" passHref>
               <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
-                Download App
+                Invest
               </Button>
             </Link>
           </div>
@@ -109,7 +109,7 @@ export default function HowToInvest() {
                   <motion.ul className="space-y-4" variants={staggerChildren}>
                     {[
                       "Read the Information on Our Website",
-                      "Download Our App",
+                      "Install Our App",
                       "Sign Up and Verify Your Account",
                       "Deposit Your Investment",
                       "Start Earning 2% Monthly Interest",
