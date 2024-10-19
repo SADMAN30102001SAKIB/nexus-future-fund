@@ -5,11 +5,10 @@ import { useState } from "react";
 
 const Login = () => {
   const [error, setError] = useState(null);
-
-  const baseUrl =
-    window.location.hostname === "localhost"
-      ? "http://localhost:3000"
-      : "https://nexusfuturefund.vercel.app";
+  let baseUrl = "https://nexusfuturefund.vercel.app";
+  if (typeof window !== "undefined") {
+    baseUrl = "http://localhost:3000";
+  }
 
   const handleLogin = async () => {
     try {

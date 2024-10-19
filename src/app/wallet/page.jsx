@@ -32,11 +32,10 @@ export default function Wallet() {
   const [error, setError] = useState(null);
   const [userName, setUserName] = useState(null);
   // const router = useRouter();
-
-  const baseUrl =
-    window.location.hostname === "localhost"
-      ? "http://localhost:3000"
-      : "https://nexusfuturefund.vercel.app";
+  let baseUrl = "https://nexusfuturefund.vercel.app";
+  if (typeof window !== "undefined") {
+    baseUrl = "http://localhost:3000";
+  }
 
   useEffect(() => {
     const toggleVisibility = () => {
