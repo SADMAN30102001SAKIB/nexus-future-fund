@@ -23,7 +23,7 @@ const staggerChildren = {
   },
 };
 
-export default function Blog() {
+export default function Blogs() {
   const [showScrollUp, setShowScrollUp] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortedBlogs, setSortedBlogs] = useState(blogs);

@@ -145,7 +145,7 @@ const faq = [
   },
 ];
 
-export default function Subscription() {
+export default function Signals() {
   const [showScrollUp, setShowScrollUp] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentFeedbackIndex, setCurrentFeedbackIndex] = useState(0);

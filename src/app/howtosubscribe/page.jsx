@@ -33,7 +33,7 @@ const howToDetails = [
   "<p>If we ever close a month in negative ROI (which has never happened), we'll refund your subscription fee. We stand behind our traders and are confident in their ability to deliver profits. You have nothing to lose by joining!</p>",
 ];
 
-export default function About() {
+export default function HowToSubscribe() {
   const [showScrollUp, setShowScrollUp] = useState(false);
 
   useEffect(() => {

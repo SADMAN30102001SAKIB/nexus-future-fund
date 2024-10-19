@@ -32,7 +32,7 @@ const howToDetails = [
   "<p>You are free to withdraw your money at any time!<br/>Open the app and select the withdrawal option.<br/>Your withdrawal request will be processed within 1 hour.<br/><b>Note:</b> To receive your 2% interest, it is best to withdraw after the month is complete.</p>",
 ];
 
-export default function About() {
+export default function HowToInvest() {
   const [showScrollUp, setShowScrollUp] = useState(false);
 
   useEffect(() => {
@@ -73,7 +73,7 @@ export default function About() {
             </div>
           </Link>
           <div>
-            <Link href="#" passHref>
+            <Link href="/wallet" passHref>
               <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
                 Download App
               </Button>
@@ -154,13 +154,13 @@ export default function About() {
                   <motion.h2 className="text-3xl font-bold" variants={fadeIn}>
                     Ready to Invest?
                   </motion.h2>
-                  <Link href="#" passHref>
+                  <Link href="/wallet" passHref>
                     <Button className="px-4 py-2 my-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
-                      Download
+                      Invest
                     </Button>
                   </Link>
                   <motion.p className="text-gray-300" variants={fadeIn}>
-                    Download our app and start your journey today!
+                    Join us and start your journey today!
                   </motion.p>
                 </div>
               </motion.div>

@@ -142,43 +142,43 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [submitionError, setSubmitionError] = useState("");
-  const [deferredPrompt, setDeferredPrompt] = useState(null);
+  // const [deferredPrompt, setDeferredPrompt] = useState(null);
   const headerHeight = 80;
 
-  useEffect(() => {
-    const handleBeforeInstallPrompt = (e) => {
-      console.log("beforeInstallPrompt event fired");
-      e.preventDefault();
-      setDeferredPrompt(e);
-    };
+  // useEffect(() => {
+  //   const handleBeforeInstallPrompt = (e) => {
+  //     console.log("beforeInstallPrompt event fired");
+  //     e.preventDefault();
+  //     setDeferredPrompt(e);
+  //   };
 
-    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
-    console.log("PWAInstall component mounted");
+  //   window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+  //   console.log("PWAInstall component mounted");
 
-    return () => {
-      window.removeEventListener(
-        "beforeinstallprompt",
-        handleBeforeInstallPrompt,
-      );
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener(
+  //       "beforeinstallprompt",
+  //       handleBeforeInstallPrompt,
+  //     );
+  //   };
+  // }, []);
 
-  const handleInstallClick = () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === "accepted") {
-          console.log("User accepted the PWA prompt");
-        } else {
-          console.log("User dismissed the PWA prompt");
-        }
-        setDeferredPrompt(null);
-      });
-    } else {
-      console.log(deferredPrompt);
-      alert("Can't Install!");
-    }
-  };
+  // const handleInstallClick = () => {
+  //   if (deferredPrompt) {
+  //     deferredPrompt.prompt();
+  //     deferredPrompt.userChoice.then((choiceResult) => {
+  //       if (choiceResult.outcome === "accepted") {
+  //         console.log("User accepted the PWA prompt");
+  //       } else {
+  //         console.log("User dismissed the PWA prompt");
+  //       }
+  //       setDeferredPrompt(null);
+  //     });
+  //   } else {
+  //     console.log(deferredPrompt);
+  //     alert("Can't Install!");
+  //   }
+  // };
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -375,11 +375,11 @@ export default function Home() {
             </ScrollLink>
           </nav>
           <div className="hidden lg:block">
-            <Button
-              onClick={handleInstallClick}
-              className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
-              Download App
-            </Button>
+            <Link href="/wallet" passHref>
+              <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
+                Invest
+              </Button>
+            </Link>
           </div>
           <button
             className="lg:hidden text-white focus:outline-none"
@@ -481,11 +481,11 @@ export default function Home() {
                 onClick={closeMenu}>
                 Newsletter
               </ScrollLink>
-              <Button
-                onClick={handleInstallClick}
-                className="px-2 py-1 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400 text-sm">
-                Download App
-              </Button>
+              <Link href="/wallet" passHref>
+                <Button className="px-2 py-1 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400 text-sm">
+                  Download App
+                </Button>
+              </Link>
             </div>
           </motion.div>
         )}
@@ -844,11 +844,11 @@ export default function Home() {
                   <motion.div
                     className="flex space-x-4  mt-6"
                     variants={fadeIn}>
-                    <Button
-                      onClick={handleInstallClick}
-                      className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
-                      Download
-                    </Button>
+                    <Link href="/wallet" passHref>
+                      <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
+                        Invest
+                      </Button>
+                    </Link>
                     <Link href="/howtoinvest" passHref>
                       <Button
                         className="px-4 py-2 bg-white text-pink-600 rounded-md hover:bg-pink-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-pink-400"

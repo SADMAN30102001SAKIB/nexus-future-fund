@@ -85,7 +85,7 @@ const termsAndConditions = [
   },
 ];
 
-export default function About() {
+export default function Terms() {
   const [showScrollUp, setShowScrollUp] = useState(false);
 
   useEffect(() => {

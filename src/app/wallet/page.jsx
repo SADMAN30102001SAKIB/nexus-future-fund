@@ -23,7 +23,7 @@ const staggerChildren = {
   },
 };
 
-export default function About() {
+export default function Wallet() {
   const [showScrollUp, setShowScrollUp] = useState(false);
 
   useEffect(() => {
