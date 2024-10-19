@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { DollarSign, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Element } from "react-scroll";
@@ -31,7 +31,12 @@ export default function Wallet() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [userName, setUserName] = useState(null);
-  const router = useRouter();
+  // const router = useRouter();
+
+  const baseUrl =
+    window.location.hostname === "localhost"
+      ? "http://localhost:3000"
+      : "https://nexusfuturefund.vercel.app";
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -67,8 +72,8 @@ export default function Wallet() {
         try {
           await account.createOAuth2Session(
             "google",
-            "https://nexusfuturefund.vercel.app/wallet",
-            "https://nexusfuturefund.vercel.app/wallet/login",
+            `${baseUrl}/wallet`,
+            `${baseUrl}/wallet/login`,
           );
         } catch (e) {
           console.log(e);
@@ -96,7 +101,7 @@ export default function Wallet() {
       }
     };
     getUser();
-  }, [router]);
+  }, [baseUrl]);
 
   if (loading)
     return (
