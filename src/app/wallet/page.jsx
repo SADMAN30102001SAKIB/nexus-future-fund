@@ -30,6 +30,7 @@ export default function Wallet() {
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [userName, setUserName] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -87,7 +88,7 @@ export default function Wallet() {
         ) {
           setShowModal(true);
         }
-
+        setUserName(userDoc.name);
         setLoading(false);
       } catch (err) {
         console.log("Error fetching user data:", err);
@@ -96,11 +97,6 @@ export default function Wallet() {
     };
     getUser();
   }, [router]);
-
-  const getUserName = async () => {
-    const res = await db.users.get(user.$id);
-    return res.name;
-  };
 
   if (loading)
     return (
@@ -129,7 +125,7 @@ export default function Wallet() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900 bg-opacity-80 backdrop-blur-md">
         <div className="container mx-auto p-6 flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            <h1 className="text-2xl font-black">{getUserName()}</h1>
+            <h1 className="text-2xl font-black">{userName}</h1>
           </div>
         </div>
       </header>
