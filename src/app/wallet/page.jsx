@@ -33,7 +33,8 @@ export default function Wallet() {
   const [userName, setUserName] = useState(null);
   // const router = useRouter();
   let baseUrl = "https://nexusfuturefund.vercel.app";
-  if (window) {
+  if (typeof window != undefined) {
+    console.log("window", typeof window);
     baseUrl = "http://localhost:3000";
   }
 
