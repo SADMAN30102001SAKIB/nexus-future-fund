@@ -161,6 +161,7 @@ export default function RootLayout({ children }) {
         <meta name="twitter:site" content={currentMetadata.twitter?.site} />
 
         {/* Apple */}
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 

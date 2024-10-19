@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import logo from "../../assets/logo.png";
+import { useRouter } from "next/navigation";
 import { DollarSign, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Element } from "react-scroll";
 import { Button } from "../../components/Button";
+import { account } from "../../appwrite/config";
+import db from "../../appwrite/database";
+import UserDetailsModal from "../../components/userDetailModal";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -25,6 +26,11 @@ const staggerChildren = {
 
 export default function Wallet() {
   const [showScrollUp, setShowScrollUp] = useState(false);
+  const [user, setUser] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -45,24 +51,81 @@ export default function Wallet() {
     });
   };
 
+  useEffect(() => {
+    const getUser = async () => {
+      let sessionUser = "";
+      try {
+        sessionUser = await account.get();
+        setUser(sessionUser);
+      } catch (error) {
+        console.log(
+          "User not authenticated or error fetching user data:",
+          error,
+        );
+        // router.push("/wallet/login");
+        try {
+          await account.createOAuth2Session(
+            "google",
+            "http://localhost:3000/wallet",
+            "http://localhost:3000/wallet/login",
+          );
+        } catch (e) {
+          console.log(e);
+          setError("Please try again later.");
+        }
+        return;
+      }
+
+      try {
+        const userDoc = await db.users.get(sessionUser.$id);
+
+        if (
+          !userDoc ||
+          !userDoc.name ||
+          !userDoc.phoneNumber ||
+          !userDoc.bankAddress
+        ) {
+          setShowModal(true);
+        }
+
+        setLoading(false);
+      } catch (err) {
+        console.log("Error fetching user data:", err);
+        setShowModal(true);
+      }
+    };
+    getUser();
+  }, [router]);
+
+  if (loading)
+    return (
+      <div>
+        {showModal ? (
+          <UserDetailsModal
+            user={user}
+            onClose={() => {
+              setLoading(false);
+              setShowModal(false);
+            }}
+          />
+        ) : (
+          <div className="flex items-center justify-center text-9xl h-screen">
+            {error ? <p className="text-4xl">{error}</p> : "Loading..."}
+          </div>
+        )}
+      </div>
+    );
+
+  if (!user) return null;
+
   return (
     <div className="bg-gray-900 min-h-screen text-gray-100 touch-pan-y">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900 bg-opacity-80 backdrop-blur-md">
-        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-          <Link href="/" passHref>
-            <div className="flex items-center space-x-2">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center">
-                <Image
-                  src={logo}
-                  alt="logo"
-                  width={256}
-                  height={256}
-                  className="w-full"
-                />
-              </div>
-            </div>
-          </Link>
+        <div className="container mx-auto p-6 flex justify-between items-center">
+          <div className="flex items-center space-x-2">
+            <h1 className="text-2xl font-black">{user.name}</h1>
+          </div>
         </div>
       </header>
 
@@ -93,6 +156,18 @@ export default function Wallet() {
                   variants={fadeIn}>
                   <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
                     Withdraw
+                  </Button>
+                </motion.p>
+                <motion.p
+                  className="mb-6 text-lg text-justify"
+                  variants={fadeIn}>
+                  <Button
+                    onClick={async () => {
+                      await account.deleteSession("current");
+                      window.location.reload();
+                    }}
+                    className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    Log Out
                   </Button>
                 </motion.p>
               </motion.div>
