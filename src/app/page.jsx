@@ -483,7 +483,7 @@ export default function Home() {
               </ScrollLink>
               <Link href="/wallet" passHref>
                 <Button className="px-2 py-1 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400 text-sm">
-                  Download App
+                  Invest
                 </Button>
               </Link>
             </div>
