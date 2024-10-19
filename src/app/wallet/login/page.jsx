@@ -5,17 +5,13 @@ import { useState } from "react";
 
 const Login = () => {
   const [error, setError] = useState(null);
-  let baseUrl = "https://nexusfuturefund.vercel.app";
-  if (typeof window != undefined) {
-    baseUrl = "http://localhost:3000";
-  }
 
   const handleLogin = async () => {
     try {
       await account.createOAuth2Session(
         "google",
-        `${baseUrl}/wallet`,
-        `${baseUrl}/wallet/login`,
+        `http://localhost:3000/wallet`,
+        `http://localhost:3000/wallet/login`,
       );
     } catch (e) {
       setError("Login failed. Please try again.");

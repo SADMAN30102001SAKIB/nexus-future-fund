@@ -32,11 +32,6 @@ export default function Wallet() {
   const [error, setError] = useState(null);
   const [userName, setUserName] = useState(null);
   // const router = useRouter();
-  let baseUrl = "https://nexusfuturefund.vercel.app";
-  if (typeof window != undefined) {
-    console.log("window", typeof window);
-    baseUrl = "http://localhost:3000";
-  }
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -72,8 +67,8 @@ export default function Wallet() {
         try {
           await account.createOAuth2Session(
             "google",
-            `${baseUrl}/wallet`,
-            `${baseUrl}/wallet/login`,
+            `http://localhost:3000/wallet`,
+            `http://localhost:3000/wallet/login`,
           );
         } catch (e) {
           console.log(e);
@@ -101,7 +96,7 @@ export default function Wallet() {
       }
     };
     getUser();
-  }, [baseUrl]);
+  }, []);
 
   if (loading)
     return (
