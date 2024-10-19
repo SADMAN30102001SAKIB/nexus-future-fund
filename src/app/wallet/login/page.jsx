@@ -6,7 +6,7 @@ import { useState } from "react";
 const Login = () => {
   const [error, setError] = useState(null);
   let baseUrl = "https://nexusfuturefund.vercel.app";
-  if (typeof window !== undefined) {
+  if (window) {
     baseUrl = "http://localhost:3000";
   }
 
