@@ -66,8 +66,8 @@ export default function Wallet() {
         try {
           await account.createOAuth2Session(
             "google",
-            "http://localhost:3000/wallet",
-            "http://localhost:3000/wallet/login",
+            "https://nexusfuturefund.vercel.app/wallet",
+            "https://nexusfuturefund.vercel.app/wallet/login",
           );
         } catch (e) {
           console.log(e);

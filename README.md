@@ -27,7 +27,7 @@ pnpm dev
 bun dev
 ```
 
-Once the server is running, open [http://localhost:3000](http://localhost:3000) in your browser to see the website in action.
+Once the server is running, open [https://nexusfuturefund.vercel.app](https://nexusfuturefund.vercel.app) in your browser to see the website in action.
 
 As you make changes to the code, the browser will automatically reload to reflect the updates.
 
