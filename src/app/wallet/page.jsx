@@ -67,10 +67,7 @@ export default function Wallet() {
         sessionUser = await account.get();
         setUser(sessionUser);
       } catch (error) {
-        console.log(
-          "User not authenticated or error fetching user data:",
-          error,
-        );
+        alert("User not authenticated or error fetching user data:", error);
         router.push("/wallet/login");
         return;
       }
