@@ -194,9 +194,9 @@ export default function Wallet() {
           <h1 className="text-2xl font-black">
             {userDoc.name}{" "}
             {verified ? (
-              <span className="text-green-500 text-sm">(verified)</span>
+              <p className="text-green-500 text-sm">(verified)</p>
             ) : (
-              <span className="text-red-500 text-sm">(not verified)</span>
+              <p className="text-red-500 text-sm">(not verified)</p>
             )}
           </h1>
           <div className="flex items-start md:items-center">
