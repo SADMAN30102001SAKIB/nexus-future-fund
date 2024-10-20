@@ -2,6 +2,7 @@
 
 import { account } from "../../../appwrite/config";
 import { useState } from "react";
+import { KeyRound } from "lucide-react";
 
 const Login = () => {
   const [error, setError] = useState(null);
@@ -25,10 +26,11 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center flex-col">
+    <div className="bg-gray-800 h-screen flex items-center justify-center flex-col">
       <button
         onClick={handleLogin}
-        className="bg-blue-500 text-white p-4 rounded-lg">
+        className="bg-pink-600 text-white p-4 rounded-lg flex">
+        <KeyRound className="mr-2" />
         Login with Google
       </button>
       {error && <p className="text-red-500 mt-4">{error}</p>}

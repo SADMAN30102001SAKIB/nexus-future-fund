@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { account } from "../../../appwrite/config";
+import { useRouter } from "next/navigation";
 import db from "../../../appwrite/database";
 
 export default function Notifications() {
@@ -11,20 +12,24 @@ export default function Notifications() {
   const [activeTab, setActiveTab] = useState("global");
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("desc");
+  const router = useRouter();
 
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
         const sessionUser = await account.get();
         const userId = sessionUser.$id;
-        const response = await db.notifications.list();
-        setGlobalNotifications(response.documents);
-
         if (userId) {
           const userDoc = await db.users.get(userId);
           setUserNotifications(userDoc.notifications || []);
         }
-
+      } catch (error) {
+        console.log("Error fetching:", error);
+        router.push("/wallet/login");
+      }
+      try {
+        const response = await db.notifications.list();
+        setGlobalNotifications(response.documents);
         setLoading(false);
       } catch (error) {
         console.log("Error fetching notifications:", error);
@@ -33,7 +38,7 @@ export default function Notifications() {
     };
 
     fetchNotifications();
-  }, []);
+  }, [router]);
 
   const handleGlobalSearch = (notifications) => {
     return notifications.filter((notification) =>
