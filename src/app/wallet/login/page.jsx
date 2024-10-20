@@ -8,14 +8,19 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
+      // await account.createOAuth2Session(
+      //   "google",
+      //   `http://localhost:3000/wallet`,
+      //   `http://localhost:3000/wallet/login`,
+      // );
       await account.createOAuth2Session(
         "google",
-        `http://localhost:3000/wallet`,
-        `http://localhost:3000/wallet/login`,
+        `https://nexusfuturefund.vercel.app/wallet`,
+        `https://nexusfuturefund.vercel.app/wallet/login`,
       );
     } catch (e) {
+      console.log(e);
       setError("Login failed. Please try again.");
-      console.error(e);
     }
   };
 

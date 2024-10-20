@@ -274,7 +274,7 @@ export default function Home() {
         setSubmitStatus("error");
       }
     } catch (error) {
-      console.error(error);
+      console.log(error);
       setSubmitionError("");
       setSubmitStatus("error");
     } finally {

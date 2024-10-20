@@ -5,9 +5,14 @@ const db = {};
 
 const collections = [
   {
-    dbId: "6713e905002c82075006",
-    id: "6713e91600145703eda0",
+    dbId: "6714d56b002fd2733f6e",
+    id: "6714d57400006633f97e",
     name: "users",
+  },
+  {
+    dbId: "6714d56b002fd2733f6e",
+    id: "67153f8b0010d4ff26d1",
+    name: "notifications",
   },
 ];
 
