@@ -2,9 +2,8 @@ import { useState } from "react";
 import { Permission, Role } from "appwrite";
 import db from "../appwrite/database";
 import { account } from "../appwrite/config";
-import { Button } from "./Button";
 
-const UserDetailsModal = ({ user, userDoc, setUserDoc, onClose }) => {
+const UserDetailsModal = ({ user, userDoc, setUserDoc, onClose, router }) => {
   const [name, setName] = useState(userDoc?.name || "");
   const [phoneNumber, setPhoneNumber] = useState(userDoc?.phoneNumber || "");
   const [bankName, setBankName] = useState(userDoc?.bankName || "");
@@ -43,6 +42,30 @@ const UserDetailsModal = ({ user, userDoc, setUserDoc, onClose }) => {
             phoneNumber: phoneNumber,
             bankName: bankName,
             bankAccountNumber: bankAccountNumber,
+          },
+          [Permission.write(Role.user(user.$id))],
+          user.$id,
+        );
+        await db.userNotifications.create(
+          {
+            email: user.email,
+            notifications: [],
+          },
+          [Permission.write(Role.user(user.$id))],
+          user.$id,
+        );
+        await db.userDepositHistory.create(
+          {
+            email: user.email,
+            histories: [],
+          },
+          [Permission.write(Role.user(user.$id))],
+          user.$id,
+        );
+        await db.userWithdrawHistory.create(
+          {
+            email: user.email,
+            histories: [],
           },
           [Permission.write(Role.user(user.$id))],
           user.$id,
@@ -122,7 +145,7 @@ const UserDetailsModal = ({ user, userDoc, setUserDoc, onClose }) => {
             />
           </div>
           <div className="flex justify-between">
-            <Button
+            <button
               type="button"
               onClick={handleSubmit}
               disabled={loading}
@@ -132,22 +155,22 @@ const UserDetailsModal = ({ user, userDoc, setUserDoc, onClose }) => {
                   : "bg-pink-600 hover:bg-pink-700"
               }`}>
               {loading ? "Saving..." : "Submit"}
-            </Button>
-            <Button
+            </button>
+            <button
               onClick={async () => {
                 setLoggingOut(true);
                 await account.deleteSession("current");
-                window.location.reload();
+                router.push("/wallet/login");
               }}
               disabled={loggingOut}
               className={`px-4 py-2 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-red-400
               ${
                 loggingOut
                   ? "bg-red-400 cursor-not-allowed"
-                  : "bg-red-600 hover:bg-red-700"
+                  : "bg-red-500 hover:bg-red-600"
               }`}>
               {loggingOut ? "Logging out" : "Log Out"}
-            </Button>
+            </button>
           </div>
           {error && <p className="text-red-500 mt-4">{error}</p>}
         </form>

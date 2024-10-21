@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../assets/logo.png";
-import { Button } from "../../components/Button";
 import { DollarSign, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Element } from "react-scroll";
@@ -75,9 +74,9 @@ export default function HowToSubscribe() {
           </Link>
           <div>
             <Link href="https://t.me/nexusfuturefund" passHref>
-              <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
+              <button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
                 Join Us
-              </Button>
+              </button>
             </Link>
           </div>
         </div>
@@ -156,9 +155,9 @@ export default function HowToSubscribe() {
                     reliable profits with us!
                   </motion.p>
                   <Link href="https://t.me/nexusfuturefund" passHref>
-                    <Button className="px-4 py-2 my-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    <button className="px-4 py-2 my-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
                       Join
-                    </Button>
+                    </button>
                   </Link>
                   <motion.h2 className="text-3xl font-bold" variants={fadeIn}>
                     Join us today and start trading like a pro!

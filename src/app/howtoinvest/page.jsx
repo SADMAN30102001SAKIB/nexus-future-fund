@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../assets/logo.png";
-import { Button } from "../../components/Button";
 import { DollarSign, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Element } from "react-scroll";
@@ -74,9 +73,9 @@ export default function HowToInvest() {
           </Link>
           <div>
             <Link href="/wallet" passHref>
-              <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
+              <button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
                 Invest
-              </Button>
+              </button>
             </Link>
           </div>
         </div>
@@ -155,9 +154,9 @@ export default function HowToInvest() {
                     Ready to Invest?
                   </motion.h2>
                   <Link href="/wallet" passHref>
-                    <Button className="px-4 py-2 my-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    <button className="px-4 py-2 my-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
                       Invest
-                    </Button>
+                    </button>
                   </Link>
                   <motion.p className="text-gray-300" variants={fadeIn}>
                     Join us and start your journey today!

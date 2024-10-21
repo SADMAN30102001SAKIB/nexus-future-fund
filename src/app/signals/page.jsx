@@ -8,8 +8,6 @@ import homeImage from "../../assets/home.png";
 import benefitsImage from "../../assets/benefits.png";
 import investmentsImage from "../../assets/investments.png";
 import placeholderImage from "../../assets/userPlaceholder.jpg";
-import { Button } from "../../components/Button.jsx";
-import { Input } from "../../components/Input.jsx";
 import {
   Accordion,
   AccordionContent,
@@ -351,9 +349,9 @@ export default function Signals() {
           </nav>
           <div className="hidden lg:block">
             <Link href="https://t.me/nexusfuturefund" passHref>
-              <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
+              <button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
                 Join Us
-              </Button>
+              </button>
             </Link>
           </div>
           <button
@@ -457,9 +455,9 @@ export default function Signals() {
                 Newsletter
               </ScrollLink>
               <Link href="https://t.me/nexusfuturefund" passHref>
-                <Button className="px-2 py-1 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400 text-sm">
+                <button className="px-2 py-1 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400 text-sm">
                   Join Us
-                </Button>
+                </button>
               </Link>
             </div>
           </motion.div>
@@ -502,16 +500,16 @@ export default function Signals() {
                 </motion.p>
                 <motion.div className="flex space-x-4" variants={fadeIn}>
                   <Link href="/about" passHref>
-                    <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    <button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
                       About Us
-                    </Button>
+                    </button>
                   </Link>
                   <Link href="/howtosubscribe" passHref>
-                    <Button
+                    <button
                       className="px-4 py-2 bg-white text-pink-600 rounded-md hover:bg-pink-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-pink-400"
                       variant="outline">
                       How To Subscribe →
-                    </Button>
+                    </button>
                   </Link>
                 </motion.div>
                 <motion.div
@@ -823,16 +821,16 @@ export default function Signals() {
                   </motion.p>
                   <motion.div className="flex space-x-4 mt-3" variants={fadeIn}>
                     <Link href="https://t.me/nexusfuturefund" passHref>
-                      <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
+                      <button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
                         Join
-                      </Button>
+                      </button>
                     </Link>
                     <Link href="/howtosubscribe" passHref>
-                      <Button
+                      <button
                         className="px-4 py-2 bg-white text-pink-600 rounded-md hover:bg-pink-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-pink-400"
                         variant="outline">
                         Learn More →
-                      </Button>
+                      </button>
                     </Link>
                   </motion.div>
                 </div>
@@ -891,18 +889,18 @@ export default function Signals() {
                 </motion.div>
               </div>
               <div className="flex justify-center mt-8 space-x-4">
-                <Button
+                <button
                   onClick={prevFeedbackSlide}
                   className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400"
                   aria-label="Previous testimonial">
                   Previous
-                </Button>
-                <Button
+                </button>
+                <button
                   onClick={nextFeedbackSlide}
                   className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400"
                   aria-label="Next testimonial">
                   Next
-                </Button>
+                </button>
               </div>
             </div>
           </section>
@@ -1018,7 +1016,7 @@ export default function Signals() {
                 <div className="w-full lg:w-auto">
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="flex">
-                      <Input
+                      <input
                         type="email"
                         placeholder="Your email address"
                         className="rounded-r-none bg-gray-700 text-white placeholder-gray-400 border-gray-600 w-full lg:w-64 focus:ring-opacity-0"
@@ -1026,12 +1024,12 @@ export default function Signals() {
                         onChange={handleEmailChange}
                         required
                       />
-                      <Button
+                      <button
                         type="submit"
                         className="px-4 py-2 bg-pink-600 text-white rounded-tr-md rounded-br-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400"
                         disabled={isSubmitting}>
                         {isSubmitting ? "Submitting..." : "Submit"}
-                      </Button>
+                      </button>
                     </div>
                     {submitStatus === "success" && (
                       <motion.p

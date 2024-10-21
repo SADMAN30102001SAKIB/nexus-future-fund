@@ -1,15 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { SortAsc, SortDesc } from "lucide-react";
 import { account } from "../../../appwrite/config";
 import { useRouter } from "next/navigation";
 import db from "../../../appwrite/database";
 
 export default function Notifications() {
-  const [globalNotifications, setGlobalNotifications] = useState([]);
+  const [systemNotifications, setSystemNotifications] = useState([]);
   const [userNotifications, setUserNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState("global");
+  const [activeTab, setActiveTab] = useState("system");
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("desc");
   const router = useRouter();
@@ -20,7 +21,7 @@ export default function Notifications() {
         const sessionUser = await account.get();
         const userId = sessionUser.$id;
         if (userId) {
-          const userDoc = await db.users.get(userId);
+          const userDoc = await db.userNotifications.get(userId);
           setUserNotifications(userDoc.notifications || []);
         }
       } catch (error) {
@@ -29,7 +30,7 @@ export default function Notifications() {
       }
       try {
         const response = await db.notifications.list();
-        setGlobalNotifications(response.documents);
+        setSystemNotifications(response.documents);
         setLoading(false);
       } catch (error) {
         console.log("Error fetching notifications:", error);
@@ -40,7 +41,7 @@ export default function Notifications() {
     fetchNotifications();
   }, [router]);
 
-  const handleGlobalSearch = (notifications) => {
+  const handleSystemSearch = (notifications) => {
     return notifications.filter((notification) =>
       notification.message.toLowerCase().includes(searchTerm.toLowerCase()),
     );
@@ -56,8 +57,8 @@ export default function Notifications() {
     return sortOrder === "desc" ? notifications.reverse() : notifications;
   };
 
-  const renderGlobalNotifications = () => {
-    const filteredNotifications = handleGlobalSearch(globalNotifications);
+  const renderSystemNotifications = () => {
+    const filteredNotifications = handleSystemSearch(systemNotifications);
     const sortedNotifications = handleSort(filteredNotifications);
 
     return (
@@ -114,44 +115,44 @@ export default function Notifications() {
   return (
     <div className="lg:px-48 container mx-auto p-6 bg-gray-800 h-screen touch-pan-y">
       <h1 className="text-2xl font-bold mb-6">Notifications</h1>
-      <div className="mb-6 flex flex-col lg:flex-row lg:justify-between">
-        <div className="mb-4 lg:mb-0">
-          <input
-            type="text"
-            placeholder="Search notifications"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="p-2 rounded-lg w-full md:w-auto text-black focus:outline-none"
-          />
+      <div className="mb-6 flex flex-col md:flex-row lg:justify-between">
+        <input
+          type="text"
+          placeholder="Search notifications"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="mb-4 md:mb-0 p-2 rounded-lg text-black focus:outline-none"
+        />
+        <div className="w-full flex ml-2 justify-between">
+          <div>
+            <button
+              onClick={() => setActiveTab("system")}
+              className={`px-4 py-2 rounded-lg mr-2 ${
+                activeTab === "system" ? "bg-pink-600" : "bg-gray-700"
+              } text-white`}>
+              System
+            </button>
+            <button
+              onClick={() => setActiveTab("user")}
+              className={`px-4 py-2 rounded-lg ${
+                activeTab === "user" ? "bg-pink-600" : "bg-gray-700"
+              } text-white`}>
+              Personal
+            </button>
+          </div>
           <button
             onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
-            className="px-4 py-2 rounded-lg bg-pink-600 text-white md:ml-2 mt-2 md:mt-0">
-            {sortOrder === "asc" ? "Oldest First" : "Newest First"}
-          </button>
-        </div>
-        <div>
-          <button
-            onClick={() => setActiveTab("global")}
-            className={`px-4 py-2 rounded-lg mr-2 ${
-              activeTab === "global" ? "bg-pink-600" : "bg-gray-700"
-            } text-white`}>
-            System
-          </button>
-          <button
-            onClick={() => setActiveTab("user")}
-            className={`px-4 py-2 rounded-lg ${
-              activeTab === "user" ? "bg-pink-600" : "bg-gray-700"
-            } text-white`}>
-            Personal
+            className="p-2 rounded-full bg-pink-600 text-white">
+            {sortOrder === "asc" ? <SortAsc /> : <SortDesc />}
           </button>
         </div>
       </div>
 
-      {activeTab === "global" ? (
-        globalNotifications.length === 0 ? (
+      {activeTab === "system" ? (
+        systemNotifications.length === 0 ? (
           <p>No system notifications to display.</p>
         ) : (
-          renderGlobalNotifications()
+          renderSystemNotifications()
         )
       ) : userNotifications.length === 0 ? (
         <p>No user notifications to display.</p>

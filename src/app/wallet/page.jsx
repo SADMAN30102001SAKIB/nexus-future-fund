@@ -2,10 +2,10 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { ChevronUp, Bell } from "lucide-react";
+import { ChevronUp, Bell, History, UserPen, LogOut, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Element } from "react-scroll";
-import { Button } from "../../components/Button";
+import { Permission, Role } from "appwrite";
 import { account, storage } from "../../appwrite/config";
 import db from "../../appwrite/database";
 import UserDetailsModal from "../../components/userDetailModal";
@@ -25,6 +25,35 @@ const staggerChildren = {
   },
 };
 
+function Modal({ children, onClose }) {
+  return (
+    <AnimatePresence>
+      <motion.div
+        className="px-4 fixed inset-0 bg-black bg-opacity-80 backdrop-blur-sm flex items-center justify-center z-50"
+        onClick={onClose}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}>
+        <motion.div
+          className="bg-white rounded-xl shadow-2xl w-full max-w-lg p-8 relative"
+          onClick={(e) => e.stopPropagation()}
+          initial={{ y: "-100vh" }}
+          animate={{ y: 0 }}
+          exit={{ y: "-100vh" }}
+          transition={{ duration: 0.3 }}>
+          <button
+            className="absolute top-4 right-4 text-gray-500 hover:text-red-500 transition-all"
+            onClick={onClose}>
+            <X size={24} />
+          </button>
+          {children}
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
 export default function Wallet() {
   const [showScrollUp, setShowScrollUp] = useState(false);
   const [user, setUser] = useState(null);
@@ -33,13 +62,18 @@ export default function Wallet() {
   const [userDoc, setUserDoc] = useState(null);
   const [fileExist, setFileExist] = useState(false);
   const [fileUploadError, setFileUploadError] = useState(null);
-  const [verified, setVerified] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [isProfileOpen, setProfileOpen] = useState(false);
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
   const router = useRouter();
   const fileInputRef = useRef(null);
+  const [showDepositModal, setShowDepositModal] = useState(false);
+  const [showWithdrawModal, setShowWithdrawModal] = useState(false);
+  const [amount, setAmount] = useState("");
+  const [confirmAction, setConfirmAction] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [proceeding, setProceeding] = useState(false);
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -88,7 +122,6 @@ export default function Wallet() {
           setShowModal(true);
         }
         setUserDoc(userDoc);
-        setVerified(userDoc.verified);
 
         const promise = storage.getFile(
           "6714e08d002ef06db7d0",
@@ -114,12 +147,138 @@ export default function Wallet() {
     getUser();
   }, [router, loading]);
 
+  const openDepositModal = async () => {
+    setAmount("");
+    setShowDepositModal(true);
+    setUserDoc(await db.users.get(user.$id));
+    let isPending = false;
+    try {
+      const depositRequest = await db.pendingDeposit.get(user.$id);
+      isPending = !!depositRequest;
+    } catch (error) {
+      if (error.message.includes("not be found")) {
+      } else {
+        console.error(error);
+        setErrorMessage("Failed to check pending requests. Please try again.");
+      }
+    }
+    if (isPending) {
+      setErrorMessage(`You already have a pending deposit request.`);
+    }
+  };
+
+  const openWithdrawModal = async () => {
+    setAmount("");
+    setShowWithdrawModal(true);
+    setUserDoc(await db.users.get(user.$id));
+    let isPending = false;
+    try {
+      const withdrawRequest = await db.pendingWithdraw.get(user.$id);
+      isPending = !!withdrawRequest;
+    } catch (error) {
+      if (error.message.includes("not be found")) {
+      } else {
+        console.error(error);
+        setErrorMessage("Failed to check pending requests. Please try again.");
+      }
+    }
+    if (isPending) {
+      setErrorMessage(`You already have a pending withdraw request.`);
+    }
+  };
+
+  const handleConfirm = async (type) => {
+    setErrorMessage(null);
+    if (!userDoc.verified) {
+      setErrorMessage(
+        "You are not verified! Cannot proceed. Please verify yourself.",
+      );
+      return;
+    }
+
+    if (!amount || amount < 100) {
+      setErrorMessage("Amount must be at least $100.");
+      return;
+    }
+
+    if (type === "withdraw" && amount > userDoc.balance) {
+      setErrorMessage("Insufficient balance.");
+      return;
+    }
+
+    let isPending = false;
+    try {
+      if (type === "deposit") {
+        const depositRequest = await db.pendingDeposit.get(user.$id);
+        isPending = !!depositRequest;
+      } else {
+        const withdrawRequest = await db.pendingWithdraw.get(user.$id);
+        isPending = !!withdrawRequest;
+      }
+    } catch (error) {
+      if (error.message.includes("not be found")) {
+      } else {
+        console.error(error);
+        setErrorMessage("Failed to check pending requests. Please try again.");
+        return;
+      }
+    }
+
+    if (isPending) {
+      setErrorMessage(`You already have a pending ${type} request.`);
+      return;
+    }
+
+    if (!confirmAction) {
+      setConfirmAction(true);
+      return;
+    }
+
+    try {
+      if (type === "deposit") {
+        setProceeding(true);
+        await db.pendingDeposit.create(
+          { email: user.email, amount: parseFloat(amount) },
+          [Permission.write(Role.user(user.$id))],
+          user.$id,
+        );
+      } else if (type === "withdraw") {
+        setProceeding(true);
+        await db.pendingWithdraw.create(
+          { email: user.email, amount: parseFloat(amount) },
+          [Permission.write(Role.user(user.$id))],
+          user.$id,
+        );
+      }
+      setProceeding(false);
+      setShowDepositModal(false);
+      setShowWithdrawModal(false);
+      setConfirmAction(false);
+      setErrorMessage(null);
+    } catch (error) {
+      console.error(error);
+      setErrorMessage("Failed to complete the action. Please try again.");
+      setProceeding(false);
+    }
+  };
+
+  const closeModal = () => {
+    setShowDepositModal(false);
+    setShowWithdrawModal(false);
+    setConfirmAction(false);
+    setErrorMessage(null);
+  };
+
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
 
   const handleNotificationClick = () => {
     router.push("/wallet/notifications");
+  };
+
+  const handleHistoryClick = () => {
+    router.push("/wallet/history");
   };
 
   const handleProfileClick = () => {
@@ -174,6 +333,7 @@ export default function Wallet() {
               setLoading(false);
               setShowModal(false);
             }}
+            router={router}
           />
         ) : (
           <div className="flex items-center justify-center text-6xl lg:text-9xl h-screen">
@@ -187,13 +347,13 @@ export default function Wallet() {
   if (!user) return null;
 
   return (
-    <div className="bg-gray-900 min-h-screen text-gray-100 touch-pan-y">
+    <div className="bg-gray-900 h-screen text-gray-100 touch-pan-y">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900 bg-opacity-80 backdrop-blur-md">
         <div className="container mx-auto p-6 flex items-center justify-between">
           <h1 className="text-2xl font-black">
             {userDoc.name}{" "}
-            {verified ? (
+            {userDoc.verified ? (
               <p className="text-green-500 text-sm">(verified)</p>
             ) : (
               <p className="text-red-500 text-sm">(not verified)</p>
@@ -202,13 +362,18 @@ export default function Wallet() {
           <div className="flex items-start md:items-center">
             <button
               className="mr-4 relative text-white focus:outline-none"
+              onClick={handleHistoryClick}>
+              <History size={24} />
+            </button>
+            <button
+              className="mr-4 relative text-white focus:outline-none"
               onClick={handleNotificationClick}>
               <Bell size={24} />
             </button>
 
             {/* Hamburger Icon for Mobile */}
             <div className="md:hidden">
-              <Button
+              <button
                 onClick={toggleSidebar}
                 className="text-white focus:outline-none">
                 <svg
@@ -228,31 +393,32 @@ export default function Wallet() {
                     }
                   />
                 </svg>
-              </Button>
+              </button>
             </div>
 
             {/* Desktop Buttons */}
             <div className="hidden md:flex space-x-4">
-              <Button
+              <button
                 onClick={handleProfileClick}
-                className="bg-pink-600 text-white px-4 py-2 rounded-md hover:bg-pink-700 transition duration-300">
-                Profile
-              </Button>
-              <Button
+                className="bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700 transition duration-300 flex justify-between">
+                Profile <UserPen className="ml-2" />
+              </button>
+              <button
                 onClick={async () => {
                   setLoggingOut(true);
                   await account.deleteSession("current");
-                  window.location.reload();
+                  router.push("/wallet/login");
                 }}
                 disabled={loggingOut}
-                className={`px-4 py-2 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-red-400
+                className={`px-4 py-2 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 flex justify-between
                 ${
                   loggingOut
                     ? "bg-red-400 cursor-not-allowed"
-                    : "bg-red-600 hover:bg-red-700"
+                    : "bg-red-500 hover:bg-red-600"
                 }`}>
-                {loggingOut ? "Logging out" : "Log Out"}
-              </Button>
+                {loggingOut ? "Logging out" : "Log Out"}{" "}
+                <LogOut className="ml-2" />
+              </button>
             </div>
           </div>
         </div>
@@ -262,9 +428,9 @@ export default function Wallet() {
           className={`h-screen fixed inset-y-0 right-0 bg-gray-800 text-white w-64 p-6 transition-transform transform ${
             isSidebarOpen ? "translate-x-0" : "translate-x-full"
           } lg:hidden z-40`}>
-          <Button
+          <button
             onClick={toggleSidebar}
-            className="absolute top-6 right-6 text-white">
+            className="absolute top-8 right-8 text-white">
             <svg
               className="w-6 h-6"
               fill="none"
@@ -278,58 +444,63 @@ export default function Wallet() {
                 d="M6 18L18 6M6 6l12 12"
               />
             </svg>
-          </Button>
+          </button>
           <div className="flex flex-col items-center mt-16">
-            <Button
+            <button
               onClick={handleProfileClick}
-              className="block bg-pink-600 text-white w-1/2 px-4 py-2 rounded-md mb-2 hover:bg-pink-700 transition duration-300">
-              Profile
-            </Button>
-            <Button
+              className="bg-pink-600 text-white w-2/3 px-4 py-2 rounded-lg mb-2 hover:bg-pink-700 transition duration-300 flex justify-between">
+              Profile <UserPen className="ml-2" />
+            </button>
+            <button
               onClick={async () => {
                 setLoggingOut(true);
                 await account.deleteSession("current");
-                window.location.reload();
+                router.push("/wallet/login");
               }}
               disabled={loggingOut}
-              className={`block bg-red-600 text-white w-1/2 px-4 py-2 rounded-md hover:bg-red-700 transition duration-300 focus:ring-red-400
+              className={`bg-red-600 text-white w-2/3 px-4 py-2 rounded-lg hover:bg-red-700 transition duration-300 focus:ring-red-400 flex justify-between
               ${
                 loggingOut
                   ? "bg-red-400 cursor-not-allowed"
-                  : "bg-red-600 hover:bg-red-700"
+                  : "bg-red-500 hover:bg-red-600"
               }`}>
-              {loggingOut ? "Logging out" : "Log Out"}
-            </Button>
+              {loggingOut ? "Logging out" : "Log Out"}{" "}
+              <LogOut className="ml-2" />
+            </button>
           </div>
         </div>
       </header>
 
-      <main>
+      <main className="pt-32">
         {/*Wallet*/}
         <Element name="about-us">
-          <section className="pt-36 lg:pb-12 bg-gray-900 text-gray-300">
-            <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
+          <section className="bg-gray-800 rounded-3xl pt-8 lg:pb-8  text-gray-300 mx-4 md:mx-24 mb-8">
+            <div className="container md:px-8 flex lg:flex-row items-center">
               <motion.div
-                className="mb-8 lg:mb-0 lg:px-16"
+                className="mb-8 lg:mb-0"
                 variants={staggerChildren}
                 initial="initial"
                 animate="animate">
                 <motion.h1
-                  className="text-4xl lg:text-5xl font-bold mb-4 text-white"
+                  className="text-xl md:text-5xl font-bold mb-8 text-white"
                   variants={fadeIn}>
-                  Your Ballance: ${userDoc.balance}
+                  Balance: ${userDoc.balance}
                 </motion.h1>
                 <motion.span
                   className="mr-4 text-lg text-justify"
                   variants={fadeIn}>
-                  <Button className="px-6 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
+                  <button
+                    onClick={openDepositModal}
+                    className="px-6 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
                     Deposit
-                  </Button>
+                  </button>
                 </motion.span>
                 <motion.span className="text-lg text-justify" variants={fadeIn}>
-                  <Button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
+                  <button
+                    onClick={openWithdrawModal}
+                    className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
                     Withdraw
-                  </Button>
+                  </button>
                 </motion.span>
               </motion.div>
             </div>
@@ -337,8 +508,108 @@ export default function Wallet() {
         </Element>
       </main>
 
+      {/* Deposit Modal */}
+      {showDepositModal && (
+        <Modal onClose={closeModal}>
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-black mb-6">
+              Deposit Amount
+            </h2>
+            {!confirmAction && (
+              <input
+                type="number"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                className="text-black w-full px-4 py-3 mb-4 border border-gray-300 rounded-lg text-lg focus:outline-none focus:border-black"
+                placeholder="Enter amount"
+              />
+            )}
+            {errorMessage && (
+              <p className="text-red-500 mb-4">{errorMessage}</p>
+            )}
+
+            {!confirmAction ? (
+              <button
+                className="bg-gradient-to-r from-pink-500 to-pink-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transform transition-transform hover:scale-105"
+                onClick={() => handleConfirm("deposit")}>
+                Confirm
+              </button>
+            ) : (
+              <>
+                <p className="text-gray-700 mb-6">
+                  Are you sure you want to deposit ${amount}?
+                </p>
+                <button
+                  disabled={proceeding}
+                  className={`bg-gradient-to-r from-pink-500 to-pink-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transform transition-transform hover:scale-105 mb-4  mr-4 ${
+                    proceeding && "cursor-not-allowed from-pink-300 to-pink-400"
+                  }`}
+                  onClick={() => handleConfirm("deposit")}>
+                  Yes, proceed
+                </button>
+                <button
+                  className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-3 px-6 rounded-lg shadow transform transition-transform hover:scale-105"
+                  onClick={closeModal}>
+                  No
+                </button>
+              </>
+            )}
+          </div>
+        </Modal>
+      )}
+
+      {/* Withdraw Modal */}
+      {showWithdrawModal && (
+        <Modal onClose={closeModal}>
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-black mb-6">
+              Withdraw Amount
+            </h2>
+            {!confirmAction && (
+              <input
+                type="number"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                className="text-black w-full px-4 py-3 mb-4 border border-gray-300 rounded-lg text-lg focus:outline-none focus:border-black"
+                placeholder="Enter amount"
+              />
+            )}
+            {errorMessage && (
+              <p className="text-red-500 mb-4">{errorMessage}</p>
+            )}
+
+            {!confirmAction ? (
+              <button
+                className="bg-gradient-to-r from-pink-500 to-pink-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transform transition-transform hover:scale-105"
+                onClick={() => handleConfirm("withdraw")}>
+                Confirm
+              </button>
+            ) : (
+              <>
+                <p className="text-gray-700 mb-6">
+                  Are you sure you want to withdraw ${amount}?
+                </p>
+                <button
+                  disabled={proceeding}
+                  className={`bg-gradient-to-r from-pink-500 to-pink-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transform transition-transform hover:scale-105 mb-4  mr-4 ${
+                    proceeding && "cursor-not-allowed from-pink-300 to-pink-400"
+                  }`}
+                  onClick={() => handleConfirm("withdraw")}>
+                  Yes, proceed
+                </button>
+                <button
+                  className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-3 px-6 rounded-lg shadow transform transition-transform hover:scale-105"
+                  onClick={closeModal}>
+                  No
+                </button>
+              </>
+            )}
+          </div>
+        </Modal>
+      )}
+
       {/* Upload File */}
-      {!verified && !fileExist && (
+      {!userDoc.verified && !fileExist && (
         <div className="flex flex-col items-center justify-center bg-gray-900">
           <div className="bg-white shadow-lg rounded-lg p-8 w-72 md:w-96">
             <h2 className="text-2xl font-semibold text-gray-700 mb-4">
@@ -361,7 +632,7 @@ export default function Wallet() {
             mb-4
           "
             />
-            <Button
+            <button
               onClick={handleUpload}
               disabled={uploading}
               className={`text-white font-medium py-2 px-4 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-opacity-50 ${
@@ -370,7 +641,7 @@ export default function Wallet() {
                   : "bg-pink-600 hover:bg-pink-700"
               }`}>
               {uploading ? "Uploading..." : "Upload"}
-            </Button>
+            </button>
             {fileUploadError && (
               <p className="text-red-500 mt-4">{fileUploadError}</p>
             )}
@@ -378,6 +649,7 @@ export default function Wallet() {
         </div>
       )}
 
+      {/* Profile Modal */}
       {isProfileOpen && (
         <ProfileModal
           userDoc={userDoc}
