@@ -1041,7 +1041,7 @@ export default function Home() {
                       <input
                         type="email"
                         placeholder="Your email address"
-                        className="rounded-r-none bg-gray-700 text-white placeholder-gray-400 border-gray-600 w-full lg:w-64 focus:ring-opacity-0"
+                        className="rounded-r-none rounded-l-lg pl-2 focus:outline-none bg-gray-700 text-white placeholder-gray-400 border-gray-600 w-full lg:w-64 focus:ring-opacity-0"
                         value={email}
                         onChange={handleEmailChange}
                         required
