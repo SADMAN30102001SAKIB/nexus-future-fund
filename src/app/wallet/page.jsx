@@ -66,6 +66,7 @@ export default function Wallet() {
   const [isProfileOpen, setProfileOpen] = useState(false);
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
+  const [notificationBadge, setNotificationBadge] = useState(0);
   const router = useRouter();
   const fileInputRef = useRef(null);
   const [showDepositModal, setShowDepositModal] = useState(false);
@@ -101,12 +102,10 @@ export default function Wallet() {
         sessionUser = await account.get();
         setUser(sessionUser);
       } catch (error) {
-        // alert("User not authenticated or error fetching user data: " + error);
         console.log(
           "User not authenticated or error fetching user data: " + error,
         );
         router.push("/wallet/login");
-        return;
       }
 
       try {
@@ -142,6 +141,37 @@ export default function Wallet() {
       } catch (err) {
         console.log("Error fetching:", err);
         setShowModal(true);
+      }
+
+      try {
+        const systemNotifications = await db.notifications.list();
+        const userNotifications = await db.userNotifications.get(
+          sessionUser.$id,
+        );
+        const systemNotificationsLength = systemNotifications.documents.length;
+        const userNotificationsLength = userNotifications.notifications.length;
+
+        const seenSystemNotifications = localStorage.getItem(
+          "systemNotificationCount" + sessionUser.$id,
+        );
+        const seenUserNotifications = localStorage.getItem(
+          "userNotificationCount" + sessionUser.$id,
+        );
+        if (!seenSystemNotifications) {
+          localStorage.setItem("systemNotificationCount" + sessionUser.$id, 0);
+        }
+        if (!seenUserNotifications) {
+          localStorage.setItem("userNotificationCount" + sessionUser.$id, 0);
+        }
+
+        setNotificationBadge(
+          systemNotificationsLength +
+            userNotificationsLength -
+            (parseInt(seenSystemNotifications) +
+              parseInt(seenUserNotifications)),
+        );
+      } catch (error) {
+        console.log("Error fetching notifications:", error);
       }
     };
     getUser();
@@ -369,6 +399,16 @@ export default function Wallet() {
               className="mr-4 relative text-white focus:outline-none"
               onClick={handleNotificationClick}>
               <Bell size={24} />
+              {notificationBadge > 0 &&
+                (notificationBadge > 9 ? (
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-semibold px-1 py-1 rounded-full">
+                    9+
+                  </span>
+                ) : (
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-semibold px-1 rounded-full">
+                    {notificationBadge}
+                  </span>
+                ))}
             </button>
 
             {/* Hamburger Icon for Mobile */}
@@ -537,7 +577,7 @@ export default function Wallet() {
             ) : (
               <>
                 <p className="text-gray-700 mb-6">
-                  Are you sure you want to deposit ${amount}?
+                  Are you sure you want to deposit ${parseFloat(amount)}?
                 </p>
                 <button
                   disabled={proceeding}
@@ -587,7 +627,7 @@ export default function Wallet() {
             ) : (
               <>
                 <p className="text-gray-700 mb-6">
-                  Are you sure you want to withdraw ${amount}?
+                  Are you sure you want to withdraw ${parseFloat(amount)}?
                 </p>
                 <button
                   disabled={proceeding}

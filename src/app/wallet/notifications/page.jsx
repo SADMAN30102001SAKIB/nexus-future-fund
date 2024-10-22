@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { SortAsc, SortDesc } from "lucide-react";
 import { account } from "../../../appwrite/config";
 import { useRouter } from "next/navigation";
@@ -10,20 +10,22 @@ export default function Notifications() {
   const [systemNotifications, setSystemNotifications] = useState([]);
   const [userNotifications, setUserNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState("system");
+  const [activeTab, setActiveTab] = useState("user");
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("desc");
   const router = useRouter();
+  const sessionUser = useRef("");
 
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
-        const sessionUser = await account.get();
-        const userId = sessionUser.$id;
-        if (userId) {
-          const userDoc = await db.userNotifications.get(userId);
-          setUserNotifications(userDoc.notifications || []);
-        }
+        sessionUser.current = await account.get();
+        const userDoc = await db.userNotifications.get(sessionUser.current.$id);
+        setUserNotifications(userDoc.notifications || []);
+        localStorage.setItem(
+          "userNotificationCount" + sessionUser.current.$id,
+          userDoc.notifications.length,
+        );
       } catch (error) {
         console.log("Error fetching:", error);
         router.push("/wallet/login");
@@ -31,11 +33,10 @@ export default function Notifications() {
       try {
         const response = await db.notifications.list();
         setSystemNotifications(response.documents);
-        setLoading(false);
       } catch (error) {
         console.log("Error fetching notifications:", error);
-        setLoading(false);
       }
+      setLoading(false);
     };
 
     fetchNotifications();
@@ -126,7 +127,13 @@ export default function Notifications() {
         <div className="w-full flex ml-2 justify-between">
           <div>
             <button
-              onClick={() => setActiveTab("system")}
+              onClick={() => {
+                setActiveTab("system");
+                localStorage.setItem(
+                  "systemNotificationCount" + sessionUser.current.$id,
+                  systemNotifications.length,
+                );
+              }}
               className={`px-4 py-2 rounded-lg mr-2 ${
                 activeTab === "system" ? "bg-pink-600" : "bg-gray-700"
               } text-white`}>
