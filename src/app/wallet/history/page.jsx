@@ -108,12 +108,12 @@ export default function History() {
 
       {activeTab === "deposit" ? (
         depositHisory.length === 0 ? (
-          <p>No history to display.</p>
+          <p>No deposit history to display.</p>
         ) : (
           renderHistories(depositHisory)
         )
       ) : withdrawHistory.length === 0 ? (
-        <p>No history to display.</p>
+        <p>No withdrawal history to display.</p>
       ) : (
         renderHistories(withdrawHistory)
       )}

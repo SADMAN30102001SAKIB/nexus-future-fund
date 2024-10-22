@@ -36,7 +36,7 @@ export default function HowToInvest() {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
+      if (window.scrollY > 300) {
         setShowScrollUp(true);
       } else {
         setShowScrollUp(false);

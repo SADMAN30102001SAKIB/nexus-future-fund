@@ -54,6 +54,120 @@ function Modal({ children, onClose }) {
   );
 }
 
+const TransactionModal = ({
+  onClose,
+  type,
+  currency,
+  amount,
+  addressOrNumber,
+  selectedOption,
+  errorMessage,
+  confirmAction,
+  proceeding,
+  onConfirm,
+  onCurrencyChange,
+  onAmountChange,
+  onAddressOrNumberChange,
+  onOptionClick,
+}) => {
+  return (
+    <Modal onClose={onClose}>
+      <div className="text-center">
+        <h2 className="text-2xl font-bold text-black mb-6">
+          {type === "deposit" ? "Deposit Amount" : "Withdraw Amount"}
+        </h2>
+        {!confirmAction && (
+          <>
+            <select
+              value={currency}
+              onChange={onCurrencyChange}
+              className="text-black w-full px-4 py-3 mb-4 border border-gray-300 rounded-lg text-lg focus:outline-none focus:border-black">
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+              <option value="INR">INR</option>
+              <option value="BDT">BDT</option>
+            </select>
+            <input
+              type="number"
+              value={amount}
+              onChange={onAmountChange}
+              className="text-black w-full px-4 py-3 mb-4 border border-gray-300 rounded-lg text-lg focus:outline-none focus:border-black"
+              placeholder="Enter amount"
+            />
+            <div className="flex justify-around mb-4">
+              <button
+                className={`w-1/2 py-2 px-4 mr-2 rounded-lg text-black ${
+                  selectedOption === "bank"
+                    ? "bg-pink-500 text-white"
+                    : "bg-gray-200"
+                }`}
+                onClick={() => onOptionClick("bank")}>
+                Bank
+              </button>
+              <button
+                className={`w-1/2 py-2 px-4 ml-2 rounded-lg text-black ${
+                  selectedOption === "binance"
+                    ? "bg-pink-500 text-white"
+                    : "bg-gray-200"
+                }`}
+                onClick={() => onOptionClick("binance")}>
+                Binance
+              </button>
+            </div>
+            {selectedOption && (
+              <input
+                type="text"
+                value={addressOrNumber}
+                onChange={onAddressOrNumberChange}
+                className="text-black w-full px-4 py-3 mb-4 border border-gray-300 rounded-lg text-lg focus:outline-none"
+                placeholder={
+                  selectedOption === "bank"
+                    ? "Account Number For This Transaction"
+                    : "Wallet Address For This Transaction"
+                }
+              />
+            )}
+          </>
+        )}
+        {errorMessage && <p className="text-red-500 mb-4">{errorMessage}</p>}
+        {!confirmAction ? (
+          <button
+            className="bg-gradient-to-r from-pink-500 to-pink-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transform transition-transform hover:scale-105"
+            onClick={() => onConfirm(type)}>
+            Confirm
+          </button>
+        ) : (
+          <>
+            <div className="text-black mb-6 font-semibold">
+              {type == "deposit" && (
+                <p className="text-gray-700 font-normal">
+                  We&apos;re assuming that you already deposited to our account!
+                  If not then deposite first.
+                </p>
+              )}
+              You are about to {type} amount {parseFloat(amount)} {currency}{" "}
+              through {selectedOption}!
+            </div>
+            <button
+              disabled={proceeding}
+              className={`bg-gradient-to-r from-pink-500 to-pink-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transform transition-transform hover:scale-105 mb-4 mr-4 ${
+                proceeding && "cursor-not-allowed from-pink-200 to-pink-300"
+              }`}
+              onClick={() => onConfirm(type)}>
+              Ok
+            </button>
+            <button
+              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-3 px-6 rounded-lg shadow transform transition-transform hover:scale-105"
+              onClick={onClose}>
+              Cancel
+            </button>
+          </>
+        )}
+      </div>
+    </Modal>
+  );
+};
+
 export default function Wallet() {
   const [showScrollUp, setShowScrollUp] = useState(false);
   const [user, setUser] = useState(null);
@@ -75,10 +189,13 @@ export default function Wallet() {
   const [confirmAction, setConfirmAction] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const [proceeding, setProceeding] = useState(false);
+  const [currency, setCurrency] = useState("USD");
+  const [selectedOption, setSelectedOption] = useState("bank");
+  const [addressOrNumber, setAddressOrNumber] = useState("");
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
+      if (window.scrollY > 300) {
         setShowScrollUp(true);
       } else {
         setShowScrollUp(false);
@@ -110,37 +227,39 @@ export default function Wallet() {
 
       try {
         const userDoc = await db.users.get(sessionUser.$id);
-
         if (
           !userDoc ||
           !userDoc.name ||
           !userDoc.phoneNumber ||
-          !userDoc.bankName ||
-          !userDoc.bankAccountNumber
+          (userDoc.bankName && !userDoc.bankAccountNumber) ||
+          (userDoc.bankAccountNumber && !userDoc.bankName) ||
+          (!userDoc.bankName &&
+            !userDoc.bankAccountNumber &&
+            !userDoc.binanceWalletAddress)
         ) {
           setShowModal(true);
         }
+        if (userDoc?.bankAccountNumber) {
+          setSelectedOption("bank");
+          setAddressOrNumber(userDoc.bankAccountNumber);
+        } else if (userDoc?.binanceWalletAddress) {
+          setSelectedOption("binance");
+          setAddressOrNumber(userDoc.binanceWalletAddress);
+        }
         setUserDoc(userDoc);
-
-        const promise = storage.getFile(
-          "6714e08d002ef06db7d0",
-          sessionUser.$id,
-        );
-        promise.then(
-          function (response) {
-            console.log("File exists:", response);
-            setFileExist(true);
-            setLoading(false);
-          },
-          function (error) {
-            console.log("File does not exist:", error);
-            setFileExist(false);
-            setLoading(false);
-          },
-        );
       } catch (err) {
-        console.log("Error fetching:", err);
+        console.log("Error fetching useDoc:", err);
         setShowModal(true);
+      }
+
+      try {
+        await storage.getFile("6714e08d002ef06db7d0", sessionUser.$id);
+        setFileExist(true);
+      } catch (error) {
+        console.log("File does not exist:", error);
+        setFileExist(false);
+      } finally {
+        setLoading(false);
       }
 
       try {
@@ -179,6 +298,13 @@ export default function Wallet() {
 
   const openDepositModal = async () => {
     setAmount("");
+    if (userDoc?.bankAccountNumber) {
+      setSelectedOption("bank");
+      setAddressOrNumber(userDoc.bankAccountNumber);
+    } else if (userDoc?.binanceWalletAddress) {
+      setSelectedOption("binance");
+      setAddressOrNumber(userDoc.binanceWalletAddress);
+    }
     setShowDepositModal(true);
     setUserDoc(await db.users.get(user.$id));
     let isPending = false;
@@ -186,9 +312,10 @@ export default function Wallet() {
       const depositRequest = await db.pendingDeposit.get(user.$id);
       isPending = !!depositRequest;
     } catch (error) {
+      console.log(error.message);
       if (error.message.includes("not be found")) {
       } else {
-        console.error(error);
+        console.log(error);
         setErrorMessage("Failed to check pending requests. Please try again.");
       }
     }
@@ -199,6 +326,13 @@ export default function Wallet() {
 
   const openWithdrawModal = async () => {
     setAmount("");
+    if (userDoc?.bankAccountNumber) {
+      setSelectedOption("bank");
+      setAddressOrNumber(userDoc.bankAccountNumber);
+    } else if (userDoc?.binanceWalletAddress) {
+      setSelectedOption("binance");
+      setAddressOrNumber(userDoc.binanceWalletAddress);
+    }
     setShowWithdrawModal(true);
     setUserDoc(await db.users.get(user.$id));
     let isPending = false;
@@ -206,9 +340,10 @@ export default function Wallet() {
       const withdrawRequest = await db.pendingWithdraw.get(user.$id);
       isPending = !!withdrawRequest;
     } catch (error) {
+      console.log(error.message);
       if (error.message.includes("not be found")) {
       } else {
-        console.error(error);
+        console.log(error);
         setErrorMessage("Failed to check pending requests. Please try again.");
       }
     }
@@ -217,21 +352,32 @@ export default function Wallet() {
     }
   };
 
+  const handleCurrencyChange = (e) => {
+    setCurrency(e.target.value);
+  };
+
+  const handleOptionClick = (option) => {
+    setSelectedOption(option);
+    if (option === "bank") {
+      setAddressOrNumber(userDoc.bankAccountNumber);
+    } else {
+      setAddressOrNumber(userDoc.binanceWalletAddress);
+    }
+  };
+
   const handleConfirm = async (type) => {
     setErrorMessage(null);
     if (!userDoc.verified) {
-      setErrorMessage(
-        "You are not verified! Cannot proceed. Please verify yourself.",
-      );
+      setErrorMessage("You are not verified! Cannot proceed.");
       return;
     }
 
-    if (!amount || amount < 100) {
-      setErrorMessage("Amount must be at least $100.");
+    if (!amount || amount < 1) {
+      setErrorMessage("Amount can't be this low.");
       return;
     }
 
-    if (type === "withdraw" && amount > userDoc.balance) {
+    if (type === "withdraw" && userDoc.balance == 0) {
       setErrorMessage("Insufficient balance.");
       return;
     }
@@ -248,7 +394,7 @@ export default function Wallet() {
     } catch (error) {
       if (error.message.includes("not be found")) {
       } else {
-        console.error(error);
+        console.log(error);
         setErrorMessage("Failed to check pending requests. Please try again.");
         return;
       }
@@ -256,6 +402,19 @@ export default function Wallet() {
 
     if (isPending) {
       setErrorMessage(`You already have a pending ${type} request.`);
+      return;
+    }
+
+    if (
+      !addressOrNumber ||
+      addressOrNumber.length < 5 ||
+      addressOrNumber.length > 50
+    ) {
+      if (selectedOption === "bank") {
+        setErrorMessage("Please provide the correct account number.");
+      } else {
+        setErrorMessage("Please provide the correct wallet address.");
+      }
       return;
     }
 
@@ -268,14 +427,26 @@ export default function Wallet() {
       if (type === "deposit") {
         setProceeding(true);
         await db.pendingDeposit.create(
-          { email: user.email, amount: parseFloat(amount) },
+          {
+            email: user.email,
+            amount: parseFloat(amount),
+            currency: currency,
+            medium: selectedOption,
+            addressOrNumber: addressOrNumber,
+          },
           [Permission.write(Role.user(user.$id))],
           user.$id,
         );
       } else if (type === "withdraw") {
         setProceeding(true);
         await db.pendingWithdraw.create(
-          { email: user.email, amount: parseFloat(amount) },
+          {
+            email: user.email,
+            amount: parseFloat(amount),
+            currency: currency,
+            medium: selectedOption,
+            addressOrNumber: addressOrNumber,
+          },
           [Permission.write(Role.user(user.$id))],
           user.$id,
         );
@@ -286,7 +457,7 @@ export default function Wallet() {
       setConfirmAction(false);
       setErrorMessage(null);
     } catch (error) {
-      console.error(error);
+      console.log(error);
       setErrorMessage("Failed to complete the action. Please try again.");
       setProceeding(false);
     }
@@ -315,7 +486,7 @@ export default function Wallet() {
     setProfileOpen(true);
   };
 
-  const handleCloseModal = () => {
+  const closeProfileModal = () => {
     setProfileOpen(false);
   };
 
@@ -456,8 +627,7 @@ export default function Wallet() {
                     ? "bg-red-400 cursor-not-allowed"
                     : "bg-red-500 hover:bg-red-600"
                 }`}>
-                {loggingOut ? "Logging out" : "Log Out"}{" "}
-                <LogOut className="ml-2" />
+                {loggingOut ? "Exiting" : "Log Out"} <LogOut className="ml-2" />
               </button>
             </div>
           </div>
@@ -504,8 +674,7 @@ export default function Wallet() {
                   ? "bg-red-400 cursor-not-allowed"
                   : "bg-red-500 hover:bg-red-600"
               }`}>
-              {loggingOut ? "Logging out" : "Log Out"}{" "}
-              <LogOut className="ml-2" />
+              {loggingOut ? "Exiting" : "Log Out"} <LogOut className="ml-2" />
             </button>
           </div>
         </div>
@@ -550,102 +719,42 @@ export default function Wallet() {
 
       {/* Deposit Modal */}
       {showDepositModal && (
-        <Modal onClose={closeModal}>
-          <div className="text-center">
-            <h2 className="text-2xl font-bold text-black mb-6">
-              Deposit Amount
-            </h2>
-            {!confirmAction && (
-              <input
-                type="number"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                className="text-black w-full px-4 py-3 mb-4 border border-gray-300 rounded-lg text-lg focus:outline-none focus:border-black"
-                placeholder="Enter amount"
-              />
-            )}
-            {errorMessage && (
-              <p className="text-red-500 mb-4">{errorMessage}</p>
-            )}
-
-            {!confirmAction ? (
-              <button
-                className="bg-gradient-to-r from-pink-500 to-pink-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transform transition-transform hover:scale-105"
-                onClick={() => handleConfirm("deposit")}>
-                Confirm
-              </button>
-            ) : (
-              <>
-                <p className="text-gray-700 mb-6">
-                  Are you sure you want to deposit ${parseFloat(amount)}?
-                </p>
-                <button
-                  disabled={proceeding}
-                  className={`bg-gradient-to-r from-pink-500 to-pink-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transform transition-transform hover:scale-105 mb-4  mr-4 ${
-                    proceeding && "cursor-not-allowed from-pink-300 to-pink-400"
-                  }`}
-                  onClick={() => handleConfirm("deposit")}>
-                  Yes, proceed
-                </button>
-                <button
-                  className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-3 px-6 rounded-lg shadow transform transition-transform hover:scale-105"
-                  onClick={closeModal}>
-                  No
-                </button>
-              </>
-            )}
-          </div>
-        </Modal>
+        <TransactionModal
+          onClose={closeModal}
+          type="deposit"
+          currency={currency}
+          amount={amount}
+          addressOrNumber={addressOrNumber}
+          selectedOption={selectedOption}
+          errorMessage={errorMessage}
+          confirmAction={confirmAction}
+          proceeding={proceeding}
+          onConfirm={handleConfirm}
+          onCurrencyChange={handleCurrencyChange}
+          onAmountChange={(e) => setAmount(e.target.value)}
+          onAddressOrNumberChange={(e) => setAddressOrNumber(e.target.value)}
+          onOptionClick={handleOptionClick}
+        />
       )}
 
       {/* Withdraw Modal */}
       {showWithdrawModal && (
-        <Modal onClose={closeModal}>
-          <div className="text-center">
-            <h2 className="text-2xl font-bold text-black mb-6">
-              Withdraw Amount
-            </h2>
-            {!confirmAction && (
-              <input
-                type="number"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                className="text-black w-full px-4 py-3 mb-4 border border-gray-300 rounded-lg text-lg focus:outline-none focus:border-black"
-                placeholder="Enter amount"
-              />
-            )}
-            {errorMessage && (
-              <p className="text-red-500 mb-4">{errorMessage}</p>
-            )}
-
-            {!confirmAction ? (
-              <button
-                className="bg-gradient-to-r from-pink-500 to-pink-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transform transition-transform hover:scale-105"
-                onClick={() => handleConfirm("withdraw")}>
-                Confirm
-              </button>
-            ) : (
-              <>
-                <p className="text-gray-700 mb-6">
-                  Are you sure you want to withdraw ${parseFloat(amount)}?
-                </p>
-                <button
-                  disabled={proceeding}
-                  className={`bg-gradient-to-r from-pink-500 to-pink-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transform transition-transform hover:scale-105 mb-4  mr-4 ${
-                    proceeding && "cursor-not-allowed from-pink-300 to-pink-400"
-                  }`}
-                  onClick={() => handleConfirm("withdraw")}>
-                  Yes, proceed
-                </button>
-                <button
-                  className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-3 px-6 rounded-lg shadow transform transition-transform hover:scale-105"
-                  onClick={closeModal}>
-                  No
-                </button>
-              </>
-            )}
-          </div>
-        </Modal>
+        <TransactionModal
+          onClose={closeModal}
+          type="withdraw"
+          currency={currency}
+          amount={amount}
+          addressOrNumber={addressOrNumber}
+          selectedOption={selectedOption}
+          errorMessage={errorMessage}
+          confirmAction={confirmAction}
+          proceeding={proceeding}
+          onConfirm={handleConfirm}
+          onCurrencyChange={handleCurrencyChange}
+          onAmountChange={(e) => setAmount(e.target.value)}
+          onAddressOrNumberChange={(e) => setAddressOrNumber(e.target.value)}
+          onOptionClick={handleOptionClick}
+        />
       )}
 
       {/* Upload File */}
@@ -694,7 +803,7 @@ export default function Wallet() {
         <ProfileModal
           userDoc={userDoc}
           setUserDoc={setUserDoc}
-          onClose={handleCloseModal}
+          onClose={closeProfileModal}
         />
       )}
 

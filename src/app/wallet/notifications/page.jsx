@@ -124,7 +124,7 @@ export default function Notifications() {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="mb-4 md:mb-0 p-2 rounded-lg text-black focus:outline-none"
         />
-        <div className="w-full flex ml-2 justify-between">
+        <div className="w-full flex md:ml-2 justify-between">
           <div>
             <button
               onClick={() => {
