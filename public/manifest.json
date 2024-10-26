@@ -1,9 +1,9 @@
 {
-  "id": "/wallet",
+  "id": "/wallet/login",
   "name": "Nexus Future Fund",
   "short_name": "NFF",
   "description": "Nexus Future Fund is a Hedge Fund",
-  "start_url": "/wallet",
+  "start_url": "/wallet/login",
   "display": "standalone",
   "background_color": "#111827",
   "theme_color": "#111827",

@@ -373,7 +373,7 @@ export default function Home() {
             </ScrollLink>
           </nav>
           <div className="hidden lg:block">
-            <Link href="/wallet" passHref>
+            <Link href="/wallet/login" passHref>
               <button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
                 Invest
               </button>
@@ -479,7 +479,7 @@ export default function Home() {
                 onClick={closeMenu}>
                 Newsletter
               </ScrollLink>
-              <Link href="/wallet" passHref>
+              <Link href="/wallet/login" passHref>
                 <button className="px-2 py-1 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400 text-sm">
                   Invest
                 </button>
@@ -842,7 +842,7 @@ export default function Home() {
                   <motion.div
                     className="flex space-x-4  mt-6"
                     variants={fadeIn}>
-                    <Link href="/wallet" passHref>
+                    <Link href="/wallet/login" passHref>
                       <button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
                         Invest
                       </button>
