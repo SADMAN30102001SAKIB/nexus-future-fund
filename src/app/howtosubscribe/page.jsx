@@ -262,9 +262,10 @@ export default function HowToSubscribe() {
               },
               {
                 title: "Special Link",
-                links: ["See Our Results"],
+                links: ["See Our Overall Results", "See Our Monthly Results"],
                 href: [
                   "https://docs.google.com/spreadsheets/d/1BAKN4CWq4dlS9xsxRF4xwNFSKMqU-bKG/edit?usp=sharing&rtpof=true&sd=true",
+                  "https://docs.google.com/spreadsheets/d/1htiUavLfhYHFeLJSCq8Ma7-oBslAlWdhgocXGb15Maw/edit?usp=sharing",
                 ],
               },
               {
