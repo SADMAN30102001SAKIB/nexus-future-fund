@@ -31,7 +31,7 @@ const termsAndConditions = [
   {
     title: "Services",
     content:
-      "Nexus Future Fund provides fund management services that focus primarily on cryptocurrency investments. We offer clients a guaranteed 2% monthly return on their investments.",
+      "Nexus Future Fund provides fund management services that focus primarily on cryptocurrency investments. We offer clients a guaranteed 24% yearly return on their investments.",
   },
   {
     title: "Eligibility",
@@ -85,7 +85,7 @@ const termsAndConditions = [
   },
 ];
 
-export default function Terms() {
+export default function Policy() {
   const [showScrollUp, setShowScrollUp] = useState(false);
 
   useEffect(() => {
@@ -129,7 +129,7 @@ export default function Terms() {
       </header>
 
       <main>
-        {/* Terms & Conditions */}
+        {/* Policies */}
         <Element name="terms">
           <section className="py-24 bg-gray-900">
             <div className="container mx-auto px-6 lg:px-12 max-w-5xl">
@@ -226,7 +226,7 @@ export default function Terms() {
                   </svg>
                 </a>
                 <a
-                  href="https://www.linkedin.com/company/nexus-future-fund"
+                  href="https://www.linkedin.com/company/nexusfuturefund"
                   className="text-gray-300 hover:text-white transition-colors duration-300"
                   aria-label="LinkedIn">
                   <svg
@@ -256,13 +256,13 @@ export default function Terms() {
             {[
               {
                 title: "Links",
-                links: ["Home", "About", "Terms & Conditions"],
-                href: ["/", "/about", "/terms"],
+                links: ["Home", "About"],
+                href: ["/", "/about"],
               },
               {
-                title: "Special Link",
-                links: ["Premium Trading Signals"],
-                href: ["/signals"],
+                title: "Our Services",
+                links: ["Nexus Future Fund", "Nexus Future Trade Signals"],
+                href: ["/", "/signals"],
               },
               {
                 title: "Contact",
@@ -295,7 +295,7 @@ export default function Terms() {
             ))}
           </div>
           <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-            <p>Copyright © 2024 Nexus Future Fund. All Right Reserved.</p>
+            <p>Copyright © 2025 Nexus Future Fund. All Right Reserved.</p>
           </div>
         </div>
       </footer>

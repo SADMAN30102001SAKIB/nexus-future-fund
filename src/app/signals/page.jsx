@@ -56,7 +56,7 @@ const feedbackData = [
     name: "James Pascal",
     role: "Entrepreneur",
     comment:
-      "I was skeptical at first, but after joining the premium group, I'm impressed. The team walks you through every trade, and the second entry strategy has saved me multiple times. Definitely the most reliable service I've used for Bitcoin futures.",
+      "I was skeptical at first, but after joining the premium group, I'm impressed. The team walks you through every trade, and the second entry strategy has saved me multiple times. Definitely the most reliable service I've used for Ethereum futures.",
     rating: 4,
     img: "https://media.licdn.com/dms/image/v2/D4E03AQHUOaXSKpY1Ng/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1724499115353?e=1733961600&v=beta&t=5VP-q3jgzYbXrGkF1YiGybxBpy7Y8_VhogPkSdM5l-8",
   },
@@ -104,7 +104,7 @@ const faq = [
   {
     question: "What is Nexus Future Trade Signals?",
     answer:
-      "Nexus Future Trade Signals is a subscription-based service that provides real-time Bitcoin trading signals with a 70% accuracy rate. Our expert traders help you grow your capital securely with transparent and professional strategies. Learn more on our 'About Us' page.",
+      "Nexus Future Trade Signals is a subscription-based service that provides real-time Crypto trading signals with a 70% accuracy rate. Our expert traders help you grow your capital securely with transparent and professional strategies. Learn more on our 'About Us' page.",
   },
   {
     question: "How do I start earning with Nexus Future Trade Signals?",
@@ -139,7 +139,7 @@ const faq = [
   {
     question: "Is there a discount available for new subscribers?",
     answer:
-      "Yes! For a limited time, we're offering a discounted subscription price of $100/month, down from the regular $500. This gives you full access to our real-time trade signals and premium group.",
+      "Yes! For a limited time, we're offering a discounted subscription price of $50/month, down from the regular $100. This gives you full access to our real-time trade signals and premium group.",
   },
 ];
 
@@ -170,7 +170,7 @@ export default function Signals() {
       setCurrentFeedbackIndex(
         (prevIndex) => (prevIndex + 1) % feedbackData.length,
       );
-    }, 5000);
+    }, 10000);
 
     return () => clearInterval(timer);
   }, []);
@@ -260,7 +260,7 @@ export default function Signals() {
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900 bg-opacity-80 backdrop-blur-md">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-          <Link href="/" passHref>
+          <Link href="/signals" passHref>
             <div className="flex items-center space-x-2">
               <div className="w-16 h-16 rounded-full flex items-center justify-center">
                 <Image
@@ -348,7 +348,7 @@ export default function Signals() {
             </ScrollLink>
           </nav>
           <div className="hidden lg:block">
-            <Link href="https://t.me/nexusfuturefund" passHref>
+            <Link href="https://discord.gg/kQ6kEdDzrC" passHref>
               <button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
                 Join Us
               </button>
@@ -454,7 +454,7 @@ export default function Signals() {
                 onClick={closeMenu}>
                 Newsletter
               </ScrollLink>
-              <Link href="https://t.me/nexusfuturefund" passHref>
+              <Link href="https://discord.gg/kQ6kEdDzrC" passHref>
                 <button className="px-2 py-1 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400 text-sm">
                   Join Us
                 </button>
@@ -479,21 +479,21 @@ export default function Signals() {
                   variants={fadeIn}>
                   Welcome to Nexus Future Trade Signals -{" "}
                   <span className="text-pink-600">
-                    Your Trusted Partner for Bitcoin Trading Success
+                    Your Trusted Partner for Crypto Trading Success
                   </span>
                   .
                 </motion.h1>
                 <motion.p
                   className="text-gray-300 mb-6 text-justify"
                   variants={fadeIn}>
-                  Looking to maximize your Bitcoin profits while following
-                  expert trade signals from{" "}
+                  Looking to maximize your Crypto profits while following expert
+                  trade signals from{" "}
                   <b className="text-pink-500">trusted professionals</b>?<br />
                   You&apos;re in the right place!
                   <br /> At Nexus Future Trade Signals, we offer a powerful
                   subscription service designed to help you grow your capital
                   safely with our professional traders, who specialize in the
-                  Bitcoin market. Our{" "}
+                  Crypto market. Our{" "}
                   <b className="text-pink-500">70% accuracy rate</b> means you
                   get the best chance at profitable trades, while our
                   transparency ensures that what you see is what you get.
@@ -518,13 +518,13 @@ export default function Signals() {
                   <motion.div
                     variants={fadeIn}
                     className="bg-gray-800 bg-opacity-50 backdrop-blur-md p-4 rounded-lg">
-                    <div className="text-3xl font-bold text-pink-500">2+</div>
+                    <div className="text-3xl font-bold text-pink-500">2.5+</div>
                     <div>Years of Experience</div>
                   </motion.div>
                   <motion.div
                     variants={fadeIn}
                     className="bg-gray-800 bg-opacity-50 backdrop-blur-md p-4 rounded-lg">
-                    <div className="text-3xl font-bold text-pink-500">200+</div>
+                    <div className="text-3xl font-bold text-pink-500">183+</div>
                     <div>Satisfied Customers</div>
                   </motion.div>
                 </motion.div>
@@ -782,13 +782,11 @@ export default function Signals() {
                   <motion.p
                     className="text-gray-300 text-justify"
                     variants={fadeIn}>
-                    Our team of professional Bitcoin traders sends real-time
+                    Our team of professional Crypto traders sends real-time
                     trade signals that include:
                     <br />
                     <b className="text-pink-500">Entry Points:</b>{" "}
-                    <span className="text-white">
-                      Where and when to buy Bitcoin.
-                    </span>
+                    <span className="text-white">Where and when to buy.</span>
                     <br />
                     <b className="text-pink-500">Equity Usage:</b>{" "}
                     <span className="text-white">
@@ -811,16 +809,16 @@ export default function Signals() {
                     className="mt-6 text-gray-300 text-justify"
                     variants={fadeIn}>
                     Don&apos;t miss out on this opportunity to trade alongside
-                    the world&apos;s best Bitcoin traders. Every trade is backed
+                    the world&apos;s best Crypto traders. Every trade is backed
                     by deep research, ensuring you can trade like a pro.
                     <br />
                     Join with our limited{" "}
-                    <b className="text-pink-500">$100/month offer</b>, full
+                    <b className="text-pink-500">$50/month offer</b>, full
                     transparency, and a refund guarantee if we close a month
                     negatively (which has never happened!)
                   </motion.p>
                   <motion.div className="flex space-x-4 mt-3" variants={fadeIn}>
-                    <Link href="https://t.me/nexusfuturefund" passHref>
+                    <Link href="https://discord.gg/kQ6kEdDzrC" passHref>
                       <button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
                         Join
                       </button>
@@ -1116,7 +1114,7 @@ export default function Signals() {
                   </svg>
                 </a>
                 <a
-                  href="https://www.linkedin.com/company/nexus-future-fund"
+                  href="https://www.linkedin.com/company/nexusfuturefund"
                   className="text-gray-300 hover:text-white transition-colors duration-300"
                   aria-label="LinkedIn">
                   <svg
@@ -1146,16 +1144,23 @@ export default function Signals() {
             {[
               {
                 title: "Links",
-                links: ["Nexus Future Fund", "About", "Terms & Conditions"],
-                href: ["/", "/about", "/terms"],
-              },
-              {
-                title: "Special Links",
-                links: ["Overall Result", "Monthly Results"],
+                links: [
+                  "Overall Result",
+                  "Monthly Results",
+                  "About",
+                  "Our Policies",
+                ],
                 href: [
                   "https://docs.google.com/spreadsheets/d/1BAKN4CWq4dlS9xsxRF4xwNFSKMqU-bKG/edit?usp=sharing&rtpof=true&sd=true",
                   "https://docs.google.com/spreadsheets/d/1htiUavLfhYHFeLJSCq8Ma7-oBslAlWdhgocXGb15Maw/edit?usp=sharing",
+                  "/about",
+                  "/policy",
                 ],
+              },
+              {
+                title: "Other Services",
+                links: ["Nexus Future Fund"],
+                href: ["/"],
               },
               {
                 title: "Contact",
@@ -1188,7 +1193,7 @@ export default function Signals() {
             ))}
           </div>
           <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-            <p>Copyright © 2024 Nexus Future Fund. All Right Reserved.</p>
+            <p>Copyright © 2025 Nexus Future Fund. All Right Reserved.</p>
           </div>
         </div>
       </footer>

@@ -12,9 +12,9 @@ const ubuntu = Ubuntu({
 });
 
 const defaultMetadata = {
-  title: "Nexus Future Fund - Guaranteed 2% Monthly Return | Safe Investments",
+  title: "Nexus Future Fund - Guaranteed 24% Yearly Return | Safe Investments",
   description:
-    "Invest with Nexus Future Fund for a guaranteed 2% monthly return on safe, risk-free investments. Trusted by clients, backed by world-class market researchers and traders. Experience secure growth with a proven, reliable team!",
+    "Invest with Nexus Future Fund for a guaranteed 24% Yearly return on safe, risk-free investments. Trusted by clients, backed by world-class market researchers and traders. Experience secure growth with a proven, reliable team!",
   keywords:
     "investment, mutual fund, secure investment, Nexus Future Fund, high returns, financial planning, investment strategies, safe investments",
   authors: [
@@ -23,9 +23,9 @@ const defaultMetadata = {
   robots: "index, follow",
   openGraph: {
     title:
-      "Nexus Future Fund - Guaranteed 2% Monthly Return | Safe Investments",
+      "Nexus Future Fund - Guaranteed 24% Yearly Return | Safe Investments",
     description:
-      "Invest with Nexus Future Fund for a guaranteed 2% monthly return on safe, risk-free investments. Trusted by clients, backed by world-class market researchers and traders. Experience secure growth with a proven, reliable team!",
+      "Invest with Nexus Future Fund for a guaranteed 24% Yearly return on safe, risk-free investments. Trusted by clients, backed by world-class market researchers and traders. Experience secure growth with a proven, reliable team!",
     url: "https://nexusfuturefund.vercel.app",
     siteName: "Nexus Future Fund",
     images: [
@@ -33,7 +33,7 @@ const defaultMetadata = {
         url: "https://pbs.twimg.com/profile_images/1842614833533104128/5XdqT1mT_400x400.jpg",
         width: 400,
         height: 400,
-        alt: "Nexus Future Fund - Guaranteed 2% Monthly Return | Safe Investments",
+        alt: "Nexus Future Fund - Guaranteed 24% Yearly Return | Safe Investments",
       },
     ],
     locale: "en_US",
@@ -42,9 +42,9 @@ const defaultMetadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "Nexus Future Fund - Guaranteed 2% Monthly Return | Safe Investments",
+      "Nexus Future Fund - Guaranteed 24% Yearly Return | Safe Investments",
     description:
-      "Invest with Nexus Future Fund for a guaranteed 2% monthly return on safe, risk-free investments. Trusted by clients, backed by world-class market researchers and traders. Experience secure growth with a proven, reliable team!",
+      "Invest with Nexus Future Fund for a guaranteed 24% Yearly return on safe, risk-free investments. Trusted by clients, backed by world-class market researchers and traders. Experience secure growth with a proven, reliable team!",
     images: [
       "https://pbs.twimg.com/profile_images/1842614833533104128/5XdqT1mT_400x400.jpg",
     ],
@@ -57,9 +57,9 @@ const subscriptionMetadata = {
   title:
     "Nexus Future Trade Signals | risk-free 10%+ Monthly Profits, 24/7 Support",
   description:
-    "Maximize your Bitcoin profits with Nexus Future Trade Signals! Enjoy 10%+ monthly returns and 70% accuracy. Get real-time signals, full transparency, and 24/7 support. Limited-time offer: Join our trusted, risk-free subscription for just $100/month!",
+    "Maximize your Crypto profits with Nexus Future Trade Signals! Enjoy 10%+ monthly returns and 70% accuracy. Get real-time signals, full transparency, and 24/7 support. Limited-time offer: Join our trusted, risk-free subscription for just $50/month!",
   keywords:
-    "investment, mutual fund, secure investment, Nexus Future Fund, high returns, financial planning, investment strategies, safe investments, trade signals, Bitcoin signals, crypto signals, Nexus Future Trade, 10% returns, trading support, financial freedom",
+    "investment, mutual fund, secure investment, Nexus Future Fund, high returns, financial planning, investment strategies, safe investments, trade signals, Crypto signals, crypto signals, Nexus Future Trade, 10% returns, trading support, financial freedom",
   authors: [
     { name: "Nexus Future Fund", url: "https://nexusfuturefund.vercel.app" },
   ],
@@ -68,7 +68,7 @@ const subscriptionMetadata = {
     title:
       "Nexus Future Trade Signals | risk-free 10%+ Monthly Profits, 24/7 Support",
     description:
-      "Maximize your Bitcoin profits with Nexus Future Trade Signals! Enjoy 10%+ monthly returns and 70% accuracy. Get real-time signals, full transparency, and 24/7 support. Limited-time offer: Join our trusted, risk-free subscription for just $100/month!",
+      "Maximize your Crypto profits with Nexus Future Trade Signals! Enjoy 10%+ monthly returns and 70% accuracy. Get real-time signals, full transparency, and 24/7 support. Limited-time offer: Join our trusted, risk-free subscription for just $50/month!",
     url: "https://nexusfuturefund.vercel.app",
     siteName: "Nexus Future Fund",
     images: [
@@ -87,7 +87,7 @@ const subscriptionMetadata = {
     title:
       "Nexus Future Trade Signals | risk-free 10%+ Monthly Profits, 24/7 Support",
     description:
-      "Maximize your Bitcoin profits with Nexus Future Trade Signals! Enjoy 10%+ monthly returns and 70% accuracy. Get real-time signals, full transparency, and 24/7 support. Limited-time offer: Join our trusted, risk-free subscription for just $100/month!",
+      "Maximize your Crypto profits with Nexus Future Trade Signals! Enjoy 10%+ monthly returns and 70% accuracy. Get real-time signals, full transparency, and 24/7 support. Limited-time offer: Join our trusted, risk-free subscription for just $50/month!",
     images: [
       "https://pbs.twimg.com/profile_images/1842614833533104128/5XdqT1mT_400x400.jpg",
     ],
@@ -172,7 +172,7 @@ export default function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "InvestmentOrDeposit",
               name: "Nexus Future Fund",
-              description: "Guaranteed 2% monthly return on safe investments.",
+              description: "Guaranteed 24% Yearly return on safe investments.",
               url: "https://nexusfuturefund.vercel.app",
               sameAs: "https://twitter.com/nexusfuturefund",
               potentialAction: {

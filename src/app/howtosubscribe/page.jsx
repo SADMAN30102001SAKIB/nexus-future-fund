@@ -25,9 +25,9 @@ const staggerChildren = {
 const howToDetails = [
   "<p>Before you join, we encourage you to explore our website and learn everything about our trading strategies, targets, and results. We're fully transparent, so take your time to understand how we operate and why we're different from others in the market.</p>",
   "<p>If you have any questions or need clarification, reach out to us! Our friendly support team is available to help you at any step. Were here to guide you and make the process smooth and easy.</p>",
-  "<p>Once youre ready to join, follow these steps:<br/>Reach out to us to get the crypto wallet address for your subscription payment.<br/>Send the subscription fee of just $100 (currently discounted from $500).<br/>Verify your payment with us, and well add you to our exclusive Discord and Telegram channels.</p>",
+  "<p>Once youre ready to join, follow these steps:<br/>Reach out to us to get the crypto wallet address for your subscription payment.<br/>Send the subscription fee of just $50 (currently discounted from $100).<br/>Verify your payment with us, and well add you to our exclusive Discord and Telegram channels.</p>",
   "<p>We offer a 7-day free trial to help you get comfortable. Watch our team in action, learn how we trade, and understand our strategies. Whether you want to start trading immediately or just observe, the first week is completely free. No pressure—just learning!</p>",
-  "<p>We only trade in Bitcoin futures with 100X leverage. Here's how it works:<br/><b>Real-time signals:</b> We tell you exactly when to buy or sell Bitcoin and how much equity to use.<br/><b>Live updates:</b> You'll get instant updates on take profit and stop-loss points, so you always know what's happening.<br/><b>Second entry strategy:</b> If the stop loss exceeds 50%, we give you a second entry option to help manage the trade effectively.<br/><b>Daily signals:</b> We provide trading signals throughout the day, so you'll always have opportunities to grow your capital.</p>",
+  "<p>We trade in Crypto futures with 100X leverage. Here's how it works:<br/><b>Real-time signals:</b> We tell you exactly when to buy or sell Crypto and how much equity to use.<br/><b>Live updates:</b> You'll get instant updates on take profit and stop-loss points, so you always know what's happening.<br/><b>Second entry strategy:</b> If the stop loss exceeds 50%, we give you a second entry option to help manage the trade effectively.<br/><b>Daily signals:</b> We provide trading signals throughout the day, so you'll always have opportunities to grow your capital.</p>",
   "<p>By following our professional traders, you can expect a 10%+ ROI on your capital every month. Unlike others, we don't make false promises or show fake results. Everything is 100% transparent—you'll see every trade, every result, with nothing hidden.</p>",
   "<p>If we ever close a month in negative ROI (which has never happened), we'll refund your subscription fee. We stand behind our traders and are confident in their ability to deliver profits. You have nothing to lose by joining!</p>",
 ];
@@ -59,7 +59,7 @@ export default function HowToSubscribe() {
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900 bg-opacity-80 backdrop-blur-md">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-          <Link href="/" passHref>
+          <Link href="/signals" passHref>
             <div className="flex items-center space-x-2">
               <div className="w-16 h-16 rounded-full flex items-center justify-center">
                 <Image
@@ -73,7 +73,7 @@ export default function HowToSubscribe() {
             </div>
           </Link>
           <div>
-            <Link href="https://t.me/nexusfuturefund" passHref>
+            <Link href="https://discord.gg/kQ6kEdDzrC" passHref>
               <button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
                 Join Us
               </button>
@@ -95,13 +95,13 @@ export default function HowToSubscribe() {
                   <motion.h2
                     className="text-3xl font-bold mb-6"
                     variants={fadeIn}>
-                    How to Join Our Premium Bitcoin Trading Signals Group - Step
+                    How to Join Our Premium Crypto Trading Signals Group - Step
                     by Step Guide
                   </motion.h2>
                   <motion.p
                     className="text-gray-300 mb-6 text-justify"
                     variants={fadeIn}>
-                    Ready to start making real profits with professional Bitcoin
+                    Ready to start making real profits with professional Crypto
                     trading signals? Our Premium Signals Group gives you
                     exclusive access to high-accuracy trades and the expertise
                     of our seasoned traders. Follow these simple steps to join
@@ -150,11 +150,11 @@ export default function HowToSubscribe() {
                     variants={fadeIn}>
                     We are a trusted, transparent, and professional team
                     committed to helping you grow your money securely. Join our
-                    premium group and experience expert Bitcoin trading
+                    premium group and experience expert Crypto trading
                     firsthand. Don&apos;t miss your chance to make steady,
                     reliable profits with us!
                   </motion.p>
-                  <Link href="https://t.me/nexusfuturefund" passHref>
+                  <Link href="https://discord.gg/kQ6kEdDzrC" passHref>
                     <button className="px-4 py-2 my-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
                       Join
                     </button>
@@ -227,7 +227,7 @@ export default function HowToSubscribe() {
                   </svg>
                 </a>
                 <a
-                  href="https://www.linkedin.com/company/nexus-future-fund"
+                  href="https://www.linkedin.com/company/nexusfuturefund"
                   className="text-gray-300 hover:text-white transition-colors duration-300"
                   aria-label="LinkedIn">
                   <svg
@@ -257,16 +257,23 @@ export default function HowToSubscribe() {
             {[
               {
                 title: "Links",
-                links: ["Nexus Future Fund", "About", "Terms & Conditions"],
-                href: ["/", "/about", "/terms"],
-              },
-              {
-                title: "Special Links",
-                links: ["Overall Result", "Monthly Results"],
+                links: [
+                  "Overall Result",
+                  "Monthly Results",
+                  "About",
+                  "Our Policies",
+                ],
                 href: [
                   "https://docs.google.com/spreadsheets/d/1BAKN4CWq4dlS9xsxRF4xwNFSKMqU-bKG/edit?usp=sharing&rtpof=true&sd=true",
                   "https://docs.google.com/spreadsheets/d/1htiUavLfhYHFeLJSCq8Ma7-oBslAlWdhgocXGb15Maw/edit?usp=sharing",
+                  "/about",
+                  "/policy",
                 ],
+              },
+              {
+                title: "Other Services",
+                links: ["Nexus Future Fund"],
+                href: ["/"],
               },
               {
                 title: "Contact",
@@ -299,7 +306,7 @@ export default function HowToSubscribe() {
             ))}
           </div>
           <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-            <p>Copyright © 2024 Nexus Future Fund. All Right Reserved.</p>
+            <p>Copyright © 2025 Nexus Future Fund. All Right Reserved.</p>
           </div>
         </div>
       </footer>

@@ -247,7 +247,7 @@ export default function Blogs() {
                   </svg>
                 </a>
                 <a
-                  href="https://www.linkedin.com/company/nexus-future-fund"
+                  href="https://www.linkedin.com/company/nexusfuturefund"
                   className="text-gray-300 hover:text-white transition-colors duration-300"
                   aria-label="LinkedIn">
                   <svg
@@ -277,13 +277,13 @@ export default function Blogs() {
             {[
               {
                 title: "Links",
-                links: ["Home", "About", "Terms & Conditions"],
-                href: ["/", "/about", "/terms"],
+                links: ["Home", "About", "Our Policies"],
+                href: ["/", "/about", "/policy"],
               },
               {
-                title: "Special Link",
-                links: ["Premium Trading Signals"],
-                href: ["/signals"],
+                title: "Our Services",
+                links: ["Nexus Future Fund", "Nexus Future Trade Signals"],
+                href: ["/", "/signals"],
               },
               {
                 title: "Contact",
@@ -316,7 +316,7 @@ export default function Blogs() {
             ))}
           </div>
           <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-            <p>Copyright © 2024 Nexus Future Fund. All Right Reserved.</p>
+            <p>Copyright © 2025 Nexus Future Fund. All Right Reserved.</p>
           </div>
         </div>
       </footer>

@@ -27,8 +27,8 @@ const howToDetails = [
   "<p>To join our fund and start investing, you should install the Nexus Future Fund app (even though everything can be done in the website), available for both:<br/>Android & iOS<br/>When you're on our website, simply tap 'Add to Home Screen' in your browser and this will automatically install the app on your device (watch our video tutorial on YouTube for step by step guide).</p>",
   "<p>Once the app is installed, open it and Sign up for a new account using your personal information.<br/>Complete the verification process to ensure your account is secure and ready for investment. Verification helps protect your funds and ensures the safety of our platform.</p>",
   "<p>Now that your account is set up and verified, it's time to deposit the amount you wish to invest.<br/><b>Important:</b> You can only deposit money between the 21st and 28th of each month.<br/><br/>Select the deposit option in the app.<br/>Choose the amount you want to invest and complete the deposit.</p>",
-  "<p>Your investment will officially start counting from the 1st of the next month. From then on, you will receive a guaranteed 2% interest every month on your investment.</p>",
-  "<p>You are free to withdraw your money at any time!<br/>Open the app and select the withdrawal option.<br/>Your withdrawal request will be processed within 1 hour.<br/><b>Note:</b> To receive your 2% interest, it is best to withdraw after the month is complete.</p>",
+  "<p>Your investment will officially start counting from the 1st of the next month. From then on, you will receive a guaranteed 24% return every year on your investment.</p>",
+  "<p>You are free to withdraw your money at any time!<br/>Open the app and select the withdrawal option.<br/>Your withdrawal request will be processed within 1 hour.<br/><b>Note:</b> To receive your 24% return, it is best to withdraw after the month is complete.</p>",
 ];
 
 export default function HowToInvest() {
@@ -74,7 +74,7 @@ export default function HowToInvest() {
           <div>
             <Link href="/wallet" passHref>
               <button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
-                Invest
+                My Wallet
               </button>
             </Link>
           </div>
@@ -101,7 +101,7 @@ export default function HowToInvest() {
                     className="text-gray-300 mb-6 text-justify"
                     variants={fadeIn}>
                     At Nexus Future Fund, we make it easy for you to start
-                    investing and earning a guaranteed 2% monthly return. Follow
+                    investing and earning a guaranteed 24% yearly return. Follow
                     these simple steps to join us and begin your journey toward
                     financial growth:
                   </motion.p>
@@ -111,7 +111,7 @@ export default function HowToInvest() {
                       "Install Our App",
                       "Sign Up and Verify Your Account",
                       "Deposit Your Investment",
-                      "Start Earning 2% Monthly Interest",
+                      "Start Earning 24% Yearly return",
                       "Withdraw Anytime You Want",
                     ].map((item, index) => (
                       <motion.div variants={fadeIn} key={index}>
@@ -226,7 +226,7 @@ export default function HowToInvest() {
                   </svg>
                 </a>
                 <a
-                  href="https://www.linkedin.com/company/nexus-future-fund"
+                  href="https://www.linkedin.com/company/nexusfuturefund"
                   className="text-gray-300 hover:text-white transition-colors duration-300"
                   aria-label="LinkedIn">
                   <svg
@@ -256,12 +256,12 @@ export default function HowToInvest() {
             {[
               {
                 title: "Links",
-                links: ["Home", "About", "Terms & Conditions"],
-                href: ["/", "/about", "/terms"],
+                links: ["Home", "About", "Our Policies"],
+                href: ["/", "/about", "/policy"],
               },
               {
-                title: "Special Link",
-                links: ["Premium Trading Signals"],
+                title: "Other Services",
+                links: ["Nexus Future Trade Signals"],
                 href: ["/signals"],
               },
               {
@@ -295,7 +295,7 @@ export default function HowToInvest() {
             ))}
           </div>
           <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-            <p>Copyright © 2024 Nexus Future Fund. All Right Reserved.</p>
+            <p>Copyright © 2025 Nexus Future Fund. All Right Reserved.</p>
           </div>
         </div>
       </footer>

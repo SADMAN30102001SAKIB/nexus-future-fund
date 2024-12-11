@@ -101,14 +101,14 @@ const faq = [
       "Nexus Future Fund is a hedge fund designed to simplify your investments. It helps you track your portfolio, plan for the future, and earn steady returns. Visit our 'About Us' section to learn more.",
   },
   {
-    question: "How do I start earning 2% monthly returns?",
+    question: "How do I start earning 24% yearly returns?",
     answer:
-      "Getting started is easy. Create an account, deposit your funds, and your investment will begin growing with a 2% monthly return. For more details, click on 'How To Invest' in the header section.",
+      "Getting started is easy. Create an account, deposit your funds, and your investment will begin growing with a 24% yearly return. For more details, click on 'How To Invest' in the header section.",
   },
   {
     question: "Is my investment safe?",
     answer:
-      "Yes, we prioritize your security. Nexus Future Fund takes all necessary precautions to protect your funds, and we offer a guaranteed 2% monthly return to give you peace of mind.",
+      "Yes, we prioritize your security. Nexus Future Fund takes all necessary precautions to protect your funds, and we offer a guaranteed 24% yearly return to give you peace of mind.",
   },
   {
     question: "Can I withdraw my money whenever I want?",
@@ -140,43 +140,7 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [submitionError, setSubmitionError] = useState("");
-  // const [deferredPrompt, setDeferredPrompt] = useState(null);
   const headerHeight = 80;
-
-  // useEffect(() => {
-  //   const handleBeforeInstallPrompt = (e) => {
-  //     console.log("beforeInstallPrompt event fired");
-  //     e.preventDefault();
-  //     setDeferredPrompt(e);
-  //   };
-
-  //   window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
-  //   console.log("PWAInstall component mounted");
-
-  //   return () => {
-  //     window.removeEventListener(
-  //       "beforeinstallprompt",
-  //       handleBeforeInstallPrompt,
-  //     );
-  //   };
-  // }, []);
-
-  // const handleInstallClick = () => {
-  //   if (deferredPrompt) {
-  //     deferredPrompt.prompt();
-  //     deferredPrompt.userChoice.then((choiceResult) => {
-  //       if (choiceResult.outcome === "accepted") {
-  //         console.log("User accepted the PWA prompt");
-  //       } else {
-  //         console.log("User dismissed the PWA prompt");
-  //       }
-  //       setDeferredPrompt(null);
-  //     });
-  //   } else {
-  //     console.log(deferredPrompt);
-  //     alert("Can't Install!");
-  //   }
-  // };
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -195,7 +159,7 @@ export default function Home() {
       setCurrentFeedbackIndex(
         (prevIndex) => (prevIndex + 1) % feedbackData.length,
       );
-    }, 5000);
+    }, 10000);
 
     return () => clearInterval(timer);
   }, []);
@@ -375,7 +339,7 @@ export default function Home() {
           <div className="hidden lg:block">
             <Link href="/wallet/login" passHref>
               <button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
-                Invest
+                Dashboard
               </button>
             </Link>
           </div>
@@ -481,7 +445,7 @@ export default function Home() {
               </ScrollLink>
               <Link href="/wallet/login" passHref>
                 <button className="px-2 py-1 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400 text-sm">
-                  Invest
+                  Dashboard
                 </button>
               </Link>
             </div>
@@ -518,7 +482,7 @@ export default function Home() {
                   variants={fadeIn}>
                   At Nexus Future Fund, we don&apos;t just promise growth - we
                   guarantee it. Imagine earning a steady{" "}
-                  <b className="text-pink-500">2% return every month</b>,
+                  <b className="text-pink-500">24% return every year</b>,
                   without the usual risks that come with investing. It&apos;s
                   safe. It&apos;s smart. It&apos;s the future of
                   wealth-building.
@@ -548,13 +512,13 @@ export default function Home() {
                   <motion.div
                     variants={fadeIn}
                     className="bg-gray-800 bg-opacity-50 backdrop-blur-md p-4 rounded-lg">
-                    <div className="text-3xl font-bold text-pink-500">2+</div>
+                    <div className="text-3xl font-bold text-pink-500">2.5+</div>
                     <div>Years of Experience</div>
                   </motion.div>
                   <motion.div
                     variants={fadeIn}
                     className="bg-gray-800 bg-opacity-50 backdrop-blur-md p-4 rounded-lg">
-                    <div className="text-3xl font-bold text-pink-500">150+</div>
+                    <div className="text-3xl font-bold text-pink-500">55+</div>
                     <div>Satisfied Customers</div>
                   </motion.div>
                 </motion.div>
@@ -601,7 +565,7 @@ export default function Home() {
                     icon: Shield,
                     title: "Guaranteed safety",
                     description:
-                      "We use secure process to protect your information and help prevent unauthorized use. We take pride by offering you a <b class='text-pink-500'>guaranteed 2% monthly</b> return of investment, supported by our expert market researchers.",
+                      "We use secure process to protect your information and help prevent unauthorized use. We take pride by offering you a <b class='text-pink-500'>guaranteed 24% yearly</b> return of investment, supported by our expert market researchers.",
                   },
                   {
                     icon: Headphones,
@@ -816,7 +780,7 @@ export default function Home() {
                   </motion.p>
                   <motion.ul className="space-y-4" variants={staggerChildren}>
                     {[
-                      "Guaranteed 2% Monthly Returns",
+                      "Guaranteed 24% Yearly Returns",
                       "Risk-Free Cryptocurrency Investing",
                       "24/7 Support Backed by Top Industry Experts",
                       "Simple & Hassle-Free Experience",
@@ -844,7 +808,7 @@ export default function Home() {
                     variants={fadeIn}>
                     <Link href="/wallet/login" passHref>
                       <button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
-                        Invest
+                        Your Wallet
                       </button>
                     </Link>
                     <Link href="/howtoinvest" passHref>
@@ -1138,7 +1102,7 @@ export default function Home() {
                   </svg>
                 </a>
                 <a
-                  href="https://www.linkedin.com/company/nexus-future-fund"
+                  href="https://www.linkedin.com/company/nexusfuturefund"
                   className="text-gray-300 hover:text-white transition-colors duration-300"
                   aria-label="LinkedIn">
                   <svg
@@ -1168,12 +1132,12 @@ export default function Home() {
             {[
               {
                 title: "Links",
-                links: ["Home", "About", "Terms & Conditions"],
-                href: ["/", "/about", "/terms"],
+                links: ["Home", "About", "Our Policies"],
+                href: ["/", "/about", "/policy"],
               },
               {
-                title: "Special Link",
-                links: ["Premium Trading Signals"],
+                title: "Other Services",
+                links: ["Nexus Future Trade Signals"],
                 href: ["/signals"],
               },
               {
@@ -1207,7 +1171,7 @@ export default function Home() {
             ))}
           </div>
           <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-            <p>Copyright © 2024 Nexus Future Fund. All Right Reserved.</p>
+            <p>Copyright © 2025 Nexus Future Fund. All Right Reserved.</p>
           </div>
         </div>
       </footer>
