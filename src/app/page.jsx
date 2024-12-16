@@ -139,7 +139,7 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
-  const [submitionError, setSubmitionError] = useState("");
+  const [submissionError, setSubmissionError] = useState("");
   const headerHeight = 80;
 
   useEffect(() => {
@@ -224,20 +224,18 @@ export default function Home() {
         },
       );
 
-      console.log("hi");
-
       const data = await response.json();
 
       if (response.ok) {
         setSubmitStatus("success");
         setEmail("");
       } else {
-        setSubmitionError(data.error);
+        setSubmissionError(data.error);
         setSubmitStatus("error");
       }
     } catch (error) {
       console.log(error);
-      setSubmitionError("");
+      setSubmissionError("");
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -1031,8 +1029,8 @@ export default function Home() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}>
                         <XCircle className="mr-2" />
-                        {submitionError
-                          ? submitionError
+                        {submissionError
+                          ? submissionError
                           : "Something went wrong. Please try again later."}
                       </motion.p>
                     )}

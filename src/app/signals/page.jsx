@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../assets/logo.png";
-import homeImage from "../../assets/home.png";
+// import homeImage from "../../assets/home.png";
 import benefitsImage from "../../assets/benefits.png";
 import investmentsImage from "../../assets/investments.png";
 import placeholderImage from "../../assets/userPlaceholder.jpg";
@@ -143,6 +144,19 @@ const faq = [
   },
 ];
 
+const YouTubeEmbed = dynamic(
+  () =>
+    Promise.resolve(() => (
+      <iframe
+        className="w-full h-48 md:h-64 lg:h-88 rounded-lg shadow-lg"
+        src="https://www.youtube.com/embed/r_PeD-yQMoY?autoplay=1&controls=1&modestbranding=1"
+        title="STOP Losing in Crypto! 🔥 Join Nexus Future Trade Signals for Consistent Profits!"
+        allow="autoplay; encrypted-media"
+        allowFullScreen></iframe>
+    )),
+  { ssr: false },
+);
+
 export default function Signals() {
   const [showScrollUp, setShowScrollUp] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -150,7 +164,7 @@ export default function Signals() {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
-  const [submitionError, setSubmitionError] = useState("");
+  const [submissionError, setSubmissionError] = useState("");
   const headerHeight = 80;
 
   useEffect(() => {
@@ -235,20 +249,18 @@ export default function Signals() {
         },
       );
 
-      console.log("hi");
-
       const data = await response.json();
 
       if (response.ok) {
         setSubmitStatus("success");
         setEmail("");
       } else {
-        setSubmitionError(data.error);
+        setSubmissionError(data.error);
         setSubmitStatus("error");
       }
     } catch (error) {
       console.log(error);
-      setSubmitionError("");
+      setSubmissionError("");
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -467,10 +479,10 @@ export default function Signals() {
       <main>
         {/* Home Section */}
         <Element name="home">
-          <section className="pt-36 lg:pt-24 pb-8">
-            <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
+          <section className="pt-36 lg:pt-48 pb-8">
+            <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
               <motion.div
-                className="lg:w-1/2 mb-8 lg:mb-0 lg:px-16"
+                className="md:w-1/2 mb-8 lg:mb-0 md:px-16"
                 variants={staggerChildren}
                 initial="initial"
                 animate="animate">
@@ -530,18 +542,19 @@ export default function Signals() {
                 </motion.div>
               </motion.div>
               <motion.div
-                className="lg:w-1/2 lg:pl-8"
+                className="md:w-1/2 md:pl-8"
                 variants={fadeIn}
                 initial="initial"
                 animate="animate">
                 <div className="relative">
-                  <Image
+                  {/* <Image
                     src={homeImage}
                     alt="Nexus Future Fund secure investment strategies for high returns and financial growth"
                     width={1280}
                     height={1280}
                     className="w-full"
-                  />
+                  /> */}
+                  <YouTubeEmbed />
                 </div>
               </motion.div>
             </div>
@@ -1043,8 +1056,8 @@ export default function Signals() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}>
                         <XCircle className="mr-2" />
-                        {submitionError
-                          ? submitionError
+                        {submissionError
+                          ? submissionError
                           : "Something went wrong. Please try again later."}
                       </motion.p>
                     )}

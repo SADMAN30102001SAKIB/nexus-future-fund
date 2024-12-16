@@ -31,6 +31,11 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      height: {
+        84: "21rem",
+        88: "22rem",
+        92: "23rem",
+      },
     },
   },
   plugins: [tailwindcssAnimate],
