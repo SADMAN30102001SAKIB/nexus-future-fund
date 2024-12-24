@@ -532,7 +532,7 @@ export default function Home() {
                 </motion.div>
               </motion.div>
               <motion.div
-                className="lg:w-1/2 lg:pl-8"
+                className="lg:w-1/2 pr-6 md:pr-12"
                 variants={fadeIn}
                 initial="initial"
                 animate="animate">
