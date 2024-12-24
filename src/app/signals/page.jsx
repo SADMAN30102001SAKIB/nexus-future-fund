@@ -8,6 +8,7 @@ import homeImage from "../../assets/home.png";
 import benefitsImage from "../../assets/benefits.png";
 import investmentsImage from "../../assets/investments.png";
 import placeholderImage from "../../assets/userPlaceholder.jpg";
+import thumbnail from "../../assets/thumbnail.jpg";
 import {
   Accordion,
   AccordionContent,
@@ -146,9 +147,6 @@ const faq = [
 const YouTubeEmbed = () => {
   const [isClient, setIsClient] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [thumbnailUrl, setThumbnailUrl] = useState(
-    "https://i9.ytimg.com/vi/r_PeD-yQMoY/maxresdefault.jpg?v=6730c4bd&sqp=CJCGq7sG&rs=AOn4CLDFVFFo9sSSImPWqwHw5nVeI3IEPQ",
-  );
 
   useEffect(() => {
     setIsClient(true);
@@ -157,22 +155,17 @@ const YouTubeEmbed = () => {
   if (!isClient) return null;
 
   const videoUrl = `https://www.youtube.com/embed/r_PeD-yQMoY?autoplay=1&controls=1&modestbranding=1`;
-  const fallbackThumbnail = `https://img.youtube.com/vi/r_PeD-yQMoY/hqdefault.jpg`;
 
   return (
     <div className="relative w-80 md:w-[600px] lg:w-full h-44 md:h-80 lg:h-88">
       {!isPlaying ? (
         <div
           className="cursor-pointer relative w-full h-full bg-cover bg-center rounded-lg shadow-lg"
-          style={{ backgroundImage: `url('${thumbnailUrl}')` }}
           onClick={() => setIsPlaying(true)}>
           <Image
-            src={thumbnailUrl}
+            src={thumbnail}
             alt="Video thumbnail"
-            className="hidden"
-            onError={() => {
-              setThumbnailUrl(fallbackThumbnail);
-            }}
+            className="rounded-lg"
             layout="fill"
             objectFit="cover"
           />
@@ -612,8 +605,8 @@ export default function Signals() {
         </Element>
 
         {/* Features Section */}
-        <Element name="features">
-          <section className="py-8 lg:py-16 bg-gray-800">
+        <Element name="features" className="relative">
+          <section className="py-12 lg:py-20 bg-gray-800 lg:section-angle3">
             <div className="container mx-auto lg:px-36">
               <h2 className="text-3xl font-bold text-center mb-10">
                 Why Should You Choose Us
@@ -669,8 +662,8 @@ export default function Signals() {
         </Element>
 
         {/* Scams Section */}
-        <Element name="scams">
-          <section className="py-8 lg:py-4">
+        <Element name="scams" className="relative">
+          <section className="py-16 lg:py-8 lg:section-angle4">
             <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
               <motion.div
                 className="lg:w-1/2 lg:pl-8 hidden lg:block"
@@ -1000,8 +993,8 @@ export default function Signals() {
         </Element>
 
         {/* Blogs Section */}
-        <Element name="blogs">
-          <section className="py-8 lg:py-16 bg-gray-800">
+        <Element name="blogs" className="relative">
+          <section className="pb-3 lg:pb-6 pt-8 lg:pt-16 bg-gray-800 lg:section-angle1">
             <div className="container mx-auto lg:px-24">
               <h2 className="text-3xl font-bold text-center mb-10">
                 Latest Blogs
@@ -1061,8 +1054,8 @@ export default function Signals() {
         </Element>
 
         {/* Subscribe Section */}
-        <Element name="newsletter">
-          <section className="py-8 px-8 lg:px-16 lg:py-16 bg-gray-900">
+        <Element name="newsletter" className="relative">
+          <section className="py-16 lg:py-24 px-8 lg:px-16 bg-gray-900 lg:section-angle2">
             <div className="container mx-auto px-4">
               <motion.div
                 className="bg-gray-800 bg-opacity-50 backdrop-blur-md rounded-lg p-8 flex flex-col lg:flex-row items-center justify-between"

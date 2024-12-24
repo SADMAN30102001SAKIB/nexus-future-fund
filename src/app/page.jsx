@@ -253,7 +253,7 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-gray-900 min-h-screen text-gray-100">
+    <div className="bg-gray-800 min-h-screen text-gray-100">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900 bg-opacity-80 backdrop-blur-md">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
@@ -463,8 +463,8 @@ export default function Home() {
 
       <main>
         {/* Home Section */}
-        <Element name="home">
-          <section className="pt-36 lg:pt-24 pb-8">
+        <Element name="home" className="relative">
+          <section className="pt-36 lg:pt-24 bg-gray-900">
             <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
               <motion.div
                 className="lg:w-1/2 mb-8 lg:mb-0 lg:px-16"
@@ -551,8 +551,8 @@ export default function Home() {
         </Element>
 
         {/* Features Section */}
-        <Element name="features">
-          <section className="py-8 lg:py-16 bg-gray-800">
+        <Element name="features" className="relative">
+          <section className="py-8 lg:py-16 bg-gray-800 lg:section-angle1">
             <div className="container mx-auto lg:px-36">
               <h2 className="text-3xl font-bold text-center mb-10">
                 Why Should You Choose Us
@@ -608,8 +608,8 @@ export default function Home() {
         </Element>
 
         {/* Scams Section */}
-        <Element name="scams">
-          <section className="py-8 lg:py-4">
+        <Element name="scams" className="relative">
+          <section className="py-8 lg:py-4 bg-gray-900 lg:section-angle2">
             <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
               <motion.div
                 className="lg:w-1/2 lg:pl-8 hidden lg:block"
@@ -747,8 +747,8 @@ export default function Home() {
         </Element>
 
         {/* Benefits Section */}
-        <Element name="benefits">
-          <section className="py-8 lg:py-4">
+        <Element name="benefits" className="relative">
+          <section className="py-8 lg:py-4 bg-gray-900">
             <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
               <motion.div
                 className="lg:w-1/2 lg:pl-8 hidden lg:block"
@@ -834,8 +834,8 @@ export default function Home() {
         </Element>
 
         {/* Feedback Section */}
-        <Element name="feedback">
-          <section className="py-8 lg:py-16 lg:px-36 bg-gray-800">
+        <Element name="feedback" className="relative">
+          <section className="py-6 lg:py-12 lg:px-36 bg-gray-800">
             <div className="container mx-auto px-4">
               <h2 className="text-3xl font-bold text-center mb-10">
                 What Our Clients Say
@@ -901,8 +901,8 @@ export default function Home() {
         </Element>
 
         {/* FAQ Section */}
-        <Element name="faq">
-          <section className="py-8 lg:py-16">
+        <Element name="faq" className="relative">
+          <section className="py-8 lg:py-16 bg-gray-900">
             <div className="container mx-auto px-4">
               <h2 className="text-3xl font-bold text-center mb-10">
                 Frequently Asked Questions
@@ -933,8 +933,8 @@ export default function Home() {
         </Element>
 
         {/* Blogs Section */}
-        <Element name="blogs">
-          <section className="py-8 lg:py-16 bg-gray-800">
+        <Element name="blogs" className="relative">
+          <section className="pb-3 lg:pb-6 pt-8 lg:pt-16 bg-gray-800 lg:section-angle3">
             <div className="container mx-auto lg:px-24">
               <h2 className="text-3xl font-bold text-center mb-10">
                 Latest Blogs
@@ -994,8 +994,8 @@ export default function Home() {
         </Element>
 
         {/* Subscribe Section */}
-        <Element name="newsletter">
-          <section className="py-8 px-8 lg:px-16 lg:py-16 bg-gray-900">
+        <Element name="newsletter" className="relative">
+          <section className="py-16 lg:py-24 px-8 lg:px-16 bg-gray-900 lg:section-angle4">
             <div className="container mx-auto px-4">
               <motion.div
                 className="bg-gray-800 bg-opacity-50 backdrop-blur-md rounded-lg p-8 flex flex-col lg:flex-row items-center justify-between"
