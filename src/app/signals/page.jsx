@@ -1,11 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import dynamic from "next/dynamic";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../assets/logo.png";
-// import homeImage from "../../assets/home.png";
+import homeImage from "../../assets/home.png";
 import benefitsImage from "../../assets/benefits.png";
 import investmentsImage from "../../assets/investments.png";
 import placeholderImage from "../../assets/userPlaceholder.jpg";
@@ -51,7 +50,7 @@ const feedbackData = [
     comment:
       "Nexus Future Trade Signals has completely changed how I trade. The real-time signals are incredibly accurate, and I've seen a consistent 10%+ growth in my capital every month. Their transparency is what sets them apart; I always know exactly what's happening with my trades.",
     rating: 5,
-    img: "https://media.licdn.com/dms/image/v2/D4E03AQHvlN_c_3tT2Q/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1679663026342?e=1733961600&v=beta&t=UZsfSWvA2aKPWMXaUxD5VwCOFXpll0fCharkAb-zlEQ",
+    img: "",
   },
   {
     name: "James Pascal",
@@ -59,7 +58,7 @@ const feedbackData = [
     comment:
       "I was skeptical at first, but after joining the premium group, I'm impressed. The team walks you through every trade, and the second entry strategy has saved me multiple times. Definitely the most reliable service I've used for Ethereum futures.",
     rating: 4,
-    img: "https://media.licdn.com/dms/image/v2/D4E03AQHUOaXSKpY1Ng/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1724499115353?e=1733961600&v=beta&t=5VP-q3jgzYbXrGkF1YiGybxBpy7Y8_VhogPkSdM5l-8",
+    img: "https://media.licdn.com/dms/image/v2/D4D03AQG9nGg_cOfhbg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1703199433331?e=1740614400&v=beta&t=jrx2nslGQ5kxPV9gzdCRuq_DbocW3ke-NWGCyRox2U8",
   },
   {
     name: "Liam T.",
@@ -67,7 +66,7 @@ const feedbackData = [
     comment:
       "The 70% accuracy rate is no joke. I joined for the transparency, stayed for the results. The daily signals have become part of my routine, and I've already made back the subscription fee within the first week. Can't recommend it enough!",
     rating: 5,
-    img: "https://media.licdn.com/dms/image/v2/D4D03AQFaR7ScpR7CnA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1702585617004?e=1733961600&v=beta&t=Qtg7h2jFTZPgUpbMX2QenJf5mBptHYK4pGohXFPhWUY",
+    img: "https://media.licdn.com/dms/image/v2/C4D03AQG-jdRptU9GFA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1572734704550?e=1740614400&v=beta&t=vgqgyKUWXKq_OJ12j9zsWa4AxggyXy8qOqZW8oB01LE",
   },
   {
     name: "Daniel Raffalo",
@@ -75,7 +74,7 @@ const feedbackData = [
     comment:
       "I've been burned by a lot of platforms before, but this one is the real deal. The refund guarantee gives me peace of mind, and the trading strategies actually work. The fact that they document all their trades publicly really helps build trust.",
     rating: 4,
-    img: "https://media.licdn.com/dms/image/v2/D5603AQFQT1CouRj9gg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1676912920297?e=1733961600&v=beta&t=Ibc4W4nnha5q1_LEcwGoQ2ZcqpYjLsA1kZTPM-0zRAw",
+    img: "",
   },
   {
     name: "Aisha",
@@ -83,7 +82,7 @@ const feedbackData = [
     comment:
       "What I love most is how transparent Nexus Future Trade Signals is. I can see every trade in real time, and the Excel sheet showing all the trades really builds trust. My portfolio has grown steadily, and the 24/7 support is a huge plus!",
     rating: 5,
-    img: "https://media.licdn.com/dms/image/v2/C4E03AQEqdL1hNelu8A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1621878420085?e=1733961600&v=beta&t=bcX21wxVKzebQVc4xEd1CoOI2Iddc5NBFnNDO03QEvU",
+    img: "https://media.licdn.com/dms/image/v2/C4D03AQEdcf-QpvN8WA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1567432735421?e=1740614400&v=beta&t=FFNXeXhn8oGcYsCUcUr5RR7sIB1q6ZV77SUqi7s2kLU",
   },
   {
     name: "Olivia Morison",
@@ -91,7 +90,7 @@ const feedbackData = [
     comment:
       "Joining Nexus was the best decision I've made for my financial future. The real-time signals are so accurate, and I've had incredible returns. The best part? They're always there to help whenever I have questions, no matter what time it is.",
     rating: 5,
-    img: "https://media.licdn.com/dms/image/v2/D4E03AQG-mLFE_y7p5Q/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1724335569133?e=1733961600&v=beta&t=gAq2m-aw2aAjiDSJcvT_PIIqCpkCwdeYFi-2IaHt3y8",
+    img: "",
   },
 ];
 
@@ -105,7 +104,7 @@ const faq = [
   {
     question: "What is Nexus Future Trade Signals?",
     answer:
-      "Nexus Future Trade Signals is a subscription-based service that provides real-time Crypto trading signals with a 70% accuracy rate. Our expert traders help you grow your capital securely with transparent and professional strategies. Learn more on our 'About Us' page.",
+      "Nexus Future Trade Signals is a subscription-based service that provides real-time Crypto trading signals with a 70% accuracy rate. Our expert traders help you grow your capital securely with transparent and professional strategies. Visit our 'About Us' section to learn more.",
   },
   {
     question: "How do I start earning with Nexus Future Trade Signals?",
@@ -115,7 +114,7 @@ const faq = [
   {
     question: "Can I see the results of previous trades?",
     answer:
-      "Absolutely! We pride ourselves on transparency. You can view all of our trades, including entry points, stop loss, and take profit levels, in a public Excel sheet shared across our social media platforms. We also post 30-day live trading recordings on our YouTube channel.",
+      "Absolutely! We take pride in maintaining transparency. Our daily and monthly performance is available in a publicly shared Excel sheet, accessible in the footer section. Additionally, detailed recaps of all our trades, including entry points, stop-loss levels, and take-profit targets, are posted on our YouTube channel. You are also welcome to verify these trades by joining our Discord server, where the first 7 days are free.",
   },
   {
     question: "Do I need experience to join Nexus Future Trade Signals?",
@@ -144,18 +143,58 @@ const faq = [
   },
 ];
 
-const YouTubeEmbed = dynamic(
-  () =>
-    Promise.resolve(() => (
-      <iframe
-        className="w-full h-48 md:h-64 lg:h-88 rounded-lg shadow-lg"
-        src="https://www.youtube.com/embed/r_PeD-yQMoY?autoplay=1&controls=1&modestbranding=1"
-        title="STOP Losing in Crypto! 🔥 Join Nexus Future Trade Signals for Consistent Profits!"
-        allow="autoplay; encrypted-media"
-        allowFullScreen></iframe>
-    )),
-  { ssr: false },
-);
+const YouTubeEmbed = () => {
+  const [isClient, setIsClient] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [thumbnailUrl, setThumbnailUrl] = useState(
+    "https://i9.ytimg.com/vi/r_PeD-yQMoY/maxresdefault.jpg?v=6730c4bd&sqp=CJCGq7sG&rs=AOn4CLDFVFFo9sSSImPWqwHw5nVeI3IEPQ",
+  );
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) return null;
+
+  const videoUrl = `https://www.youtube.com/embed/r_PeD-yQMoY?autoplay=1&controls=1&modestbranding=1`;
+  const fallbackThumbnail = `https://img.youtube.com/vi/r_PeD-yQMoY/hqdefault.jpg`;
+
+  return (
+    <div className="relative w-80 md:w-[600px] lg:w-full h-44 md:h-80 lg:h-88">
+      {!isPlaying ? (
+        <div
+          className="cursor-pointer relative w-full h-full bg-cover bg-center rounded-lg shadow-lg"
+          style={{ backgroundImage: `url('${thumbnailUrl}')` }}
+          onClick={() => setIsPlaying(true)}>
+          <Image
+            src={thumbnailUrl}
+            alt="Video thumbnail"
+            className="hidden"
+            onError={() => {
+              setThumbnailUrl(fallbackThumbnail);
+            }}
+            layout="fill"
+            objectFit="cover"
+          />
+          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            <button className="p-4 bg-pink-600  rounded-full shadow-lg hover:bg-pink-700">
+              ▶ Play
+            </button>
+          </div>
+        </div>
+      ) : (
+        <iframe
+          sandbox="allow-same-origin allow-scripts allow-popups"
+          loading="lazy"
+          className="w-full h-full rounded-lg shadow-lg"
+          src={videoUrl}
+          title="YouTube Video"
+          allow="autoplay; encrypted-media"
+          allowFullScreen></iframe>
+      )}
+    </div>
+  );
+};
 
 export default function Signals() {
   const [showScrollUp, setShowScrollUp] = useState(false);
@@ -165,6 +204,7 @@ export default function Signals() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [submissionError, setSubmissionError] = useState("");
+  const timerRef = useRef(null);
   const headerHeight = 80;
 
   useEffect(() => {
@@ -180,14 +220,44 @@ export default function Signals() {
   }, []);
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    const startTimer = () => {
+      timerRef.current = setInterval(() => {
+        setCurrentFeedbackIndex(
+          (prevIndex) => (prevIndex + 1) % feedbackData.length,
+        );
+      }, 5000);
+    };
+
+    startTimer();
+
+    return () => {
+      clearInterval(timerRef.current);
+    };
+  }, []);
+
+  const resetTimer = () => {
+    clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
       setCurrentFeedbackIndex(
         (prevIndex) => (prevIndex + 1) % feedbackData.length,
       );
-    }, 10000);
+    }, 5000);
+  };
 
-    return () => clearInterval(timer);
-  }, []);
+  const nextFeedbackSlide = () => {
+    setCurrentFeedbackIndex(
+      (prevIndex) => (prevIndex + 1) % feedbackData.length,
+    );
+    resetTimer();
+  };
+
+  const prevFeedbackSlide = () => {
+    setCurrentFeedbackIndex(
+      (prevIndex) =>
+        (prevIndex - 1 + feedbackData.length) % feedbackData.length,
+    );
+    resetTimer();
+  };
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -202,19 +272,6 @@ export default function Signals() {
 
   const closeMenu = () => {
     setIsMenuOpen(false);
-  };
-
-  const nextFeedbackSlide = () => {
-    setCurrentFeedbackIndex(
-      (prevIndex) => (prevIndex + 1) % feedbackData.length,
-    );
-  };
-
-  const prevFeedbackSlide = () => {
-    setCurrentFeedbackIndex(
-      (prevIndex) =>
-        (prevIndex - 1 + feedbackData.length) % feedbackData.length,
-    );
   };
 
   const handleEmailChange = (e) => {
@@ -479,10 +536,10 @@ export default function Signals() {
       <main>
         {/* Home Section */}
         <Element name="home">
-          <section className="pt-36 lg:pt-48 pb-8">
-            <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
+          <section className="pt-36 lg:pt-40 pb-8">
+            <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
               <motion.div
-                className="md:w-1/2 mb-8 lg:mb-0 md:px-16"
+                className="lg:w-1/2 mb-8 lg:mb-0 md:px-16"
                 variants={staggerChildren}
                 initial="initial"
                 animate="animate">
@@ -542,18 +599,11 @@ export default function Signals() {
                 </motion.div>
               </motion.div>
               <motion.div
-                className="md:w-1/2 md:pl-8"
+                className="lg:w-1/2 lg:pr-12"
                 variants={fadeIn}
                 initial="initial"
                 animate="animate">
                 <div className="relative">
-                  {/* <Image
-                    src={homeImage}
-                    alt="Nexus Future Fund secure investment strategies for high returns and financial growth"
-                    width={1280}
-                    height={1280}
-                    className="w-full"
-                  /> */}
                   <YouTubeEmbed />
                 </div>
               </motion.div>
@@ -629,7 +679,7 @@ export default function Signals() {
                 animate="animate">
                 <div className="relative">
                   <Image
-                    src={benefitsImage}
+                    src={homeImage}
                     alt="Nexus Future Fund secure investment strategies for high returns and financial growth"
                     width={1280}
                     height={1280}
@@ -750,7 +800,7 @@ export default function Signals() {
                 animate="animate">
                 <div className="relative">
                   <Image
-                    src={investmentsImage}
+                    src={benefitsImage}
                     alt="Nexus Future Fund secure investment strategies for high returns and financial growth"
                     width={1280}
                     height={1280}
@@ -773,7 +823,7 @@ export default function Signals() {
                 animate="animate">
                 <div className="relative">
                   <Image
-                    src={benefitsImage}
+                    src={investmentsImage}
                     alt="Nexus Future Fund secure investment strategies for high returns and financial growth"
                     width={1280}
                     height={1280}

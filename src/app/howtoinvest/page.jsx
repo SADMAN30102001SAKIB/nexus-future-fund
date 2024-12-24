@@ -23,12 +23,17 @@ const staggerChildren = {
 };
 
 const howToDetails = [
-  "<p>Before you begin, it's important to understand how our fund works. Take your time to read all the information provided on our website about our services, returns, and how we manage your investments.<br/><br/><b>Need Help?</b><br/>If anything is unclear, or if you have any questions, don't hesitate to reach out to us. Contact our support team and we'll guide you through the process step by step.</p>",
-  "<p>To join our fund and start investing, you should install the Nexus Future Fund app (even though everything can be done in the website), available for both:<br/>Android & iOS<br/>When you're on our website, simply tap 'Add to Home Screen' in your browser and this will automatically install the app on your device (watch our video tutorial on YouTube for step by step guide).</p>",
-  "<p>Once the app is installed, open it and Sign up for a new account using your personal information.<br/>Complete the verification process to ensure your account is secure and ready for investment. Verification helps protect your funds and ensures the safety of our platform.</p>",
-  "<p>Now that your account is set up and verified, it's time to deposit the amount you wish to invest.<br/><b>Important:</b> You can only deposit money between the 21st and 28th of each month.<br/><br/>Select the deposit option in the app.<br/>Choose the amount you want to invest and complete the deposit.</p>",
+  "<p>Before you begin, it's important to understand how our fund works. Take your time to read all the information provided on our website about our services, returns, and how we manage your investments.<br/><br/><b style='color:hotpink'>Need Help?</b><br/>If anything is unclear, or if you have any questions, don't hesitate to reach out to us. Contact our support team and we'll guide you through the process step by step.</p>",
+
+  "<p>Click on the 'My Wallet' button and Sign up for a new account using your gmail, personal information & bank/binance details.<br/>Complete the verification by providing your ID to ensure your account is secure and ready for investment. Verification helps protect your funds and ensures the safety of our platform.</p>",
+
+  "<p>You can also install the Nexus Future Fund app (even though everything can be done in the website), available for both:<br/>Android & iOS<br/>While you're on our website with your phone, simply tap 'Add to Home Screen' in your browser and this will automatically install the app on your device.</p>",
+
+  "<p>Now that your account is set up and verified, it's time to deposit the amount you wish to invest.<br/><b style='color:hotpink'>Important:</b> Submit the deposit request only after completing the payment via your selected method (bank or Binance).<br/><br/>Select the deposit option in the app.<br/>Choose the amount you want to invest and complete the deposit.</p><b style='color:hotpink'>Note:</b> You can only deposit money between the 21st and 28th of each month.",
+
   "<p>Your investment will officially start counting from the 1st of the next month. From then on, you will receive a guaranteed 24% return every year on your investment.</p>",
-  "<p>You are free to withdraw your money at any time!<br/>Open the app and select the withdrawal option.<br/>Your withdrawal request will be processed within 1 hour.<br/><b>Note:</b> To receive your 24% return, it is best to withdraw after the month is complete.</p>",
+
+  "<p>You are free to withdraw your money at any time!<br/>Open the app, select the withdrawal option & enter the ammount you wish to withdraw.<br/>Your withdrawal request will be processed within 1 hour.<br/><b style='color:hotpink'>Note:</b> To receive your 2% monthly return, it is best to withdraw after the month is complete.</p>",
 ];
 
 export default function HowToInvest() {
@@ -108,8 +113,8 @@ export default function HowToInvest() {
                   <motion.ul className="space-y-4" variants={staggerChildren}>
                     {[
                       "Read the Information on Our Website",
-                      "Install Our App",
                       "Sign Up and Verify Your Account",
+                      "Install Our App",
                       "Deposit Your Investment",
                       "Start Earning 24% Yearly return",
                       "Withdraw Anytime You Want",

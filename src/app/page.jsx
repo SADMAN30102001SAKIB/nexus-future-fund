@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../assets/logo.png";
@@ -50,7 +50,7 @@ const feedbackData = [
     comment:
       "I was hesitant at first, but after a year with Nexus Future Fund, I can honestly say it's been one of the best decisions for my business. The 2% monthly return really takes the stress out of investing, and I love how hands-off it is. Highly recommended!",
     rating: 5,
-    img: "https://media.licdn.com/dms/image/v2/D4E03AQGTcs9UNQz44w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1699893372299?e=1733961600&v=beta&t=U9SYUdxMWtnJD_rciTMvqeOmAlg-GZNf_VOYmbsi2Oo",
+    img: "https://media.licdn.com/dms/image/v2/D4E03AQG72eA_wpqfKQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1718239210818?e=1740614400&v=beta&t=ibyCSBYP_P-p3GdxfyrXgFxNSsxm4LJIFErdyS4NYOo",
   },
   {
     name: "Jane Smith",
@@ -58,7 +58,7 @@ const feedbackData = [
     comment:
       "I'm not a finance person, so I was skeptical about crypto. But Nexus Future Fund has been so easy to use. They break everything down in a way that makes sense, and the support team is always there to answer my questions. Now, I feel way more in control of my money.",
     rating: 4,
-    img: "https://media.licdn.com/dms/image/v2/D4E03AQG72eA_wpqfKQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1718239210818?e=1733961600&v=beta&t=1Wh7pYnUD_kg-aGkLwRVf2oCYM11dFljtb1X43iEPu0",
+    img: "",
   },
   {
     name: "Robert Johnson",
@@ -66,7 +66,7 @@ const feedbackData = [
     comment:
       "I've tried other investment options over the years, but none have been as steady as Nexus Future Fund. The guaranteed return really gives me peace of mind. And being able to access my money whenever I need it without extra fees has been a game changer.",
     rating: 5,
-    img: "https://media.licdn.com/dms/image/v2/C4D03AQHIu0qJ3xBLEw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1590996021147?e=1733961600&v=beta&t=30ZaXsEw929zZciA3xp0tc5vN42EedbRWAtWPVIWasQ",
+    img: "https://media.licdn.com/dms/image/v2/C4E03AQEdoYimO4B8tw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1550247415483?e=1740614400&v=beta&t=lwToDnP6HXoAV5XtXku9dU21Fkeu3juBM69aqICbLx8",
   },
   {
     name: "Emily Chen",
@@ -74,7 +74,7 @@ const feedbackData = [
     comment:
       "I'm someone who likes to stay informed, and the support from Nexus Future Fund is always there when I need it. Their 24/7 availability and the expertise behind their strategy make me feel confident about where my money is going. It's like having my own financial team!",
     rating: 5,
-    img: "https://media.licdn.com/dms/image/v2/D4E03AQEGaawKahJBWw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1687465044671?e=1733961600&v=beta&t=SsboU-a440PPw0RgP7QBFY2UrInzpI2s9oHMycq0RdA",
+    img: "",
   },
   {
     name: "Michael Brown",
@@ -82,15 +82,7 @@ const feedbackData = [
     comment:
       "I've always been cautious with crypto due to the volatility, but Nexus Future Fund changed my mind. I've been getting steady returns every month without worrying about market swings. It's taken the stress out of investing in crypto.",
     rating: 4,
-    img: "https://media.licdn.com/dms/image/v2/D5603AQGEBpyMr8Ch4w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1675731907412?e=1733961600&v=beta&t=ANayc9CxSZE-vexkEFhQTpLaJGDu94zqteRdNbQXjNw",
-  },
-  {
-    name: "Sarah Davis",
-    role: "Freelance Writer",
-    comment:
-      "I love how Nexus Future Fund makes things simple. I've never been great with finances, but their platform breaks down everything for me. It's empowering to finally feel like I'm in control of my financial future.",
-    rating: 5,
-    img: "https://media.licdn.com/dms/image/v2/C4D03AQF4TzAr4pOHtg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1635094558713?e=1733961600&v=beta&t=t5dNrWfJ3p4Kl0zqSEN0N62FWpO_AmyABswHFkrn6Iw",
+    img: "",
   },
 ];
 
@@ -123,7 +115,7 @@ const faq = [
   {
     question: "I prefer to trade on my own. Can I get the trading signals?",
     answer:
-      "Yes, we offer a dedicated Discord server for trading signals. To access it, join our Telegram channel first. You can find the 'Premium Trading Signals' link in the footer for more information.",
+      "Yes, we offer a dedicated Discord server for trading signals. To access it, join our Telegram channel first. You can find the 'Nexus Future Trade Signals' link in the footer for more information.",
   },
   {
     question: "I have more questions or need help. How can I reach support?",
@@ -140,6 +132,7 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [submissionError, setSubmissionError] = useState("");
+  const timerRef = useRef(null);
   const headerHeight = 80;
 
   useEffect(() => {
@@ -155,14 +148,44 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    const startTimer = () => {
+      timerRef.current = setInterval(() => {
+        setCurrentFeedbackIndex(
+          (prevIndex) => (prevIndex + 1) % feedbackData.length,
+        );
+      }, 5000);
+    };
+
+    startTimer();
+
+    return () => {
+      clearInterval(timerRef.current);
+    };
+  }, []);
+
+  const resetTimer = () => {
+    clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
       setCurrentFeedbackIndex(
         (prevIndex) => (prevIndex + 1) % feedbackData.length,
       );
-    }, 10000);
+    }, 5000);
+  };
 
-    return () => clearInterval(timer);
-  }, []);
+  const nextFeedbackSlide = () => {
+    setCurrentFeedbackIndex(
+      (prevIndex) => (prevIndex + 1) % feedbackData.length,
+    );
+    resetTimer();
+  };
+
+  const prevFeedbackSlide = () => {
+    setCurrentFeedbackIndex(
+      (prevIndex) =>
+        (prevIndex - 1 + feedbackData.length) % feedbackData.length,
+    );
+    resetTimer();
+  };
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -177,19 +200,6 @@ export default function Home() {
 
   const closeMenu = () => {
     setIsMenuOpen(false);
-  };
-
-  const nextFeedbackSlide = () => {
-    setCurrentFeedbackIndex(
-      (prevIndex) => (prevIndex + 1) % feedbackData.length,
-    );
-  };
-
-  const prevFeedbackSlide = () => {
-    setCurrentFeedbackIndex(
-      (prevIndex) =>
-        (prevIndex - 1 + feedbackData.length) % feedbackData.length,
-    );
   };
 
   const handleEmailChange = (e) => {

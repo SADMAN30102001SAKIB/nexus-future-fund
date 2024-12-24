@@ -94,22 +94,27 @@ export default function About() {
                 <motion.p
                   className="mb-6 text-lg text-justify"
                   variants={fadeIn}>
-                  With a strong foundation in market research and strategic
-                  asset management, our world-class team combines deep industry
-                  knowledge with cutting-edge financial strategies. We
-                  specialize in cryptocurrency investments, offering our clients
-                  a safe, risk-free way to grow their capital, backed by a
-                  guaranteed 24% yearly return.
+                  Why Nexus Future Fund? <br />
+                  🚀Proven Growth: Enjoy around 24% annual ROI with our expertly
+                  managed investment plans. <br />
+                  🌟Transparency: Real-time trade updates, public performance
+                  sheets, and open communication at every step. <br />
+                  📈Expert Strategies: Data-driven trading systems built to
+                  maximize returns and manage risks effectively. <br />
+                  🤝Investor-First Approach: Personalized consultations and
+                  performance insights tailored to your goals.
                 </motion.p>
                 <motion.p
                   className="mb-6 text-lg text-justify"
                   variants={fadeIn}>
-                  Trust, transparency, and expertise are at the core of
-                  everything we do. Our clients benefit from the hands-on
-                  management of seasoned professionals who are committed to
-                  delivering sustainable growth while maintaining unmatched
-                  customer support. With Nexus Future Fund, your investments are
-                  in the right hands.
+                  What We Offer? <br />
+                  💻Tech Solutions: Manage your investments effortlessly with
+                  our intuitive & secure investor PWA (Progressive Web App).
+                  <br />
+                  🎥Streams & Recaps: Stay updated with real-time trade streams
+                  and concise daily & weekly performance recaps. <br />
+                  📊Trade Signals: Achieve success with Nexus Future Trade
+                  Signals—offering 70% accuracy and 10%+ monthly gain.
                 </motion.p>
                 <motion.p
                   className="mb-6 text-lg text-justify"
