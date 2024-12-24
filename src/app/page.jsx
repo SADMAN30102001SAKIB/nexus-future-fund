@@ -276,7 +276,7 @@ export default function Home() {
               smooth={true}
               duration={500}
               offset={-headerHeight}
-              className="hover:text-pink-600 cursor-pointer">
+              className="hover:text-pink-600 hover:scale-110 transition-all cursor-pointer">
               <b>Home</b>
             </ScrollLink>
             <ScrollLink
@@ -284,7 +284,7 @@ export default function Home() {
               smooth={true}
               duration={500}
               offset={-headerHeight}
-              className="hover:text-pink-600 cursor-pointer">
+              className="hover:text-pink-600 hover:scale-110 transition-all cursor-pointer">
               <b>Features</b>
             </ScrollLink>
             <ScrollLink
@@ -292,7 +292,7 @@ export default function Home() {
               smooth={true}
               duration={500}
               offset={-headerHeight}
-              className="hover:text-pink-600 cursor-pointer">
+              className="hover:text-pink-600 hover:scale-110 transition-all cursor-pointer">
               <b>Awareness</b>
             </ScrollLink>
             <ScrollLink
@@ -300,7 +300,7 @@ export default function Home() {
               smooth={true}
               duration={500}
               offset={-headerHeight}
-              className="hover:text-pink-600 cursor-pointer">
+              className="hover:text-pink-600 hover:scale-110 transition-all cursor-pointer">
               <b>Workflow</b>
             </ScrollLink>
             <ScrollLink
@@ -308,7 +308,7 @@ export default function Home() {
               smooth={true}
               duration={500}
               offset={-headerHeight}
-              className="hover:text-pink-600 cursor-pointer">
+              className="hover:text-pink-600 hover:scale-110 transition-all cursor-pointer">
               <b>Benefits</b>
             </ScrollLink>
             <ScrollLink
@@ -316,7 +316,7 @@ export default function Home() {
               smooth={true}
               duration={500}
               offset={-headerHeight}
-              className="hover:text-pink-600 cursor-pointer">
+              className="hover:text-pink-600 hover:scale-110 transition-all cursor-pointer">
               <b>Feedback</b>
             </ScrollLink>
             <ScrollLink
@@ -324,7 +324,7 @@ export default function Home() {
               smooth={true}
               duration={500}
               offset={-headerHeight}
-              className="hover:text-pink-600 cursor-pointer">
+              className="hover:text-pink-600 hover:scale-110 transition-all cursor-pointer">
               <b>FAQ</b>
             </ScrollLink>
             <ScrollLink
@@ -332,7 +332,7 @@ export default function Home() {
               smooth={true}
               duration={500}
               offset={-headerHeight}
-              className="hover:text-pink-600 cursor-pointer">
+              className="hover:text-pink-600 hover:scale-110 transition-all cursor-pointer">
               <b>Blogs</b>
             </ScrollLink>
             <ScrollLink
@@ -340,7 +340,7 @@ export default function Home() {
               smooth={true}
               duration={500}
               offset={-headerHeight}
-              className="hover:text-pink-600 cursor-pointer">
+              className="hover:text-pink-600 hover:scale-110 transition-all cursor-pointer">
               <b>Newsletter</b>
             </ScrollLink>
           </nav>

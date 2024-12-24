@@ -177,8 +177,8 @@ const YouTubeEmbed = () => {
             objectFit="cover"
           />
           <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            <button className="p-4 bg-pink-600  rounded-full shadow-lg hover:bg-pink-700">
-              ▶ Play
+            <button className="w-24 h-24 bg-pink-600 rounded-full shadow-lg hover:bg-pink-700 flex items-center justify-center transform transition-transform text-5xl pl-2 hover:scale-125 border-4">
+              ▶
             </button>
           </div>
         </div>
@@ -348,7 +348,7 @@ export default function Signals() {
               smooth={true}
               duration={500}
               offset={-headerHeight}
-              className="hover:text-pink-600 cursor-pointer">
+              className="hover:text-pink-600 hover:scale-110 transition-all cursor-pointer">
               <b>Home</b>
             </ScrollLink>
             <ScrollLink
@@ -356,7 +356,7 @@ export default function Signals() {
               smooth={true}
               duration={500}
               offset={-headerHeight}
-              className="hover:text-pink-600 cursor-pointer">
+              className="hover:text-pink-600 hover:scale-110 transition-all cursor-pointer">
               <b>Features</b>
             </ScrollLink>
             <ScrollLink
@@ -364,7 +364,7 @@ export default function Signals() {
               smooth={true}
               duration={500}
               offset={-headerHeight}
-              className="hover:text-pink-600 cursor-pointer">
+              className="hover:text-pink-600 hover:scale-110 transition-all cursor-pointer">
               <b>Awareness</b>
             </ScrollLink>
             <ScrollLink
@@ -372,7 +372,7 @@ export default function Signals() {
               smooth={true}
               duration={500}
               offset={-headerHeight}
-              className="hover:text-pink-600 cursor-pointer">
+              className="hover:text-pink-600 hover:scale-110 transition-all cursor-pointer">
               <b>Benefits</b>
             </ScrollLink>
             <ScrollLink
@@ -380,7 +380,7 @@ export default function Signals() {
               smooth={true}
               duration={500}
               offset={-headerHeight}
-              className="hover:text-pink-600 cursor-pointer">
+              className="hover:text-pink-600 hover:scale-110 transition-all cursor-pointer">
               <b>Workflow</b>
             </ScrollLink>
             <ScrollLink
@@ -388,7 +388,7 @@ export default function Signals() {
               smooth={true}
               duration={500}
               offset={-headerHeight}
-              className="hover:text-pink-600 cursor-pointer">
+              className="hover:text-pink-600 hover:scale-110 transition-all cursor-pointer">
               <b>Feedback</b>
             </ScrollLink>
             <ScrollLink
@@ -396,7 +396,7 @@ export default function Signals() {
               smooth={true}
               duration={500}
               offset={-headerHeight}
-              className="hover:text-pink-600 cursor-pointer">
+              className="hover:text-pink-600 hover:scale-110 transition-all cursor-pointer">
               <b>FAQ</b>
             </ScrollLink>
             <ScrollLink
@@ -404,7 +404,7 @@ export default function Signals() {
               smooth={true}
               duration={500}
               offset={-headerHeight}
-              className="hover:text-pink-600 cursor-pointer">
+              className="hover:text-pink-600 hover:scale-110 transition-all cursor-pointer">
               <b>Blogs</b>
             </ScrollLink>
             <ScrollLink
@@ -412,7 +412,7 @@ export default function Signals() {
               smooth={true}
               duration={500}
               offset={-headerHeight}
-              className="hover:text-pink-600 cursor-pointer">
+              className="hover:text-pink-600 hover:scale-110 transition-all cursor-pointer">
               <b>Newsletter</b>
             </ScrollLink>
           </nav>
