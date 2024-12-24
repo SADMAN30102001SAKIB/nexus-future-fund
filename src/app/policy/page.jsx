@@ -145,7 +145,7 @@ export default function Policy() {
                 <motion.p
                   className="text-gray-400 text-center mb-12"
                   variants={fadeIn}>
-                  Last Updated: 06/10/2024
+                  Last Updated: 12/25/2024
                 </motion.p>
 
                 <div className="space-y-8 text-gray-300 leading-relaxed">

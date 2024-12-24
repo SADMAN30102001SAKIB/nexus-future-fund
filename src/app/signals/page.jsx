@@ -742,7 +742,7 @@ export default function Signals() {
 
         {/* Benefits Section */}
         <Element name="benefits">
-          <section className="py-8 lg:py-4 bg-gray-800">
+          <section className="py-8 lg:py-4 bg-gray-800 rounded-3xl">
             <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
               <motion.div
                 className="lg:w-1/2 mb-8 lg:mb-0 lg:px-16"

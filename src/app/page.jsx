@@ -110,7 +110,7 @@ const faq = [
   {
     question: "Is there a mobile app available?",
     answer:
-      "Not yet, but we're excited to announce that a mobile app is coming soon! You'll be able to manage your investments, receive real-time updates, and access your account from anywhere.",
+      "We're excited to announce that our mobile app is officially launched! You'll be able to manage your investments, receive real-time updates, and access your account from anywhere. While you're on our website with your phone, simply tap 'Add to Home Screen' in your browser and this will automatically install the app on your device.",
   },
   {
     question: "I prefer to trade on my own. Can I get the trading signals?",
@@ -253,7 +253,7 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-gray-800 min-h-screen text-gray-100">
+    <div className="bg-gray-900 min-h-screen text-gray-100">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900 bg-opacity-80 backdrop-blur-md">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
@@ -474,7 +474,7 @@ export default function Home() {
                 <motion.div
                   className="bg-gray-800 bg-opacity-50 backdrop-blur-md inline-block px-3 py-1 rounded-full text-sm mb-4"
                   variants={fadeIn}>
-                  Coming Soon: We will have an installable app soon!
+                  Update: We have an installable app now!
                 </motion.div>
                 <motion.h1
                   className="text-2xl lg:text-3xl mb-4 font-black"
@@ -689,7 +689,7 @@ export default function Home() {
 
         {/* Workflow Section */}
         <Element name="workflow">
-          <section className="py-8 lg:py-4 bg-gray-800">
+          <section className="py-8 lg:py-4 bg-gray-800 rounded-3xl">
             <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
               <motion.div
                 className="lg:w-1/2 mb-8 lg:mb-0 lg:px-16"
