@@ -897,7 +897,7 @@ export default function Signals() {
 
         {/* Feedback Section */}
         <Element name="feedback">
-          <section className="py-8 lg:py-16 lg:px-36 bg-gray-800">
+          <section className="py-8 lg:py-16 lg:px-36 bg-gray-800 rounded-3xl">
             <div className="container mx-auto px-4">
               <h2 className="text-3xl font-bold text-center mb-10">
                 What Our Subscribers Say
