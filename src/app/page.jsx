@@ -552,7 +552,7 @@ export default function Home() {
 
         {/* Features Section */}
         <Element name="features" className="relative">
-          <section className="py-8 lg:py-16 bg-gray-800 lg:section-angle1">
+          <section className="pb-8 lg:pb-12 pt-8 lg:pt-16 bg-gray-800 lg:section-angle3">
             <div className="container mx-auto lg:px-36">
               <h2 className="text-3xl font-bold text-center mb-10">
                 Why Should You Choose Us
@@ -609,7 +609,7 @@ export default function Home() {
 
         {/* Scams Section */}
         <Element name="scams" className="relative">
-          <section className="py-8 lg:py-4 bg-gray-900 lg:section-angle2">
+          <section className="py-16 lg:pt-8 pb-8 lg:pb-4 bg-gray-900 lg:section-angle4">
             <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
               <motion.div
                 className="lg:w-1/2 lg:pl-8 hidden lg:block"
@@ -934,7 +934,7 @@ export default function Home() {
 
         {/* Blogs Section */}
         <Element name="blogs" className="relative">
-          <section className="pb-3 lg:pb-6 pt-8 lg:pt-16 bg-gray-800 lg:section-angle3">
+          <section className="pb-8 lg:pb-12 pt-8 lg:pt-24 bg-gray-800 lg:section-wavy-combined2">
             <div className="container mx-auto lg:px-24">
               <h2 className="text-3xl font-bold text-center mb-10">
                 Latest Blogs
@@ -995,7 +995,7 @@ export default function Home() {
 
         {/* Subscribe Section */}
         <Element name="newsletter" className="relative">
-          <section className="py-16 lg:py-24 px-8 lg:px-16 bg-gray-900 lg:section-angle4">
+          <section className="py-16 lg:py-24 px-8 lg:px-16 bg-gray-900">
             <div className="container mx-auto px-4">
               <motion.div
                 className="bg-gray-800 bg-opacity-50 backdrop-blur-md rounded-lg p-8 flex flex-col lg:flex-row items-center justify-between"
@@ -1195,7 +1195,7 @@ export default function Home() {
             exit={{ opacity: 0, y: 20 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}>
-            <ChevronUp size={24} />
+            <ChevronUp size={30} />
           </motion.button>
         )}
       </AnimatePresence>

@@ -97,7 +97,7 @@ export default function HowToInvest() {
                 animate="animate">
                 <div className="bg-gray-800 bg-opacity-50 backdrop-blur-md p-8 rounded-lg shadow-xl">
                   <motion.h2
-                    className="text-3xl font-bold mb-6"
+                    className="text-2xl lg:text-3xl font-bold mb-6"
                     variants={fadeIn}>
                     How to Join Nexus Future Fund and Start Growing Your Money -
                     Step by Step Guide
@@ -143,7 +143,7 @@ export default function HowToInvest() {
                     ))}
                   </motion.ul>
                   <motion.h2
-                    className="text-3xl font-bold mt-12"
+                    className="text-2xl lg:text-3xl font-bold mt-12"
                     variants={fadeIn}>
                     Join Us and Grow Your Money Smartly and Securely
                   </motion.h2>
@@ -155,7 +155,9 @@ export default function HowToInvest() {
                     risk-free, and transparent. Let us help you secure your
                     financial future with ease!
                   </motion.p>
-                  <motion.h2 className="text-3xl font-bold" variants={fadeIn}>
+                  <motion.h2
+                    className="text-2xl lg:text-3xl font-bold"
+                    variants={fadeIn}>
                     Ready to Invest?
                   </motion.h2>
                   <Link href="/wallet" passHref>
@@ -316,7 +318,7 @@ export default function HowToInvest() {
             exit={{ opacity: 0, y: 20 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}>
-            <ChevronUp size={24} />
+            <ChevronUp size={30} />
           </motion.button>
         )}
       </AnimatePresence>

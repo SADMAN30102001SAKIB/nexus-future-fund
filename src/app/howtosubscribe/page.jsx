@@ -26,13 +26,13 @@ const howToDetails = [
   "<p>Before you join, we encourage you to explore our website and learn everything about our trading strategies, targets, and results. We're fully transparent, so take your time to understand how we operate and why we're different from others in the market.</p>",
   "<p>If you have any questions or need clarification, reach out to us! Our friendly support team is available to help you at any step. Were here to guide you and make the process smooth and easy.</p>",
 
-  "<p>Once you're ready to join, watch <a href='https://youtu.be/r_PeD-yQMoY?si=WkIlDS0GiA0oC8_X' style='color:LightSkyBlue; font-weight:bolder; text-decoration:underline'>this video</a> or follow these steps:<br/>Choose a subscription plan that suits you:<br/><span style='font-weight:bolder'>-</span> Monthly Plan: <span style='color:hotpink'>$50</span> billed every month.<br/><span style='font-weight:bolder'>-</span> Yearly Plan: <span style='color:hotpink'>$41.67</span>/month (billed annually at $500).<br/><br/>Make a payment using one of the following methods:<br/><span style='font-weight:bolder'>-</span> Binance Pay ID: <span style='color:hotpink; font-weight:bolder'>576909211</span><br/><span style='font-weight:bolder'>-</span> TRC-20 Wallet Address: <span style='color:hotpink; font-weight:bolder'>TAUMoBrver3P6J9zscSqLR3hyra4eZSJyP4</span><br/><br/>Fill out the <a href='https://forms.gle/ToK2iFhcUcvgHrPE7' style='color:LightSkyBlue; font-weight:bolder; text-decoration:underline'>Registration</a> Form!<br/>After registration <a href='https://t.me/nexusfuturefundofficial' style='color:LightSkyBlue; font-weight:bold; text-decoration:underline'>DM us</a> on Telegram with your payment details:<br/><span style='font-weight:bolder'>-</span> Binance Pay ID or TRC-20 Wallet Address<br/><br/>Once your payment is verified, we'll add you to our exclusive VIP Discord signals channel within minutes!</p>",
+  "<p>Once you're ready to join, watch <a href='https://youtu.be/r_PeD-yQMoY?si=WkIlDS0GiA0oC8_X' style='color:LightSkyBlue; font-weight:bolder; text-decoration:underline'>this video</a> or follow these steps:<br/>Choose a subscription plan that suits you:<br/><b>-</b> Monthly Plan: <b style='color:hotpink;'>$50</b> billed every month.<br/><b>-</b> Yearly Plan: <b style='color:hotpink;'>$41.67</b>/month (billed annually at $500).<br/><br/>Make a payment using one of the following methods:<br/><b>-</b> Binance Pay ID<br/><b>-</b> TRC-20 Wallet Address<br/>(<i>details are provided in the pinned message of our official Telegram channel</i>)<br/><br/>Fill out the <a href='https://forms.gle/ToK2iFhcUcvgHrPE7' style='color:LightSkyBlue; font-weight:bolder; text-decoration:underline'>Registration</a> Form!<br/>After registration <a href='https://t.me/nexusfuturefundofficial' style='color:LightSkyBlue; font-weight:bold; text-decoration:underline'>DM us</a> on Telegram with your payment details:<br/><b>-</b> Binance Pay ID or TRC-20 Wallet Address<br/><br/>Once your payment is verified, we'll add you to our exclusive VIP Discord signals channel within minutes!</p>",
 
-  "<p>We offer a <span style='color:hotpink'>7-day free</span> trial to help you get comfortable. Watch our team in action, learn how we trade, and understand our strategies. Whether you want to start trading immediately or just observe, the first week is completely free. No pressure—just learning!</p>",
+  "<p>We offer a <b style='color:hotpink'>7-day free</b> trial to help you get comfortable. Watch our team in action, learn how we trade, and understand our strategies. Whether you want to start trading immediately or just observe, the first week is completely free. No pressure—just learning!</p>",
 
   "<p>We trade in Crypto futures with 100X leverage. Here's how it works:<br/><b style='color:hotpink'>Real-time signals:</b> We tell you exactly when to buy or sell Crypto and how much equity to use.<br/><b style='color:hotpink'>Live updates:</b> You'll get instant updates on take profit and stop-loss points, so you always know what's happening.<br/><b style='color:hotpink'>Second entry strategy:</b> If the stop loss exceeds 50%, we give you a second entry option to help manage the trade effectively.<br/><b style='color:hotpink'>Daily signals:</b> We provide trading signals throughout the day, so you'll always have opportunities to grow your capital.</p>",
 
-  "<p>By following our professional traders, you can expect a <span style='color:hotpink'>10%+</span> ROI on your capital every month. Unlike others, we don't make false promises or show fake results. Everything is 100% transparent—you'll see every trade, every result, with nothing hidden.</p>",
+  "<p>By following our professional traders, you can expect a <b style='color:hotpink'>10%+</b> ROI on your capital every month. Unlike others, we don't make false promises or show fake results. Everything is 100% transparent—you'll see every trade, every result, with nothing hidden.</p>",
 
   "<p>If we ever close a month in negative ROI (<span style='color:hotpink'>which has never happened</span>), we'll refund your subscription fee. We stand behind our traders and are confident in their ability to deliver profits. You have nothing to lose by joining!</p>",
 ];
@@ -98,7 +98,7 @@ export default function HowToSubscribe() {
                 animate="animate">
                 <div className="bg-gray-800 bg-opacity-50 backdrop-blur-md p-8 rounded-lg shadow-xl">
                   <motion.h2
-                    className="text-3xl font-bold mb-6"
+                    className="text-2xl lg:text-3xl font-bold mb-6"
                     variants={fadeIn}>
                     How to Join Our Premium Crypto Trading Signals Group - Step
                     by Step Guide
@@ -146,7 +146,7 @@ export default function HowToSubscribe() {
                     ))}
                   </motion.ul>
                   <motion.h2
-                    className="text-3xl font-bold mt-12"
+                    className="text-2xl md:text-3xl font-bold mt-12"
                     variants={fadeIn}>
                     Ready to Join? Start Your Trading Journey Today!
                   </motion.h2>
@@ -164,7 +164,9 @@ export default function HowToSubscribe() {
                       Join
                     </button>
                   </Link>
-                  <motion.h2 className="text-3xl font-bold" variants={fadeIn}>
+                  <motion.h2
+                    className="text-2xl md:text-3xl font-bold"
+                    variants={fadeIn}>
                     Join us today and start trading like a pro!
                   </motion.h2>
                 </div>
@@ -327,7 +329,7 @@ export default function HowToSubscribe() {
             exit={{ opacity: 0, y: 20 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}>
-            <ChevronUp size={24} />
+            <ChevronUp size={30} />
           </motion.button>
         )}
       </AnimatePresence>

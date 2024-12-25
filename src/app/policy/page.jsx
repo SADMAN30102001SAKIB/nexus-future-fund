@@ -29,39 +29,24 @@ const termsAndConditions = [
       "By accessing or using Nexus Future Fund's website or services, you agree to be bound by these Terms and Conditions, our Privacy Policy, and any other policies or agreements that may apply to specific services.",
   },
   {
-    title: "Services",
-    content:
-      "Nexus Future Fund provides fund management services that focus primarily on cryptocurrency investments. We offer clients a guaranteed 24% yearly return on their investments.",
-  },
-  {
     title: "Eligibility",
     content:
       "To use our services, you must be at least 18 years old and legally capable of entering into binding contracts.",
   },
   {
+    title: "💳 Subscription Model Policy 💳",
+    content:
+      "<br/><b style='font-size:1.3rem'>💸 Refund Guarantee</b><br/><b>-</b> It is highly unlikely that we close a month with a negative Return of Investment. But if we do, then we'll <b style='color:hotpink'>refund</b> your full subscription fee.<br/><br/><b style='font-size:1.3rem'>💵 Subscription Fees</b><br/><b>-</b> <b style='color:hotpink'>$50</b> per month until March 31, 2025. After this date, the fee will increase to $100 per month.<br/><b>-</b> Subscription is free until December 31, 2024.<br/><br/><b style='font-size:1.3rem'>🫂 Referral Benefits</b><br/><b>-</b> Refer <b style='color:hotpink'>two individuals</b> to receive a permanent <b style='color:hotpink'>100% fee</b> waiver (50% per referral), valid as long as the referred individuals remain active on the platform.<br/><b>-</b> Referred individuals must complete a registration form, providing their details along with your email address as referral code.<br/><br/><b style='font-size:1.3rem'>⏲️ Validity</b><br/><b>-</b> Until March 31, 2025, subscriptions will only be accepted at the end of each month.<br/><br/><b style='font-size:1.3rem'>🎉 Free Trial</b><br/><b>-</b> Starting April 2025, a <b style='color:hotpink'>7-day free</b> trial of the premium group will be available.<br/><b>-</b> During the trial period, the referral program remains active.<br/><br/><b>Note:</b> After a certain period, the subscription model will be discontinued, and only the investment model will be available.",
+  },
+  {
+    title: "💰Investment Model Policy💰",
+    content:
+      "<br/><b style='font-size:1.3rem'>🤑 Guaranteed Returns</b><br/><b>-</b> Investments will yield a guaranteed 24% annual profit (2% per month) under a formal investment agreement.<br/><br/><b style='font-size:1.3rem'>🤝 Referral</b><br/><b>-</b> For every 3 referrals, you receive a <b style='color:hotpink'>0.3%</b> monthly profit share per referral.<br/><b>-</b> For every 5 referrals, you receive a <b style='color:hotpink'>0.5%</b> monthly profit share per referral.<br/><br/><b style='font-size:1.3rem'>🤏 Minimum Investment</b><br/><b>-</b> The minimum investment amount is $250.<br/><b>-</b> Until March 31, 2025, you can invest up to $250 as testing capital.<br/><br/><b style='font-size:1.3rem'>⚠️ Risk Sharing Policy</b><br/><b>-</b> If you opt for a <b style='color:hotpink'>50%</b> guarantee on your investment then profits and losses will be shared equally.<br/><b>-</b> Example: If total profit is 25%, after broker charges (40-50%), the remaining profit is 13%. Both parties will share 6.5% each. Losses, if any, will also be split equally.",
+  },
+  {
     title: "Investment Risks",
     content:
       "All investments carry inherent risks. We invest primarily in cryptocurrency markets, which can be volatile.",
-  },
-  {
-    title: "Fees and Payment",
-    content:
-      "A management fee may apply to the services provided by Nexus Future Fund. All payments are due in accordance with the terms specified in your investment agreement.",
-  },
-  {
-    title: "Confidentiality and Data Privacy",
-    content:
-      "Your privacy is important to us. All personal information collected from clients is handled in accordance with our Privacy Policy. We take appropriate measures to protect your data and ensure confidentiality.",
-  },
-  {
-    title: "Refund Policy",
-    content:
-      "Due to the nature of our investment services, refunds are not typically provided unless explicitly stated in a specific contract.",
-  },
-  {
-    title: "Transparency and Reporting",
-    content:
-      "We provide regular updates on your investment performance, and all trade data is available upon request.",
   },
   {
     title: "Limitation of Liability",
@@ -77,11 +62,6 @@ const termsAndConditions = [
     title: "Termination",
     content:
       "Nexus Future Fund reserves the right to terminate any client account if the terms of service are violated or in the case of fraudulent activity.",
-  },
-  {
-    title: "Governing Law",
-    content:
-      "These Terms and Conditions are governed by and construed in accordance with the laws of London.",
   },
 ];
 
@@ -154,11 +134,15 @@ export default function Policy() {
                       key={index}
                       className="p-6 bg-gray-800 rounded-lg shadow-lg">
                       <motion.h3
-                        className="text-2xl font-semibold mb-2 text-white"
+                        className="text-3xl font-semibold mb-2 text-white"
                         variants={fadeIn}>
                         {term.title}
                       </motion.h3>
-                      <motion.p variants={fadeIn}>{term.content}</motion.p>
+                      <motion.div
+                        className="text-justify"
+                        variants={fadeIn}
+                        dangerouslySetInnerHTML={{ __html: term.content }}
+                      />
                     </div>
                   ))}
                 </div>
@@ -311,7 +295,7 @@ export default function Policy() {
             exit={{ opacity: 0, y: 20 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}>
-            <ChevronUp size={24} />
+            <ChevronUp size={30} />
           </motion.button>
         )}
       </AnimatePresence>

@@ -170,9 +170,11 @@ const YouTubeEmbed = () => {
             objectFit="cover"
           />
           <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            <button className="w-24 h-24 bg-pink-600 rounded-full shadow-lg hover:bg-pink-700 flex items-center justify-center transform transition-transform text-5xl pl-2 hover:scale-125 border-4">
-              ▶
-            </button>
+            <div className="w-24 h-24 bg-pink-600 rounded-full shadow-lg hover:bg-pink-700 flex items-center justify-center transform transition-transform hover:scale-125 border-4">
+              <div
+                className="w-0 h-0 border-t-[20px] border-b-[20px] border-l-[36px] border-r-[0px] border-solid border-transparent border-l-white"
+                style={{ marginLeft: "10px" }}></div>
+            </div>
           </div>
         </div>
       ) : (
@@ -606,7 +608,7 @@ export default function Signals() {
 
         {/* Features Section */}
         <Element name="features" className="relative">
-          <section className="py-12 lg:py-20 bg-gray-800 lg:section-angle3">
+          <section className="pb-12 lg:pb-36 pt-12 lg:pt-20 bg-gray-800 lg:section-wavy-combined1">
             <div className="container mx-auto lg:px-36">
               <h2 className="text-3xl font-bold text-center mb-10">
                 Why Should You Choose Us
@@ -663,7 +665,7 @@ export default function Signals() {
 
         {/* Scams Section */}
         <Element name="scams" className="relative">
-          <section className="py-16 lg:py-8 lg:section-angle4">
+          <section className="py-16 lg:py-8">
             <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
               <motion.div
                 className="lg:w-1/2 lg:pl-8 hidden lg:block"
@@ -994,7 +996,7 @@ export default function Signals() {
 
         {/* Blogs Section */}
         <Element name="blogs" className="relative">
-          <section className="pb-3 lg:pb-6 pt-8 lg:pt-16 bg-gray-800 lg:section-angle1">
+          <section className="pb-8 lg:pb-0 pt-8 lg:pt-16 bg-gray-800 lg:section-angle1">
             <div className="container mx-auto lg:px-24">
               <h2 className="text-3xl font-bold text-center mb-10">
                 Latest Blogs
@@ -1265,7 +1267,7 @@ export default function Signals() {
             exit={{ opacity: 0, y: 20 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}>
-            <ChevronUp size={24} />
+            <ChevronUp size={30} />
           </motion.button>
         )}
       </AnimatePresence>
