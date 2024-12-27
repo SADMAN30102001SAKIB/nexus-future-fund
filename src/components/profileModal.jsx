@@ -60,7 +60,7 @@ const ProfileModal = ({ userDoc, setUserDoc, onClose }) => {
       (formData.bankAccountNumber.length < 5 ||
         formData.bankAccountNumber.length > 50)
     ) {
-      setError("Bank account number must be at least 5 to 20 characters long");
+      setError("Bank account number must be at least 5 to 50 characters long");
       return;
     }
     if (formData.binancePayId && formData.binancePayId.length != 10) {
