@@ -10,9 +10,7 @@ const UserDetailsModal = ({ user, userDoc, setUserDoc, onClose, router }) => {
   const [bankAccountNumber, setBankAccountNumber] = useState(
     userDoc?.bankAccountNumber || "",
   );
-  const [binanceWalletAddress, setBinanceWalletAddress] = useState(
-    userDoc?.binanceWalletAddress || "",
-  );
+  const [binancePayId, setBinancePayId] = useState(userDoc?.binancePayId || "");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [loggingOut, setLoggingOut] = useState(false);
@@ -27,7 +25,7 @@ const UserDetailsModal = ({ user, userDoc, setUserDoc, onClose, router }) => {
       setError("Bank name and account number must be given together");
       return;
     }
-    if (!bankName && !bankAccountNumber && !binanceWalletAddress) {
+    if (!bankName && !bankAccountNumber && !binancePayId) {
       setError("At least one of the transaction medium must be given");
       return;
     }
@@ -50,13 +48,8 @@ const UserDetailsModal = ({ user, userDoc, setUserDoc, onClose, router }) => {
       setError("Bank account number must be at least 5 to 20 characters long");
       return;
     }
-    if (
-      binanceWalletAddress &&
-      (binanceWalletAddress.length < 5 || binanceWalletAddress.length > 50)
-    ) {
-      setError(
-        "Binance wallet address must be at least 5 to 100 characters long",
-      );
+    if (binancePayId && binancePayId.length != 10) {
+      setError("Binance Pay ID must be exactly 10 characters long");
       return;
     }
     setLoading(true);
@@ -65,7 +58,7 @@ const UserDetailsModal = ({ user, userDoc, setUserDoc, onClose, router }) => {
       phoneNumber: phoneNumber,
       bankName: bankName,
       bankAccountNumber: bankAccountNumber,
-      binanceWalletAddress: binanceWalletAddress,
+      binancePayId: binancePayId,
     };
     setUserDoc({ ...userDoc, ...userObj });
 
@@ -82,7 +75,7 @@ const UserDetailsModal = ({ user, userDoc, setUserDoc, onClose, router }) => {
             phoneNumber: phoneNumber,
             bankName: bankName,
             bankAccountNumber: bankAccountNumber,
-            binanceWalletAddress: binanceWalletAddress,
+            binancePayId: binancePayId,
           },
           [Permission.write(Role.user(user.$id))],
           user.$id,
@@ -188,17 +181,15 @@ const UserDetailsModal = ({ user, userDoc, setUserDoc, onClose, router }) => {
             -OR-
           </p>
           <div className="mb-4">
-            <label
-              className="block text-gray-700 mb-1"
-              htmlFor="binanceWalletAddress">
-              Binance Wallet Address
+            <label className="block text-gray-700 mb-1" htmlFor="binancePayId">
+              Binance Pay ID
             </label>
             <input
               type="text"
-              id="binanceWalletAddress"
-              placeholder="Enter your binance wallet address"
-              value={binanceWalletAddress}
-              onChange={(e) => setBinanceWalletAddress(e.target.value)}
+              id="binancePayId"
+              placeholder="Enter your binance pay id"
+              value={binancePayId}
+              onChange={(e) => setBinancePayId(e.target.value)}
               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300 text-black"
             />
           </div>

@@ -8,7 +8,7 @@ const ProfileModal = ({ userDoc, setUserDoc, onClose }) => {
     phoneNumber: userDoc.phoneNumber || "",
     bankName: userDoc.bankName || "",
     bankAccountNumber: userDoc.bankAccountNumber || "",
-    binanceWalletAddress: userDoc.binanceWalletAddress || "",
+    binancePayId: userDoc.binancePayId || "",
   });
   const [editMode, setEditMode] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -35,7 +35,7 @@ const ProfileModal = ({ userDoc, setUserDoc, onClose }) => {
     if (
       !formData.bankName &&
       !formData.bankAccountNumber &&
-      !formData.binanceWalletAddress
+      !formData.binancePayId
     ) {
       setError("At least one of the transaction medium must be given");
       return;
@@ -63,14 +63,8 @@ const ProfileModal = ({ userDoc, setUserDoc, onClose }) => {
       setError("Bank account number must be at least 5 to 20 characters long");
       return;
     }
-    if (
-      formData.binanceWalletAddress &&
-      (formData.binanceWalletAddress.length < 5 ||
-        formData.binanceWalletAddress.length > 50)
-    ) {
-      setError(
-        "Binance wallet address must be at least 5 to 100 characters long",
-      );
+    if (formData.binancePayId && formData.binancePayId.length != 10) {
+      setError("Binance Pay ID must be exactly 10 characters long");
       return;
     }
     setProfileData(formData);
@@ -184,19 +178,19 @@ const ProfileModal = ({ userDoc, setUserDoc, onClose }) => {
 
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Binance Wallet Address:
+              Binance Pay ID:
             </label>
             {editMode ? (
               <input
                 type="text"
-                name="binanceWalletAddress"
-                value={formData.binanceWalletAddress}
+                name="binancePayId"
+                value={formData.binancePayId}
                 onChange={handleChange}
                 className="mt-1 p-2 w-full border-2 border-gray-900 rounded-md text-black"
               />
-            ) : profileData.binanceWalletAddress ? (
+            ) : profileData.binancePayId ? (
               <p className="mt-1 text-gray-800 font-black border-b border-gray-400">
-                {profileData.binanceWalletAddress}
+                {profileData.binancePayId}
               </p>
             ) : (
               <p className="mt-1 text-gray-800 font-black border-b border-gray-400">

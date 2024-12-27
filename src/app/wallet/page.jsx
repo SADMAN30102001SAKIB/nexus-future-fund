@@ -106,12 +106,12 @@ const TransactionModal = ({
               </button>
               <button
                 className={`w-1/2 py-2 px-4 ml-2 rounded-lg text-black ${
-                  selectedOption === "binance"
+                  selectedOption === "binancePay"
                     ? "bg-pink-500 text-white"
                     : "bg-gray-200"
                 }`}
-                onClick={() => onOptionClick("binance")}>
-                Binance
+                onClick={() => onOptionClick("binancePay")}>
+                Binance Pay
               </button>
             </div>
             {selectedOption && (
@@ -235,16 +235,16 @@ export default function Wallet() {
           (userDoc.bankAccountNumber && !userDoc.bankName) ||
           (!userDoc.bankName &&
             !userDoc.bankAccountNumber &&
-            !userDoc.binanceWalletAddress)
+            !userDoc.binancePayId)
         ) {
           setShowModal(true);
         }
         if (userDoc?.bankAccountNumber) {
           setSelectedOption("bank");
           setAddressOrNumber(userDoc.bankAccountNumber);
-        } else if (userDoc?.binanceWalletAddress) {
-          setSelectedOption("binance");
-          setAddressOrNumber(userDoc.binanceWalletAddress);
+        } else if (userDoc?.binancePayId) {
+          setSelectedOption("binancePay");
+          setAddressOrNumber(userDoc.binancePayId);
         }
         setUserDoc(userDoc);
       } catch (err) {
@@ -301,9 +301,9 @@ export default function Wallet() {
     if (userDoc?.bankAccountNumber) {
       setSelectedOption("bank");
       setAddressOrNumber(userDoc.bankAccountNumber);
-    } else if (userDoc?.binanceWalletAddress) {
-      setSelectedOption("binance");
-      setAddressOrNumber(userDoc.binanceWalletAddress);
+    } else if (userDoc?.binancePayId) {
+      setSelectedOption("binancePay");
+      setAddressOrNumber(userDoc.binancePayId);
     }
     setShowDepositModal(true);
     setUserDoc(await db.users.get(user.$id));
@@ -329,9 +329,9 @@ export default function Wallet() {
     if (userDoc?.bankAccountNumber) {
       setSelectedOption("bank");
       setAddressOrNumber(userDoc.bankAccountNumber);
-    } else if (userDoc?.binanceWalletAddress) {
-      setSelectedOption("binance");
-      setAddressOrNumber(userDoc.binanceWalletAddress);
+    } else if (userDoc?.binancePayId) {
+      setSelectedOption("binancePay");
+      setAddressOrNumber(userDoc.binancePayId);
     }
     setShowWithdrawModal(true);
     setUserDoc(await db.users.get(user.$id));
@@ -361,7 +361,7 @@ export default function Wallet() {
     if (option === "bank") {
       setAddressOrNumber(userDoc.bankAccountNumber);
     } else {
-      setAddressOrNumber(userDoc.binanceWalletAddress);
+      setAddressOrNumber(userDoc.binancePayId);
     }
   };
 
@@ -407,13 +407,14 @@ export default function Wallet() {
 
     if (
       !addressOrNumber ||
-      addressOrNumber.length < 5 ||
-      addressOrNumber.length > 50
+      (selectedOption === "bank" && addressOrNumber.length < 5) ||
+      addressOrNumber.length > 50 ||
+      (selectedOption === "binancePay" && addressOrNumber.length != 10)
     ) {
       if (selectedOption === "bank") {
-        setErrorMessage("Please provide the correct account number.");
+        setErrorMessage("Please provide your correct account number.");
       } else {
-        setErrorMessage("Please provide the correct wallet address.");
+        setErrorMessage("Please provide your correct pay id.");
       }
       return;
     }
@@ -552,7 +553,7 @@ export default function Wallet() {
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900 bg-opacity-80 backdrop-blur-md">
         <div className="container mx-auto p-6 flex items-center justify-between">
-          <h1 className="text-2xl font-black">
+          <h1 className="text-2xl font-black truncate max-w-[150px] sm:max-w-[200px] md:max-w-[300px] overflow-hidden whitespace-nowrap">
             {userDoc.name}{" "}
             {userDoc.verified ? (
               <p className="text-green-500 text-sm">(verified)</p>
@@ -693,7 +694,7 @@ export default function Wallet() {
                 <motion.h1
                   className="text-xl md:text-5xl font-bold mb-8 text-white"
                   variants={fadeIn}>
-                  Balance: ${userDoc.balance}
+                  Balance: ${userDoc.balance ? userDoc.balance : 0}
                 </motion.h1>
                 <motion.span
                   className="mr-4 text-lg text-justify"
