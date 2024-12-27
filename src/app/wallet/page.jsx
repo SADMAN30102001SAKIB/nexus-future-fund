@@ -410,7 +410,7 @@ export default function Wallet() {
       (selectedOption === "bank" &&
         (addressOrNumber.length < 5 || addressOrNumber.length > 50)) ||
       (selectedOption === "binancePay" &&
-        (addressOrNumber.length != 9 || addressOrNumber.length != 10))
+        (addressOrNumber.length < 9 || addressOrNumber.length > 10))
     ) {
       if (selectedOption === "bank") {
         setErrorMessage(

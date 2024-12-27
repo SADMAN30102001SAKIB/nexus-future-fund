@@ -48,10 +48,7 @@ const UserDetailsModal = ({ user, userDoc, setUserDoc, onClose, router }) => {
       setError("Bank account number must be at least 5 to 50 characters long");
       return;
     }
-    if (
-      binancePayId &&
-      (binancePayId.length != 9 || binancePayId.length != 10)
-    ) {
+    if (binancePayId && (binancePayId.length < 9 || binancePayId.length > 10)) {
       setError("Binance Pay ID must be 9-10 characters long");
       return;
     }

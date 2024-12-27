@@ -65,7 +65,7 @@ const ProfileModal = ({ userDoc, setUserDoc, onClose }) => {
     }
     if (
       formData.binancePayId &&
-      (formData.binancePayId.length != 9 || formData.binancePayId.length != 10)
+      (formData.binancePayId.length < 9 || formData.binancePayId.length > 10)
     ) {
       setError("Binance Pay ID must be 9-10 characters long");
       return;
