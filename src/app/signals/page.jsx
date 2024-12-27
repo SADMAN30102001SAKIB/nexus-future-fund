@@ -8,7 +8,7 @@ import homeImage from "../../assets/home.png";
 import benefitsImage from "../../assets/benefits.png";
 import investmentsImage from "../../assets/investments.png";
 import placeholderImage from "../../assets/userPlaceholder.jpg";
-import thumbnail from "../../assets/thumbnail.jpg";
+import thumbnail from "../../assets/thumbnail.png";
 import {
   Accordion,
   AccordionContent,
