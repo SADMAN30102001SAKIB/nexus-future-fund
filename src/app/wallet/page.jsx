@@ -248,7 +248,7 @@ export default function Wallet() {
         }
         setUserDoc(userDoc);
       } catch (err) {
-        console.log("Error fetching useDoc:", err);
+        console.log("Error fetching userDoc:", err);
         setShowModal(true);
       }
 
@@ -407,14 +407,17 @@ export default function Wallet() {
 
     if (
       !addressOrNumber ||
-      (selectedOption === "bank" && addressOrNumber.length < 5) ||
-      addressOrNumber.length > 50 ||
-      (selectedOption === "binancePay" && addressOrNumber.length != 10)
+      (selectedOption === "bank" &&
+        (addressOrNumber.length < 5 || addressOrNumber.length > 50)) ||
+      (selectedOption === "binancePay" &&
+        (addressOrNumber.length != 9 || addressOrNumber.length != 10))
     ) {
       if (selectedOption === "bank") {
-        setErrorMessage("Please provide your correct account number.");
+        setErrorMessage(
+          "Bank account number must be at least 5 to 50 characters long",
+        );
       } else {
-        setErrorMessage("Please provide your correct pay id.");
+        setErrorMessage("Binance Pay ID must be 9-10 characters long");
       }
       return;
     }
