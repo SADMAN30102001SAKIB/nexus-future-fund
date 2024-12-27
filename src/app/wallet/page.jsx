@@ -123,7 +123,7 @@ const TransactionModal = ({
                 placeholder={
                   selectedOption === "bank"
                     ? "Account Number For This Transaction"
-                    : "Wallet Address For This Transaction"
+                    : "Pay ID For This Transaction"
                 }
               />
             )}
