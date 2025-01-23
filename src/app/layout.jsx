@@ -191,6 +191,10 @@ export default function RootLayout({ children }) {
           name="google-site-verification"
           content="RF9MA_ckfQK4-31eFkaHfioB3xgDXxkOEUNSthsFgEc"
         />
+        <meta
+          name="trustpilot-one-time-domain-verification-id"
+          content="8aa4850a-0776-45f5-b8f7-dc989aac9934"
+        />
       </head>
       <body className={ubuntu.className}>{children}</body>
     </html>
