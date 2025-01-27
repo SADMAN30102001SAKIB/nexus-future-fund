@@ -15,27 +15,15 @@ const withPWA = withPWAInit({
 const nextConfig = {
   images: {
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "miro.medium.com",
-      },
-      {
-        protocol: "https",
-        hostname: "media.licdn.com",
-      },
-      {
-        protocol: "https",
-        hostname: "cloud.appwrite.io",
-      },
-      {
-        protocol: "https",
-        hostname: "i9.ytimg.com",
-      },
-      {
-        protocol: "https",
-        hostname: "img.youtube.com",
-      },
+      { protocol: "https", hostname: "miro.medium.com" },
+      { protocol: "https", hostname: "media.licdn.com" },
+      { protocol: "https", hostname: "cloud.appwrite.io" },
+      { protocol: "https", hostname: "i9.ytimg.com" },
+      { protocol: "https", hostname: "img.youtube.com" },
     ],
+  },
+  experimental: {
+    reactCompiler: true,
   },
 };
 
