@@ -501,9 +501,9 @@ export default function Home() {
                   hands, and your financial future has never looked brighter.
                 </motion.p>
                 <motion.div className="flex space-x-4" variants={fadeIn}>
-                  <Link href="/about" passHref>
+                  <Link href="/clients" passHref>
                     <button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
-                      About Us
+                      Our Clients
                     </button>
                   </Link>
                   <Link href="/howtoinvest" passHref>
@@ -814,16 +814,16 @@ export default function Home() {
                   <motion.div
                     className="flex space-x-4  mt-6"
                     variants={fadeIn}>
-                    <Link href="/wallet/login" passHref>
-                      <button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
-                        Your Wallet
-                      </button>
-                    </Link>
                     <Link href="/howtoinvest" passHref>
                       <button
                         className="px-4 py-2 bg-white text-pink-600 rounded-md hover:bg-pink-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-pink-400"
                         variant="outline">
                         Learn More →
+                      </button>
+                    </Link>
+                    <Link href="/about" passHref>
+                      <button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
+                        About Us
                       </button>
                     </Link>
                   </motion.div>
