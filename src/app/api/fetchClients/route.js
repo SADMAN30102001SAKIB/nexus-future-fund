@@ -11,7 +11,7 @@ const urls = [
   },
   {
     name: "Sakib",
-    initialBalance: 67000,
+    initialBalance: 1000,
     link: "https://my.socialtradertools.com/view/PBxy6UNHwzEwStSx",
   },
 ];
