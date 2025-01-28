@@ -34,7 +34,7 @@ const TradesPage = () => {
 
   // Fetch initial data
   useEffect(() => {
-    fetch("https://trades-api.vercel.app/")
+    fetch("/api/trades")
       .then((res) => res.json())
       .then((data) => {
         const initialTrades = data.data.filter(
@@ -42,6 +42,10 @@ const TradesPage = () => {
             trade.state === "closed" && ["buy", "sell"].includes(trade.type),
         );
         setTrades(initialTrades);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching trades:", error);
         setIsLoading(false);
       });
   }, []);
