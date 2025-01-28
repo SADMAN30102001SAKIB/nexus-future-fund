@@ -10,6 +10,7 @@ import {
   FiDollarSign,
   FiBarChart2,
 } from "react-icons/fi";
+import { MdWarning } from "react-icons/md";
 import { GiMoneyStack } from "react-icons/gi";
 
 const TradesPage = () => {
@@ -27,6 +28,7 @@ const TradesPage = () => {
     losses: 0,
     winRate: 0,
     pnl: 0,
+    maxDrawdown: 0,
   });
   const [isLoading, setIsLoading] = useState(true);
 
@@ -96,7 +98,21 @@ const TradesPage = () => {
     const winRate =
       totalTrades > 0 ? ((wins / totalTrades) * 100).toFixed(2) : 0;
 
-    setStats({ totalTrades, wins, losses, winRate, pnl });
+    let maxDrawdown = 0;
+    let currentDrawdown = 0;
+
+    for (const trade of trades) {
+      const profitOrLoss = parseFloat(trade.profit + trade.commission || 0);
+
+      if (profitOrLoss < 0) {
+        currentDrawdown += profitOrLoss;
+        maxDrawdown = Math.min(maxDrawdown, currentDrawdown);
+      } else {
+        currentDrawdown = 0;
+      }
+    }
+
+    setStats({ totalTrades, wins, losses, winRate, pnl, maxDrawdown });
   };
 
   const handlePageChange = (newPage) => {
@@ -182,9 +198,9 @@ const TradesPage = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}>
       {/* Statistics Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-5 gap-4 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-6">
         {/* First Card */}
-        <div className="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-1 text-center">
+        <div className="col-span-1 md:col-span-1 text-center">
           <Card
             bgClass="bg-gradient-to-r from-purple-500 to-purple-700"
             icon={FiBarChart2}>
@@ -194,7 +210,7 @@ const TradesPage = () => {
         </div>
 
         {/* Second Card */}
-        <div className="col-span-1 sm:col-span-1 md:col-span-3 lg:col-span-1 text-center">
+        <div className="col-span-1 md:col-span-1 text-center">
           <Card
             bgClass="bg-gradient-to-r from-green-400 to-green-600"
             icon={FiTrendingUp}>
@@ -204,7 +220,7 @@ const TradesPage = () => {
         </div>
 
         {/* Third Card */}
-        <div className="col-span-1 sm:col-span-1 md:col-span-2 lg:col-span-1 text-center">
+        <div className="col-span-1 md:col-span-1 text-center">
           <Card
             bgClass="bg-gradient-to-r from-red-400 to-red-600"
             icon={FiTrendingDown}>
@@ -214,7 +230,7 @@ const TradesPage = () => {
         </div>
 
         {/* Fourth Card */}
-        <div className="col-span-1 sm:col-span-1 md:col-span-2 lg:col-span-1 text-center">
+        <div className="col-span-1 md:col-span-1 text-center">
           <Card
             bgClass="bg-gradient-to-r from-yellow-500 to-yellow-600"
             icon={FiDollarSign}>
@@ -224,7 +240,7 @@ const TradesPage = () => {
         </div>
 
         {/* Fifth Card */}
-        <div className="col-span-1 sm:col-span-1 md:col-span-2 lg:col-span-1 text-center">
+        <div className="col-span-1 md:col-span-1 text-center">
           <Card
             bgClass="bg-gradient-to-r from-blue-500 to-blue-600"
             icon={GiMoneyStack}>
@@ -232,10 +248,22 @@ const TradesPage = () => {
             <p className="text-xl sm:text-2xl font-bold">${stats.pnl}</p>
           </Card>
         </div>
+
+        {/* Sixth Card */}
+        <div className="col-span-1 md:col-span-1 text-center">
+          <Card
+            bgClass="bg-gradient-to-r from-orange-500 to-orange-600"
+            icon={MdWarning}>
+            <h2 className="text-base sm:text-lg font-semibold">Drawdown</h2>
+            <p className="text-xl sm:text-2xl font-bold">
+              -${Math.abs(stats.maxDrawdown)}
+            </p>
+          </Card>
+        </div>
       </div>
 
       {/* Filters */}
-      <div className="flex flex-wrap justify-between items-center gap-4 mb-6 mt-12">
+      <div className="flex flex-wrap justify-between items-center gap-4 mb-6 md:mt-12">
         {/* Left Filters */}
         <div className="flex flex-row gap-4 flex-grow sm:flex-grow-0 w-full lg:w-auto justify-between">
           <select
