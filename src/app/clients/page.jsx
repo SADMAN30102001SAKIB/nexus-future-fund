@@ -4,11 +4,13 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   FiTrendingUp,
+  FiTrendingDown,
   FiClock,
   FiDollarSign,
   FiSearch,
   FiChevronDown,
 } from "react-icons/fi";
+import { GiMoneyStack } from "react-icons/gi";
 import Confetti from "react-confetti";
 
 export default function Home() {
@@ -16,7 +18,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("");
-  const [sortOrder, setSortOrder] = useState("desc");
+  const [sortOrder, setSortOrder] = useState("decs");
   const [showConfetti, setShowConfetti] = useState(false);
   const [hasFetched, setHasFetched] = useState(false);
 
@@ -29,37 +31,36 @@ export default function Home() {
     }
   }, [data, hasFetched]);
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch("/api/fetchClients");
-      const result = await response.json();
-
-      if (response.ok) {
-        setData(result.data);
-      } else {
-        console.error("Error fetching data:", result.error);
-        setData([]);
-      }
-    } catch (error) {
-      console.error("Client-side error:", error);
-      setData([]);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/api/fetchClients");
+        const result = await response.json();
+
+        if (response.ok) {
+          setData(result.data);
+        } else {
+          console.error("Error fetching data:", result.error);
+          setData([]);
+        }
+      } catch (error) {
+        console.error("Client-side error:", error);
+        setData([]);
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchData();
   }, []);
 
   const sortData = (key) => {
     const sortedData = [...data].sort((a, b) => {
-      if (sortOrder === "asc") {
-        return a[key] > b[key] ? 1 : -1;
-      } else {
-        return a[key] < b[key] ? 1 : -1;
-      }
+      const valueA = typeof a[key] === "number" ? a[key] : parseFloat(a[key]);
+      const valueB = typeof b[key] === "number" ? b[key] : parseFloat(b[key]);
+
+      return sortOrder === "asc" ? valueA - valueB : valueB - valueA;
     });
+
     setData(sortedData);
     setSortOrder(sortOrder === "asc" ? "desc" : "asc");
   };
@@ -169,19 +170,39 @@ export default function Home() {
           <p className="text-2xl font-bold">{data.length}</p>
         </div>
         <div className="bg-[#1F2937] p-4 rounded-lg text-center">
-          <h3 className="text-lg font-semibold text-[#EC4899]">Average ROI</h3>
+          <h3 className="text-lg font-semibold text-[#EC4899]">
+            Average Monthly ROI
+          </h3>
           <p
             className={`text-2xl font-bold ${
-              (
-                data.reduce((acc, user) => acc + parseFloat(user.roi), 0) /
-                data.length
-              ).toFixed(2) > 0
+              (data.reduce((acc, user) => {
+                const joinedDate = new Date(
+                  user.joined.split("-").reverse().join("-"),
+                );
+                const now = new Date();
+                const daysPassed = Math.floor(
+                  (now - joinedDate) / (1000 * 60 * 60 * 24),
+                );
+                const monthsPassed = daysPassed / 30 || 1;
+                const avgMonthlyROI = parseFloat(user.roi) / monthsPassed;
+                return acc + avgMonthlyROI;
+              }, 0) / data.length || 0) > 0
                 ? "text-green-400"
                 : "text-red-400"
             }`}>
             {(
-              data.reduce((acc, user) => acc + parseFloat(user.roi), 0) /
-              data.length
+              data.reduce((acc, user) => {
+                const joinedDate = new Date(
+                  user.joined.split("-").reverse().join("-"),
+                );
+                const now = new Date();
+                const daysPassed = Math.floor(
+                  (now - joinedDate) / (1000 * 60 * 60 * 24),
+                );
+                const monthsPassed = daysPassed / 30 || 1 / 30;
+                const avgMonthlyROI = parseFloat(user.roi) / monthsPassed;
+                return acc + avgMonthlyROI;
+              }, 0) / data.length || 0
             ).toFixed(2)}{" "}
             %
           </p>
@@ -193,10 +214,7 @@ export default function Home() {
           <p className="text-2xl font-bold">
             $
             {data
-              .reduce(
-                (acc, user) => acc + parseFloat(user.balance.replace(/,/g, "")),
-                0,
-              )
+              .reduce((acc, user) => acc + parseFloat(user.balance), 0)
               .toLocaleString()}
           </p>
         </div>
@@ -212,15 +230,31 @@ export default function Home() {
           <motion.div
             key={index}
             className={`relative bg-gradient-to-br from-[#1F2937] via-[#2A3748] to-[#111827] p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out ${
-              user.roi > 20 ? "ring-4 ring-green-500" : "ring-1 ring-white"
+              parseFloat(user.roi) /
+                (Math.floor(
+                  (new Date() -
+                    new Date(user.joined.split("-").reverse().join("-"))) /
+                    (1000 * 60 * 60 * 24),
+                ) / 30 || 1 / 30) >
+              10
+                ? "ring-4 ring-green-500"
+                : "ring-1 ring-white"
             }`}
             whileHover={{ scale: 1.05 }}>
             <div className="relative z-10">
               {/* Name Section */}
-              <h2 className="text-3xl font-bold text-[#F3F4F6] flex items-center space-x-2">
-                <span>{user.name}</span>
-                {user.roi > 20 && (
-                  <span className="text-sm bg-green-600 text-white px-2 py-1 rounded-full ml-2">
+              <h2 className="text-2xl font-bold text-[#F3F4F6] flex items-center space-x-2">
+                <span className="truncate max-w-[11.5rem] md:max-w-[20rem] lg:max-w-[15rem]">
+                  {user.name}
+                </span>
+                {parseFloat(user.roi) /
+                  (Math.floor(
+                    (new Date() -
+                      new Date(user.joined.split("-").reverse().join("-"))) /
+                      (1000 * 60 * 60 * 24),
+                  ) / 30 || 1 / 30) >
+                  10 && (
+                  <span className="text-xs bg-green-600 text-white px-1.5 py-1 rounded-full">
                     High ROI
                   </span>
                 )}
@@ -228,14 +262,47 @@ export default function Home() {
 
               {/* ROI Section */}
               <div className="mt-4 flex items-center space-x-2">
-                <FiTrendingUp className="text-green-400" size={20} />
-                <p className="text-lg text-[#D1D5DB]">
+                {parseFloat(user.roi) > 0 ? (
+                  <FiTrendingUp className="text-green-400" size={20} />
+                ) : (
+                  <FiTrendingDown className="text-red-400" size={20} />
+                )}
+                <p className="font-semibold text-lg text-[#D1D5DB]">
                   ROI:{" "}
                   <span
-                    className={`font-semibold ${
+                    className={`${
                       user.roi > 0 ? "text-green-400" : "text-red-400"
                     }`}>
-                    {user.roi}%
+                    {user.roi}%{" "}
+                  </span>
+                  <span className="font-medium text-sm text-[#9CA3AF]">
+                    (Monthly{" "}
+                    <span
+                      className={`${
+                        parseFloat(user.roi) /
+                          (Math.floor(
+                            (new Date() -
+                              new Date(
+                                user.joined.split("-").reverse().join("-"),
+                              )) /
+                              (1000 * 60 * 60 * 24),
+                          ) / 30 || 1 / 30) >
+                        0
+                          ? "text-green-500"
+                          : "text-red-500"
+                      }`}>
+                      {(
+                        parseFloat(user.roi) /
+                        (Math.floor(
+                          (new Date() -
+                            new Date(
+                              user.joined.split("-").reverse().join("-"),
+                            )) /
+                            (1000 * 60 * 60 * 24),
+                        ) / 30 || 1 / 30)
+                      ).toFixed(2)}
+                      %)
+                    </span>
                   </span>
                 </p>
               </div>
@@ -245,15 +312,23 @@ export default function Home() {
                 <FiDollarSign className="text-yellow-400" size={20} />
                 <p className="text-lg text-[#D1D5DB]">
                   Balance:{" "}
-                  <span className="font-semibold">${user.balance}</span>
+                  <span className="font-semibold">{user.balance} USD</span>
                 </p>
               </div>
 
-              {/* Last Updated Section */}
+              {/* Capital Section */}
+              <div className="mt-2 flex items-center space-x-2">
+                <GiMoneyStack className="text-green-400" size={20} />
+                <p className="text-lg text-[#D1D5DB]">
+                  Capital: {user.capital} USD
+                </p>
+              </div>
+
+              {/* Joined Section */}
               <div className="mt-2 flex items-center space-x-2">
                 <FiClock className="text-blue-400" size={20} />
                 <p className="text-sm text-[#9CA3AF]">
-                  Last Updated: {user.lastUpdated}
+                  Joined: <span className="text-[#D1D5DB]">{user.joined}</span>
                 </p>
               </div>
             </div>

@@ -5,13 +5,17 @@ import os from "os";
 
 const urls = [
   {
-    name: "Sadman",
+    name: "Mahmudul Hasan Ridoy",
     initialBalance: 200,
+    capital: 200,
+    joined: "07-01-2025",
     link: "https://my.socialtradertools.com/view/86SOq3yhFN4k4uMK",
   },
   {
-    name: "Sakib",
+    name: "Sadman",
     initialBalance: 1000,
+    capital: 2000,
+    joined: "01-01-2025",
     link: "https://my.socialtradertools.com/view/PBxy6UNHwzEwStSx",
   },
 ];
@@ -29,20 +33,17 @@ function parseHTML(html, user) {
     .trim();
   const numericBalance = parseFloat(balanceTag.replace(/[^0-9.-]+/g, "")) || 0;
 
-  const roi = user.initialBalance
-    ? ((numericBalance - user.initialBalance) / user.initialBalance) * 100
+  const roi = user.capital
+    ? ((numericBalance - user.initialBalance) / user.capital) * 100
     : 0;
-
-  const lastUpdated = $("span.text-muted")
-    .text()
-    .replace("Updated: ", "")
-    .trim();
 
   return {
     name: user.name,
-    balance: balanceTag || "N/A",
-    lastUpdated: lastUpdated || "N/A",
+    balance:
+      (numericBalance - user.initialBalance + user.capital).toFixed(2) || "N/A",
+    joined: user.joined || "N/A",
     roi: roi.toFixed(2),
+    capital: user.capital,
     status: "fulfilled",
   };
 }
@@ -65,7 +66,6 @@ export async function GET(request) {
   try {
     const results = [];
 
-    // Batch processing for scalability
     const batchSize = Math.min(10, concurrency);
     for (let i = 0; i < urls.length; i += batchSize) {
       const batch = urls.slice(i, i + batchSize);
@@ -96,8 +96,9 @@ export async function GET(request) {
               return {
                 name: user.name,
                 balance: "Error",
-                lastUpdated: "N/A",
+                joined: "N/A",
                 roi: "N/A",
+                capital: user.capital,
                 status: "rejected",
               };
             }
