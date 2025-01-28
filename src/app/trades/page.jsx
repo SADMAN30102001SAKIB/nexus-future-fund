@@ -106,15 +106,16 @@ const TradesPage = () => {
 
   const Card = ({ children, bgClass, icon: Icon }) => (
     <motion.div
-      className={`relative p-6 rounded-2xl shadow-lg ${bgClass} text-white transition-all duration-100 hover:ring-2 ring-white`}
+      className={`relative p-4 sm:p-6 rounded-2xl shadow-lg ${bgClass} text-white transition-all duration-100 hover:ring-2 ring-white`}
       initial={{ scale: 0.95 }}
       animate={{ scale: 1 }}
       whileHover={{
         scale: 1.05,
       }}
       transition={{ duration: 0.1 }}>
-      <div className="flex items-center space-x-4 relative z-10">
-        <Icon className="w-10 h-10" />
+      <div className="flex items-center space-x-2 sm:space-x-4 relative z-10">
+        <Icon className="w-6 h-6 sm:w-10 sm:h-10" />{" "}
+        {/* Responsive icon size */}
         <div>{children}</div>
       </div>
     </motion.div>
