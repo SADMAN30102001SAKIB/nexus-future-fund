@@ -811,14 +811,12 @@ export default function Home() {
                       </motion.li>
                     ))}
                   </motion.ul>
-                  <motion.div
-                    className="flex space-x-4  mt-6"
-                    variants={fadeIn}>
-                    <Link href="/howtoinvest" passHref>
+                  <motion.div className="flex space-x-4 mt-6" variants={fadeIn}>
+                    <Link href="/trades" passHref>
                       <button
                         className="px-4 py-2 bg-white text-pink-600 rounded-md hover:bg-pink-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-pink-400"
                         variant="outline">
-                        Learn More →
+                        Our Performance
                       </button>
                     </Link>
                     <Link href="/about" passHref>
