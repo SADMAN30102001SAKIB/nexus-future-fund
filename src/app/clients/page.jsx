@@ -55,10 +55,15 @@ export default function Home() {
 
   const sortData = (key) => {
     const sortedData = [...data].sort((a, b) => {
-      const valueA = typeof a[key] === "number" ? a[key] : parseFloat(a[key]);
-      const valueB = typeof b[key] === "number" ? b[key] : parseFloat(b[key]);
-
-      return sortOrder === "asc" ? valueA - valueB : valueB - valueA;
+      if (key === "joined") {
+        const dateA = new Date(a[key].split("-").reverse().join("-"));
+        const dateB = new Date(b[key].split("-").reverse().join("-"));
+        return sortOrder === "asc" ? dateA - dateB : dateB - dateA;
+      } else {
+        const valueA = typeof a[key] === "number" ? a[key] : parseFloat(a[key]);
+        const valueB = typeof b[key] === "number" ? b[key] : parseFloat(b[key]);
+        return sortOrder === "asc" ? valueA - valueB : valueB - valueA;
+      }
     });
 
     setData(sortedData);
@@ -151,6 +156,27 @@ export default function Home() {
             }}>
             Sort by ROI
             {sortBy === "roi" && (
+              <FiChevronDown
+                className={`transform ${
+                  sortOrder === "asc" ? "rotate-180" : ""
+                }`}
+              />
+            )}
+          </button>
+          <button
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg shadow-md transition-all duration-200 ${
+              sortBy === "joined"
+                ? sortOrder === "asc"
+                  ? "bg-[#3B82F6] text-white"
+                  : "bg-[#EF4444] text-white"
+                : "bg-[#1F2937] text-gray-300 hover:bg-[#374151] hover:text-white"
+            }`}
+            onClick={() => {
+              setSortBy("joined");
+              sortData("joined");
+            }}>
+            Sort by Date
+            {sortBy === "joined" && (
               <FiChevronDown
                 className={`transform ${
                   sortOrder === "asc" ? "rotate-180" : ""
