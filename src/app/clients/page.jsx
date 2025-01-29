@@ -262,7 +262,7 @@ export default function Home() {
                     new Date(user.joined.split("-").reverse().join("-"))) /
                     (1000 * 60 * 60 * 24),
                 ) / 30 || 1 / 30) >
-              10
+              5
                 ? "ring-4 ring-green-500"
                 : "ring-1 ring-white"
             }`}
@@ -279,7 +279,7 @@ export default function Home() {
                       new Date(user.joined.split("-").reverse().join("-"))) /
                       (1000 * 60 * 60 * 24),
                   ) / 30 || 1 / 30) >
-                  10 && (
+                  5 && (
                   <span className="text-xs bg-green-600 text-white px-1.5 py-1 rounded-full">
                     High ROI
                   </span>
