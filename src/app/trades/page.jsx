@@ -60,7 +60,9 @@ const TradesPage = () => {
 
     if (profitFilter !== "all") {
       filtered = filtered.filter((trade) =>
-        profitFilter === "profit" ? trade.profit > 0 : trade.profit < 0,
+        profitFilter === "profit"
+          ? trade.profit + trades.commission > 0
+          : trade.profit + trades.commission < 0,
       );
     }
 
