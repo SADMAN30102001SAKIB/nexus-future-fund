@@ -102,7 +102,7 @@ const TradesPage = () => {
     let maxDrawdown = 0;
     let currentDrawdown = 0;
 
-    for (const trade of trades) {
+    for (const trade of data) {
       const profitOrLoss = parseFloat(trade.profit + trade.commission || 0);
 
       if (profitOrLoss < 0) {
