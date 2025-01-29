@@ -37,9 +37,8 @@ const TradesPage = () => {
     fetch("/api/trades")
       .then((res) => res.json())
       .then((data) => {
-        const initialTrades = data.data.filter(
-          (trade) =>
-            trade.state === "closed" && ["buy", "sell"].includes(trade.type),
+        const initialTrades = data.filter((trade) =>
+          ["buy", "sell"].includes(trade.type),
         );
         setTrades(initialTrades);
         setIsLoading(false);
@@ -371,7 +370,9 @@ const TradesPage = () => {
                   <td className="p-4 text-center">{trade.lots}</td>
                   <td
                     className={`p-4 text-center font-bold ${
-                      trade.profit > 0 ? "text-green-400" : "text-red-500"
+                      trade.profit + trade.commission > 0
+                        ? "text-green-400"
+                        : "text-red-500"
                     }`}>
                     {trade.profit.toFixed(2)}
                   </td>
