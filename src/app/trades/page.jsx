@@ -78,7 +78,7 @@ const TradesPage = () => {
     }
 
     setFilteredData(filtered);
-    setCurrentPage(1); // Reset to first page when filters change
+    setCurrentPage(1);
   }, [trades, typeFilter, profitFilter, dateRange, perPage]);
 
   // Handle pagination changes
