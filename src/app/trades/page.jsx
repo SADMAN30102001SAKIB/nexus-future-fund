@@ -113,7 +113,15 @@ const TradesPage = () => {
       }
     }
 
-    setStats({ totalTrades, wins, losses, winRate, pnl, maxDrawdown });
+    const formattedMaxDrawdown = maxDrawdown.toFixed(2);
+    setStats({
+      totalTrades,
+      wins,
+      losses,
+      winRate,
+      pnl,
+      maxDrawdown: formattedMaxDrawdown,
+    });
   };
 
   const handlePageChange = (newPage) => {
