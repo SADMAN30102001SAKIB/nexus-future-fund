@@ -34,7 +34,7 @@ const TradesPage = () => {
 
   // Fetch initial data
   useEffect(() => {
-    fetch("/api/trades")
+    fetch("/api/get-trades")
       .then((res) => res.json())
       .then((data) => {
         const initialTrades = data.filter((trade) =>

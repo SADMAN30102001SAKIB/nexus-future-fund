@@ -34,7 +34,7 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/api/fetchClients");
+        const response = await fetch("/api/get-clients");
         const result = await response.json();
 
         if (response.ok) {
