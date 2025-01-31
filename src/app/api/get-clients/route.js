@@ -15,7 +15,7 @@ const users = [
     name: "Sadman",
     initialBalance: 1000,
     capital: 1000,
-    joined: "01-01-2025",
+    joined: "27-01-2025",
     accountId: "aaf10741-5b68-4a43-aec1-bad6f101c9d3",
   },
 ];
