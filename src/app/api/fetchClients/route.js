@@ -1,38 +1,29 @@
-import * as cheerio from "cheerio";
 import pLimit from "p-limit";
 import pRetry from "p-retry";
 import os from "os";
+import { getBalance } from "../../../lib/getBalance";
 
-const urls = [
+const users = [
   {
     name: "Mahmudul Hasan Ridoy",
     initialBalance: 200,
     capital: 200,
     joined: "07-01-2025",
-    link: "https://my.socialtradertools.com/view/86SOq3yhFN4k4uMK",
+    accountId: "34250426-f5ca-4824-85a2-4578fe5d7e37",
   },
   {
     name: "Sadman",
     initialBalance: 1000,
-    capital: 2000,
+    capital: 1000,
     joined: "01-01-2025",
-    link: "https://my.socialtradertools.com/view/PBxy6UNHwzEwStSx",
+    accountId: "aaf10741-5b68-4a43-aec1-bad6f101c9d3",
   },
 ];
 
-const concurrency = Math.min(urls.length, os.cpus().length * 5);
+const concurrency = Math.min(users.length, os.cpus().length * 5);
 const limit = pLimit(concurrency);
 
-function parseHTML(html, user) {
-  const $ = cheerio.load(html);
-
-  const balanceTag = $("h4:contains('Balance')")
-    .next("div")
-    .find("strong")
-    .text()
-    .trim();
-  const numericBalance = parseFloat(balanceTag.replace(/[^0-9.-]+/g, "")) || 0;
-
+function parseBalanceData(user, numericBalance) {
   const roi = user.capital
     ? ((numericBalance - user.initialBalance) / user.capital) * 100
     : 0;
@@ -48,51 +39,32 @@ function parseHTML(html, user) {
   };
 }
 
-async function fetchWithTimeout(url, timeoutMs = 2000) {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), timeoutMs);
-
-  try {
-    const res = await fetch(url, { signal: controller.signal });
-    clearTimeout(timeout);
-    return res;
-  } catch (error) {
-    clearTimeout(timeout);
-    throw error;
-  }
-}
-
 export async function GET(request) {
   try {
     const results = [];
-
     const batchSize = Math.min(10, concurrency);
-    for (let i = 0; i < urls.length; i += batchSize) {
-      const batch = urls.slice(i, i + batchSize);
+
+    for (let i = 0; i < users.length; i += batchSize) {
+      const batch = users.slice(i, i + batchSize);
       const batchResults = await Promise.all(
         batch.map((user) =>
           limit(async () => {
             try {
-              const html = await pRetry(
+              const balance = await pRetry(
                 async () => {
-                  const res = await fetchWithTimeout(user.link, 2000);
-                  if (res.status === 404)
-                    throw new pRetry.AbortError("404 Not Found");
-                  if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
-                  return res.text();
+                  return await getBalance(user.accountId);
                 },
                 {
                   retries: 3,
                   factor: 2,
                   minTimeout: 200,
                   maxTimeout: 2000,
-                  randomize: true,
                 },
               );
 
-              return parseHTML(html, user);
+              return parseBalanceData(user, balance);
             } catch (error) {
-              console.error(`Failed to fetch ${user.link}:`, error);
+              console.error(`Failed to fetch balance for ${user.name}:`, error);
               return {
                 name: user.name,
                 balance: "Error",
