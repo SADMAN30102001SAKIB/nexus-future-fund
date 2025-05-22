@@ -225,13 +225,16 @@ export default function Home() {
     setSubmissionError(null);
 
     try {
-      const response = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://sadman30102001.pythonanywhere.com/subscribe",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
         },
-        body: JSON.stringify({ email }),
-      });
+      );
 
       const data = await response.json();
 
@@ -239,11 +242,7 @@ export default function Home() {
         setSubmitStatus("success");
         setEmail("");
       } else {
-        if (response.status === 409) {
-          setSubmissionError("This email is already subscribed!");
-        } else {
-          setSubmissionError(data.error || "Something went wrong!");
-        }
+        setSubmissionError(data.error);
         setSubmitStatus("error");
       }
     } catch (error) {
