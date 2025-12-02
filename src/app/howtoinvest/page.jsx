@@ -275,7 +275,7 @@ export default function HowToInvest() {
                 title: "Contact",
                 links: [
                   "nexusfuturefund@gmail.com",
-                  "Address: 4 Endsleigh Street, London, WC1H 0DS",
+                  "Address: Talaimari, Rajshahi, Bangladesh",
                 ],
               },
             ].map((column, index) => (
