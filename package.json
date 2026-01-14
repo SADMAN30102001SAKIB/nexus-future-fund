@@ -19,7 +19,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^11.18.2",
     "googleapis": "^144.0.0",
-    "lucide-react": "^0.561.0",
+    "lucide-react": "^0.562.0",
     "next": "15.5.9",
     "p-retry": "^6.2.1",
     "react": "^19.2.3",
